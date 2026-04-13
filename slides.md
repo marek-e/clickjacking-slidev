@@ -41,11 +41,11 @@ colorSchema: light
 import { watch, onUnmounted } from 'vue'
 import { useNav } from '@slidev/client'
 
-const { clicks, next } = useNav()
+const { clicks, currentPage, next } = useNav()
 let timer
 
 watch(clicks, (val) => {
-  if (val >= 1) timer = setTimeout(next, 1200)
+  if (currentPage.value === 1 && val >= 1) timer = setTimeout(next, 1200)
 })
 
 onUnmounted(() => clearTimeout(timer))
