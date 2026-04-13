@@ -1,0 +1,23 @@
+slides.md
+  7d4c0d30bcf55cd3 44,48
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.19",
+  "base_commit_sha": "087e244cc65a055eac5a7ca000a534a9b4a36e01",
+  "prompts": {
+    "7d4c0d30bcf55cd3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "13596de5-00f3-4535-972e-e84271037b60",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>",
+      "messages": [],
+      "total_additions": 5,
+      "total_deletions": 2,
+      "accepted_lines": 5,
+      "overriden_lines": 0
+    }
+  }
+}
