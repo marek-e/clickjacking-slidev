@@ -1,0 +1,25 @@
+slides.md
+  7d4c0d30bcf55cd3 118,123-125,127-135,137-146
+components/AgendaItem.vue
+  7d4c0d30bcf55cd3 1-59
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.19",
+  "base_commit_sha": "7dababaea3f083b95c451bfeb413e86ba3e5e59e",
+  "prompts": {
+    "7d4c0d30bcf55cd3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "13596de5-00f3-4535-972e-e84271037b60",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>",
+      "messages": [],
+      "total_additions": 85,
+      "total_deletions": 23,
+      "accepted_lines": 83,
+      "overriden_lines": 0
+    }
+  }
+}
