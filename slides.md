@@ -115,32 +115,35 @@ onUnmounted(() => clearTimeout(timer))
 </style>
 
 ---
-layout: two-cols
-layoutClass: gap-8
+layout: center
 ---
 
 # Agenda
 
-::left::
+<div class="grid grid-cols-2 gap-6 mt-6">
 
-### The Attack
-1. What is Clickjacking?
-2. How it works — mechanics
-3. **Live Demo** — Bank transfer hijack
-4. Attack variants
-5. **Live Demo** — OAuth consent hijack
-6. **Live Demo** — Likejacking
+<div class="flex flex-col gap-2">
+  <div class="text-xs font-bold tracking-widest uppercase text-red-600 mb-1 underline">The Attack</div>
+  <AgendaItem n="1">What is Clickjacking?</AgendaItem>
+  <AgendaItem n="2">How it works — mechanics</AgendaItem>
+  <AgendaItem n="3" demo>Bank transfer hijack</AgendaItem>
+  <AgendaItem n="4">Attack variants</AgendaItem>
+  <AgendaItem n="5" demo>OAuth consent hijack</AgendaItem>
+  <AgendaItem n="6" demo>Likejacking</AgendaItem>
+</div>
 
-::right::
+<div class="flex flex-col gap-2">
+  <div class="text-xs font-bold tracking-widest uppercase text-blue-600 mb-1 underline">The Defense</div>
+  <AgendaItem n="7">Targets &amp; real-world impact</AgendaItem>
+  <AgendaItem n="8">Detection</AgendaItem>
+  <AgendaItem n="9">X-Frame-Options</AgendaItem>
+  <AgendaItem n="10">CSP <code>frame-ancestors</code></AgendaItem>
+  <AgendaItem n="11">JavaScript framebusting</AgendaItem>
+  <AgendaItem n="12" demo>Defenses in action</AgendaItem>
+  <AgendaItem n="13">Security checklist</AgendaItem>
+</div>
 
-### The Defense
-7. Targets & real-world impact
-8. Detection
-9. X-Frame-Options header
-10. CSP `frame-ancestors`
-11. JavaScript framebusting
-12. **Live Demo** — Defenses in action
-13. Security checklist
+</div>
 
 ---
 
