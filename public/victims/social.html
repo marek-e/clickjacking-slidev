@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ConnectHub — Post</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f0f2f5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Nav ─────────────────────────────────────────── */
+    .nav {
+      background: #1877f2;
+      color: #fff;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9em;
+      flex-shrink: 0;
+    }
+    .nav .logo { font-weight: 800; font-size: 1.2em; letter-spacing: -0.5px; }
+    .nav .user { margin-left: auto; font-size: 0.82em; opacity: 0.85; }
+
+    /* ── Content ─────────────────────────────────────── */
+    .content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      max-width: 380px;
+      width: 100%;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+      overflow: hidden;
+    }
+
+    /* ── Post header ──────────────────────────────────── */
+    .post-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+    }
+
+    .avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f093fb, #f5576c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1em;
+      flex-shrink: 0;
+    }
+
+    .post-meta { font-size: 0.82em; }
+    .post-meta .author { font-weight: 700; color: #1c1e21; }
+    .post-meta .time   { color: #65676b; }
+
+    /* ── Post body ────────────────────────────────────── */
+    .post-body {
+      padding: 0 16px 12px;
+      font-size: 0.88em;
+      color: #1c1e21;
+      line-height: 1.45;
+    }
+
+    .post-image {
+      width: 100%;
+      height: 90px;
+      background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      margin-bottom: 12px;
+    }
+
+    /* ── Actions ─────────────────────────────────────── */
+    .stats {
+      padding: 6px 16px;
+      font-size: 0.75em;
+      color: #65676b;
+      border-top: 1px solid #e4e6ea;
+      border-bottom: 1px solid #e4e6ea;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .actions {
+      display: flex;
+      padding: 4px 8px;
+      gap: 2px;
+    }
+
+    .btn-like {
+      flex: 1;
+      padding: 8px 4px;
+      background: transparent;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.88em;
+      font-weight: 600;
+      color: #1877f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      transition: background 0.12s;
+    }
+    .btn-like:hover { background: #e7f3ff; }
+
+    .btn-action {
+      flex: 1;
+      padding: 8px 4px;
+      background: transparent;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.88em;
+      font-weight: 600;
+      color: #65676b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+    .btn-action:hover { background: #f0f2f5; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <span class="logo">ConnectHub</span>
+    <span class="user">🔔 Alice Martin</span>
+  </nav>
+
+  <div class="content">
+    <div class="card">
+      <div class="post-header">
+        <div class="avatar">🐱</div>
+        <div class="post-meta">
+          <div class="author">Totally Legit Page</div>
+          <div class="time">Just now · 🌐</div>
+        </div>
+      </div>
+
+      <div class="post-image">🎵</div>
+
+      <div class="post-body">
+        The most amazing song you'll hear all year. Trust me, you need to experience this!
+      </div>
+
+      <div class="stats">
+        <span>👍 14,283 likes</span>
+        <span>2.1K shares</span>
+      </div>
+
+      <div class="actions">
+        <button class="btn-like">👍 Like this Page</button>
+        <button class="btn-action">💬 Comment</button>
+        <button class="btn-action">↗️ Share</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
