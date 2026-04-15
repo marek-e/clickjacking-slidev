@@ -1,0 +1,54 @@
+components/OffsetCard.vue
+  741278a28773da8c 1-78
+CLAUDE.md
+  7d4c0d30bcf55cd3 43-51
+slides.md
+  7d4c0d30bcf55cd3 6
+  741278a28773da8c 165-170,172-177,179-184,188-211
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.19",
+  "base_commit_sha": "dc768ef05cbfa3fc96f5370018f9ed3b7675ab85",
+  "prompts": {
+    "741278a28773da8c": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "7abd8795-0765-48be-bf81-a4612f49dfd2",
+        "model": "default"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>",
+      "messages": [],
+      "total_additions": 186,
+      "total_deletions": 79,
+      "accepted_lines": 124,
+      "overriden_lines": 0
+    },
+    "7d4c0d30bcf55cd3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "13596de5-00f3-4535-972e-e84271037b60",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>",
+      "messages": [],
+      "total_additions": 18,
+      "total_deletions": 2,
+      "accepted_lines": 13,
+      "overriden_lines": 1
+    },
+    "d221265ff607a40e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "076b85c6-0415-4309-b686-0949a8a6ca8f",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>",
+      "messages": [],
+      "total_additions": 27,
+      "total_deletions": 0,
+      "accepted_lines": 6,
+      "overriden_lines": 3
+    }
+  }
+}
