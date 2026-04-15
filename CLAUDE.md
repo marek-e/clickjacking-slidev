@@ -40,6 +40,15 @@ This is a [Slidev](https://sli.dev) presentation. Slidev compiles `slides.md` in
 
 Each page is a self-contained HTML file with a centered "sensitive" button. The button must be visually centered so it aligns with the attacker's CTA button in `ClickjackDemo`. Do not add `X-Frame-Options` or CSP headers to these pages — they are intentionally embeddable for demo purposes.
 
+### Presentation tone
+
+The presentation is designed to be **fun and engaging** — dry security content loses the audience. When adding or editing slides:
+- Prefer concrete, relatable examples over abstract descriptions
+- Use humor, vivid scenarios, and surprising facts where appropriate
+- Attacker page copy in demos should be entertainingly cheesy ("You've been selected!", "Claim your prize!")
+- Keep slides punchy: short bullet points, strong visuals, minimal walls of text
+- Animations and interactive elements are encouraged — they hold attention
+
 ### Color / accessibility conventions
 
 - `colorSchema: light` is set globally; all colors must pass WCAG AA on white.

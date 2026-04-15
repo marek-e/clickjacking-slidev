@@ -1,10 +1,14 @@
 ---
 theme: geist
 title: Clickjacking — The Art of the Invisible Click
-layout: center
-class: text-center
 transition: fade
 colorSchema: light
+defaults:
+  layout: default
+  class: px-16 py-8
+
+layout: center
+class: text-center
 ---
 
 <!-- Background shapes -->
@@ -115,8 +119,6 @@ onUnmounted(() => clearTimeout(timer))
 </style>
 
 ---
-layout: center
----
 
 # Agenda
 
@@ -149,33 +151,64 @@ layout: center
 
 # What is Clickjacking?
 
-<div class="mt-4 p-4 bg-blue-50 rounded-xl border border-blue-300">
+<div class="mt-4 p-3 bg-amber-50 rounded-xl border border-amber-200 text-sm flex gap-1">
+    <span class="font-bold text-amber-800">📖 Origin: </span>
+    <span class="text-gray-700"> "Jacking" itself traces back to <strong>hi-jack</strong> — robbing someone mid-journey. The attacker intercepts your click mid-intent.</span>
+</div>
 
-> **Clickjacking** — a UI attack that tricks victims into clicking something **different** from what they perceive they are clicking.
+<div v-click class="mt-4 p-4 bg-green-50 rounded-xl border border-green-600">
+
+> **Clickjacking** or **UI Redressing** is a UI attack that tricks victims into clicking something **different** from what they perceive they are clicking.
 
 </div>
 
-<div v-click class="mt-6 grid grid-cols-3 gap-4 text-center">
-  <div class="bg-blue-50 rounded-xl p-4 border border-blue-200">
-    <div class="text-3xl mb-2">👁️</div>
-    <div class="font-bold">User sees</div>
-    <div class="text-sm text-gray-600 mt-1">An innocent button on a harmless page</div>
+<div v-click class="cj-stagger mt-6 grid grid-cols-3 gap-4 text-center items-stretch">
+  <div class="cj-stagger-item h-full" style="animation-delay: 0ms">
+    <OffsetCard label="User sees" title="User sees" accent="blue">
+      <template #icon>👁️</template>
+      An innocent button on a harmless page
+    </OffsetCard>
   </div>
-  <div class="bg-red-50 rounded-xl p-4 border border-red-200">
-    <div class="text-3xl mb-2">🖱️</div>
-    <div class="font-bold">User clicks</div>
-    <div class="text-sm text-gray-600 mt-1">A transparent <code>iframe</code> overlaid on top</div>
+
+  <div class="cj-stagger-item h-full" style="animation-delay: 120ms">
+    <OffsetCard label="User clicks" title="User clicks" accent="red">
+      <template #icon>🖱️</template>
+      A transparent <code>iframe</code> overlaid on top
+    </OffsetCard>
   </div>
-  <div class="bg-orange-50 rounded-xl p-4 border border-orange-200">
-    <div class="text-3xl mb-2">💥</div>
-    <div class="font-bold">Result</div>
-    <div class="text-sm text-gray-600 mt-1">A sensitive action executes silently</div>
+
+  <div class="cj-stagger-item h-full" style="animation-delay: 240ms">
+    <OffsetCard label="Result" title="Result" accent="orange">
+      <template #icon>💥</template>
+      A sensitive action executes silently
+    </OffsetCard>
   </div>
 </div>
 
-<div v-click class="mt-5 text-sm text-gray-500 text-center">
-  ≠ Phishing (no imitation of the victim site) &nbsp;·&nbsp; ≠ XSS (no code injection) &nbsp;·&nbsp; ≠ CSRF (requires user's real click)
-</div>
+<style>
+.cj-stagger .cj-stagger-item {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: cj-stagger-rise 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-play-state: running;
+  will-change: transform, opacity;
+}
+
+.cj-stagger.slidev-vclick-hidden .cj-stagger-item {
+  animation-play-state: paused;
+}
+
+@keyframes cj-stagger-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
 
 ---
 
