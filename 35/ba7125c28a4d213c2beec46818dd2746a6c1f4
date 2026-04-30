@@ -1,0 +1,52 @@
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "35ba7125c28a4d213c2beec46818dd2746a6c1f4",
+  "prompts": {
+    "4439343c893193ef": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "a3445cde-36c0-4a56-9d1d-c8ec57f05cb8",
+        "model": "default"
+      },
+      "human_author": "Marek Elmayan",
+      "messages": [],
+      "total_additions": 331,
+      "total_deletions": 53,
+      "accepted_lines": 181,
+      "overriden_lines": 2
+    },
+    "45952a5ffde9e6ee": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "7c534489-dee4-44f3-b7eb-f6564ea1f907",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Marek Elmayan",
+      "messages": [],
+      "total_additions": 48,
+      "total_deletions": 1,
+      "accepted_lines": 1,
+      "overriden_lines": 1
+    },
+    "519987e5f50027fd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "99ac4304-0718-4a30-a397-9fc6837d33ab",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan",
+      "messages": [],
+      "total_additions": 600,
+      "total_deletions": 75,
+      "accepted_lines": 538,
+      "overriden_lines": 0
+    }
+  },
+  "humans": {
+    "h_b7c268b0e33ac7": {
+      "author": "Marek Elmayan"
+    }
+  }
+}
