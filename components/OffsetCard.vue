@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, useSlots } from 'vue'
 
 type Accent = 'blue' | 'red' | 'orange' | 'gray'
 
 const props = withDefaults(
   defineProps<{
-    label: string
+    label?: string
     title?: string
     accent?: Accent
     shadowSize?: number
@@ -44,11 +44,16 @@ const ACCENT = {
 } satisfies Record<Accent, { borderRgb: string; chipBg: string; chipText: string; chipBorder: string }>
 
 const theme = computed(() => ACCENT[props.accent])
+
+const slots = useSlots()
+const hasIcon = computed(() => !!slots.icon)
+const useInlineHeader = computed(() => !props.label && (hasIcon.value || !!props.title))
 </script>
 
 <template>
   <div
-    class="relative h-full rounded-2xl bg-white p-4 pt-9 border flex flex-col"
+    class="relative h-full rounded-2xl bg-white p-4 border flex flex-col"
+    :class="[label ? 'pt-9' : 'pt-4']"
     :style="{
       '--color-border': `rgb(${theme.borderRgb})`,
       boxShadow: `${shadowSize}px ${shadowSize}px 0 var(--color-border)`,
@@ -56,18 +61,28 @@ const theme = computed(() => ACCENT[props.accent])
     }"
   >
     <span
+      v-if="label"
       class="absolute left-3 top-3 text-[10px] font-semibold tracking-wide uppercase px-2 py-0.5 rounded-lg border"
       :class="[theme.chipBg, theme.chipText, theme.chipBorder]"
     >
       {{ label }}
     </span>
 
-    <div class="text-3xl mb-2">
-      <slot name="icon" />
+    <div v-if="useInlineHeader" class="flex items-center gap-2 mb-2">
+      <div v-if="hasIcon" class="text-2xl leading-none">
+        <slot name="icon" />
+      </div>
+      <div v-if="title" class="font-bold text-gray-900 leading-tight">
+        {{ title }}
+      </div>
     </div>
-
-    <div v-if="title" class="font-bold text-gray-900">
-      {{ title }}
+    <div v-else>
+      <div v-if="hasIcon" class="text-3xl mb-2">
+        <slot name="icon" />
+      </div>
+      <div v-if="title" class="font-bold text-gray-900">
+        {{ title }}
+      </div>
     </div>
 
     <div class="text-sm text-gray-600 mt-1 flex-1">

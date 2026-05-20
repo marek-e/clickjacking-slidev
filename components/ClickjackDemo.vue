@@ -1,16 +1,43 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 
 const props = defineProps({
-  victimUrl:      { type: String, required: true },
-  victimLabel:    { type: String, default: 'Victim page' },
-  attackerTitle:  { type: String, default: '🎉 Congratulations!' },
-  attackerBody:   { type: String, default: 'You have been selected as today\'s lucky winner.' },
-  attackerButton: { type: String, default: 'Claim Your Prize' },
-  height:         { type: Number, default: 260 },
+  victimUrl:            { type: String, required: true },
+  victimLabel:          { type: String, default: 'Victim page' },
+  attackerTitle:        { type: String, default: '🎉 Congratulations!' },
+  attackerBody:         { type: String, default: 'You have been selected as today\'s lucky winner.' },
+  attackerButton:       { type: String, default: 'Claim Your Prize' },
+  height:               { type: Number, default: 260 },
+  showPositionControls: { type: Boolean, default: false },
+  clickable:            { type: Boolean, default: false },
 })
 
+const emit = defineEmits(['buttonClick'])
+
 const revealOpacity = ref(0)
+const iframeTop  = ref(0)
+const iframeLeft = ref(0)
+
+const iframeStyle = computed(() => ({
+  opacity: revealOpacity.value / 100,
+  top:     `${iframeTop.value}px`,
+  left:    `${iframeLeft.value}px`,
+  right:   'auto',
+  bottom:  'auto',
+  width:   '100%',
+  height:  '100%',
+}))
+
+function onWindowBlur() {
+  emit('buttonClick')
+}
+
+watch(() => props.clickable, (val) => {
+  if (val) window.addEventListener('blur', onWindowBlur, { once: true })
+  else     window.removeEventListener('blur', onWindowBlur)
+}, { immediate: true })
+
+onUnmounted(() => window.removeEventListener('blur', onWindowBlur))
 
 const statusLabel = computed(() => {
   if (revealOpacity.value === 0)   return '⚠️ Attack in progress — victim iframe is invisible'
@@ -33,11 +60,11 @@ const statusLabel = computed(() => {
         <button class="cj-attacker-btn" tabindex="-1">{{ attackerButton }}</button>
       </div>
 
-      <!-- Top layer: victim iframe (opacity controlled) -->
+      <!-- Top layer: victim iframe (opacity + position controlled) -->
       <iframe
         class="cj-victim"
         :src="victimUrl"
-        :style="{ opacity: revealOpacity / 100 }"
+        :style="iframeStyle"
       />
 
       <!-- Opacity label overlay -->
@@ -59,6 +86,28 @@ const statusLabel = computed(() => {
         <span class="cj-lbl-reveal">🔍 Revealed</span>
       </div>
       <div class="cj-status">{{ statusLabel }}</div>
+
+      <!-- Position controls (opt-in) -->
+      <div v-if="showPositionControls" class="cj-pos-controls">
+        <div class="cj-pos-sliders">
+          <div class="cj-pos-row">
+            <span class="cj-pos-lbl">top</span>
+            <input type="range" class="cj-slider" min="-200" max="200" step="1" v-model.number="iframeTop" />
+            <span class="cj-pos-val">{{ iframeTop }}px</span>
+          </div>
+          <div class="cj-pos-row">
+            <span class="cj-pos-lbl">left</span>
+            <input type="range" class="cj-slider" min="-300" max="300" step="1" v-model.number="iframeLeft" />
+            <span class="cj-pos-val">{{ iframeLeft }}px</span>
+          </div>
+        </div>
+        <pre class="cj-pos-code">iframe {
+  position: absolute;
+  opacity: 0.001;
+  top:  {{ iframeTop }}px;
+  left: {{ iframeLeft }}px;
+}</pre>
+      </div>
     </div>
 
     <!-- ── Legend ─────────────────────────────────────────── -->
@@ -143,7 +192,8 @@ const statusLabel = computed(() => {
   font-weight: 700;
   cursor: pointer;
   box-shadow: 0 4px 14px rgba(40, 167, 69, 0.45);
-  pointer-events: none; /* demo only — clicking does nothing */
+  pointer-events: none;
+  transition: transform 0.12s, box-shadow 0.12s;
 }
 
 /* Victim iframe (z-index 2, opacity controlled) */
@@ -200,6 +250,61 @@ const statusLabel = computed(() => {
   font-size: 0.78em;
   color: #6b7280;
   font-style: italic;
+}
+
+/* ── Position controls ──────────────────────────────────── */
+.cj-pos-controls {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-top: 6px;
+  padding: 8px 10px;
+  background: #0f172a;
+  border-radius: 8px;
+  border: 1px solid #1e293b;
+}
+
+.cj-pos-sliders {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cj-pos-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cj-pos-lbl {
+  font-family: monospace;
+  font-size: 0.8em;
+  color: #38bdf8;
+  width: 28px;
+  flex-shrink: 0;
+}
+
+.cj-pos-val {
+  font-family: monospace;
+  font-size: 0.8em;
+  color: #a3e635;
+  width: 52px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.cj-pos-code {
+  margin: 0;
+  padding: 6px 10px;
+  background: #1e293b;
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 0.72em;
+  color: #e2e8f0;
+  line-height: 1.6;
+  white-space: pre;
+  flex-shrink: 0;
 }
 
 /* ── Legend ─────────────────────────────────────────────── */
