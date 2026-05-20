@@ -1,0 +1,32 @@
+slides/01-cover.md
+  s_04dc265079362d::t_c49eb160760ca7 1-26
+slides.md
+  s_04dc265079362d::t_ae6094810fcceb 137,141,145,149
+slides/02-the-attack.md
+  s_04dc265079362d::t_4eec10c63fddff 1-787
+slides/03-impact-detection.md
+  s_04dc265079362d::t_f54972e692fade 1-80
+slides/04-defenses.md
+  s_04dc265079362d::t_b1d8aa6b60b284 1-263
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "b1ecbfefdd1d75be75cc2c43cc56cba938df660c",
+  "prompts": {},
+  "humans": {
+    "h_34454149dac528": {
+      "author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_04dc265079362d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7ba634ef-57cf-447d-8798-8c8369236cb0",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
