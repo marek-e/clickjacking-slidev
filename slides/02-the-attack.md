@@ -281,6 +281,7 @@ layout: center
   :height="320"
   :show-position-controls="true"
   :clickable="true"
+  :start-y="-57"
   @button-click="onBtnClick"
 />
 
@@ -453,13 +454,14 @@ Then actually click the button to trigger the bank alert and advance the slide.
 -->
 
 ---
-class: px-14 py-4
+class: px-14 py-2
+zoom: 0.88
 ---
 
 # The Double Con — Keeping the Victim Fooled
 
-<div class="dc-intro" v-show="$clicks < 2">
-  After hijacking your click, a smart attacker doesn't go silent. They <strong>listen for the click</strong> and immediately swap their page content — keeping the illusion alive while the damage is already done.
+<div class="dc-intro">
+  After hijacking your click, a smart attacker doesn't go silent. They <strong>listen for the click</strong> and immediately swap their page content, keeping the illusion alive while the damage is already done.
 </div>
 
 <div class="dc-split mt-5">
@@ -486,7 +488,7 @@ class: px-14 py-4
   </div>
 
   <!-- Right: what actually happened -->
-  <div class="dc-panel dc-panel--reality" v-show="$clicks >= 1">
+  <div class="dc-panel dc-panel--reality" v-click>
     <div class="dc-panel-label dc-panel-label--reality">🏦 Meanwhile at SecureBank…</div>
     <div class="dc-bank-log">
       <div class="dc-bank-log-header">
@@ -505,10 +507,10 @@ class: px-14 py-4
 
 </div>
 
-<div class="dc-trick-box" v-show="$clicks >= 2">
+<div class="dc-trick-box" v-click>
   <div class="dc-trick-title">How the attacker detects the click</div>
   <div class="dc-trick-code">window.addEventListener('blur', () => {<br>&nbsp;&nbsp;// iframe just stole focus = victim clicked<br>&nbsp;&nbsp;showFakeConfirmation()<br>})</div>
-  <div class="dc-trick-caption">Same trick we used to build the demo ↑</div>
+  <div class="dc-trick-caption">Same trick used to build the demo</div>
 </div>
 
 <style>
@@ -527,7 +529,7 @@ class: px-14 py-4
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  align-items: start;
+  align-items: stretch;
   margin-top: 10px !important;
 }
 
@@ -535,8 +537,9 @@ class: px-14 py-4
   border-radius: 14px;
   overflow: hidden;
   border: 2px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
 }
-.dc-panel--reality { border-color: #fca5a5; }
 
 .dc-panel-label {
   font-size: 0.7em;
@@ -549,7 +552,7 @@ class: px-14 py-4
 .dc-panel-label--reality { background: #fef2f2; color: #b91c1c; }
 
 /* Fake site */
-.dc-fake-site { background: #fff; }
+.dc-fake-site { background: #fff; flex: 1; display: flex; flex-direction: column; }
 .dc-fake-header {
   padding: 8px 12px;
   background: #1e293b;
@@ -564,8 +567,10 @@ class: px-14 py-4
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 4px;
   text-align: center;
+  flex: 1;
 }
 .dc-fake-checkmark { font-size: 1.4em; animation: dc-pop 0.4s cubic-bezier(0.34,1.56,0.64,1) both; }
 .dc-fake-title { font-weight: 800; font-size: 1em; color: #111827; }
@@ -603,15 +608,16 @@ class: px-14 py-4
 
 /* Bank log */
 .dc-bank-log {
-  background: #0f172a;
+  background: #ffffff;
   padding: 8px 12px;
+  flex: 1;
 }
 .dc-bank-log-header {
   display: flex;
   align-items: center;
   gap: 6px;
   font-size: 0.68em;
-  color: #64748b;
+  color: #6b7280;
   margin-bottom: 8px;
   font-family: monospace;
 }
@@ -631,17 +637,19 @@ class: px-14 py-4
   display: flex;
   justify-content: space-between;
   font-size: 0.76em;
-  color: #e2e8f0;
+  color: #111827;
+  padding: 3px 0;
+  border-bottom: 1px solid #f3f4f6;
 }
-.dc-bank-log-row span { color: #475569; }
-.dc-bank-red   { color: #f87171 !important; }
-.dc-bank-green { color: #4ade80 !important; }
+.dc-bank-log-row span { color: #9ca3af; }
+.dc-bank-red   { color: #dc2626 !important; }
+.dc-bank-green { color: #16a34a !important; }
 
 .dc-inline-code {
   font-family: monospace;
   font-size: 0.9em;
-  background: #1e293b;
-  color: #7dd3fc;
+  background: #f1f5f9;
+  color: #0369a1;
   padding: 1px 5px;
   border-radius: 4px;
 }
@@ -659,7 +667,7 @@ class: px-14 py-4
 .dc-bank-log-note {
   margin-top: 8px;
   font-size: 0.68em;
-  color: #64748b;
+  color: #6b7280;
   font-style: italic;
 }
 
@@ -669,7 +677,7 @@ class: px-14 py-4
   align-items: center;
   gap: 16px;
   margin-top: 10px;
-  background: #0f172a;
+  background: #ffffff;
   border: 1px solid #334155;
   border-radius: 12px;
   padding: 10px 16px;
@@ -677,7 +685,7 @@ class: px-14 py-4
 .dc-trick-title {
   font-size: 0.68em;
   font-weight: 700;
-  color: #94a3b8;
+  color: #111827;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   white-space: nowrap;
@@ -686,16 +694,16 @@ class: px-14 py-4
 .dc-trick-code {
   flex: 1;
   font-size: 0.7em;
-  color: #e2e8f0;
+  color: #111827;
   line-height: 1.5;
   font-family: monospace;
-  background: #1e293b;
+  background: #f1f5f9;
   border-radius: 6px;
   padding: 6px 10px;
 }
 .dc-trick-caption {
   font-size: 0.68em;
-  color: #38bdf8;
+  color: #111827;
   font-style: italic;
   white-space: nowrap;
   flex-shrink: 0;
@@ -708,11 +716,6 @@ class: px-14 py-4
 </style>
 
 ---
-
-1 what are the risks
-2 when does the vuln aries ? what are the prerequisits ?
-3 How to prevent it ?
-real example to add a star on github repo
 
 # Key Attack Variants
 

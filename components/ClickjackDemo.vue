@@ -1,74 +1,84 @@
 <script setup>
-import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch } from "vue";
 
 const props = defineProps({
-  victimUrl:            { type: String, required: true },
-  victimLabel:          { type: String, default: 'Victim page' },
-  attackerTitle:        { type: String, default: '🎉 Congratulations!' },
-  attackerBody:         { type: String, default: 'You have been selected as today\'s lucky winner.' },
-  attackerButton:       { type: String, default: 'Claim Your Prize' },
-  height:               { type: Number, default: 260 },
+  victimUrl: { type: String, required: true },
+  victimLabel: { type: String, default: "Victim page" },
+  attackerTitle: { type: String, default: "🎉 Congratulations!" },
+  attackerBody: {
+    type: String,
+    default: "You have been selected as today's lucky winner.",
+  },
+  attackerButton: { type: String, default: "Claim Your Prize" },
+  height: { type: Number, default: 260 },
   showPositionControls: { type: Boolean, default: false },
-  clickable:            { type: Boolean, default: false },
-})
+  clickable: { type: Boolean, default: false },
+  startX: { type: Number, default: 0 },
+  startY: { type: Number, default: 0 },
+});
 
-const emit = defineEmits(['buttonClick'])
+const emit = defineEmits(["buttonClick"]);
 
-const revealOpacity = ref(0)
-const iframeTop  = ref(0)
-const iframeLeft = ref(0)
+const revealOpacity = ref(0);
+const iframeTop = ref(props.startY);
+const iframeLeft = ref(props.startX);
 
 const iframeStyle = computed(() => ({
   opacity: revealOpacity.value / 100,
-  top:     `${iframeTop.value}px`,
-  left:    `${iframeLeft.value}px`,
-  right:   'auto',
-  bottom:  'auto',
-  width:   '100%',
-  height:  '100%',
-}))
+  top: `${iframeTop.value}px`,
+  left: `${iframeLeft.value}px`,
+  right: "auto",
+  bottom: "auto",
+  width: "100%",
+  height: "100%",
+}));
 
 function onWindowBlur() {
-  emit('buttonClick')
+  emit("buttonClick");
 }
 
-watch(() => props.clickable, (val) => {
-  if (val) window.addEventListener('blur', onWindowBlur, { once: true })
-  else     window.removeEventListener('blur', onWindowBlur)
-}, { immediate: true })
+watch(
+  () => props.clickable,
+  (val) => {
+    if (val) window.addEventListener("blur", onWindowBlur, { once: true });
+    else window.removeEventListener("blur", onWindowBlur);
+  },
+  { immediate: true },
+);
 
-onUnmounted(() => window.removeEventListener('blur', onWindowBlur))
+onUnmounted(() => window.removeEventListener("blur", onWindowBlur));
 
 const statusLabel = computed(() => {
-  if (revealOpacity.value === 0)   return '⚠️ Attack in progress — victim iframe is invisible'
-  if (revealOpacity.value === 100) return '✅ Fully revealed — this is what you\'re really clicking'
-  return `Partially revealed (${revealOpacity.value}%)`
-})
+  if (revealOpacity.value === 0)
+    return "⚠️ Attack in progress — victim iframe is invisible";
+  if (revealOpacity.value === 100)
+    return "✅ Fully revealed — this is what you're really clicking";
+  return `Partially revealed (${revealOpacity.value}%)`;
+});
 </script>
 
 <template>
   <div class="cj-wrapper">
-
     <!-- ── Stage ─────────────────────────────────────────── -->
     <div class="cj-stage" :style="{ height: height + 'px' }">
-
       <!-- Bottom layer: attacker's page (always visible) -->
       <div class="cj-attacker">
         <span class="cj-badge">ATTACKER PAGE</span>
         <div class="cj-attacker-title">{{ attackerTitle }}</div>
         <p class="cj-attacker-body">{{ attackerBody }}</p>
-        <button class="cj-attacker-btn" tabindex="-1">{{ attackerButton }}</button>
+        <button class="cj-attacker-btn" tabindex="-1">
+          {{ attackerButton }}
+        </button>
       </div>
 
       <!-- Top layer: victim iframe (opacity + position controlled) -->
-      <iframe
-        class="cj-victim"
-        :src="victimUrl"
-        :style="iframeStyle"
-      />
+      <iframe class="cj-victim" :src="victimUrl" :style="iframeStyle" />
 
       <!-- Opacity label overlay -->
-      <div class="cj-opacity-badge" :style="{ opacity: revealOpacity > 0 ? 1 : 0 }">
+      <div
+        class="cj-opacity-badge"
+        :style="{ opacity: revealOpacity > 0 ? 1 : 0 }"
+      >
         victim layer {{ revealOpacity }}%
       </div>
     </div>
@@ -80,7 +90,9 @@ const statusLabel = computed(() => {
         <input
           type="range"
           class="cj-slider"
-          min="0" max="100" step="1"
+          min="0"
+          max="100"
+          step="1"
           v-model.number="revealOpacity"
         />
         <span class="cj-lbl-reveal">🔍 Revealed</span>
@@ -92,21 +104,37 @@ const statusLabel = computed(() => {
         <div class="cj-pos-sliders">
           <div class="cj-pos-row">
             <span class="cj-pos-lbl">top</span>
-            <input type="range" class="cj-slider" min="-200" max="200" step="1" v-model.number="iframeTop" />
+            <input
+              type="range"
+              class="cj-slider"
+              min="-200"
+              max="200"
+              step="1"
+              v-model.number="iframeTop"
+            />
             <span class="cj-pos-val">{{ iframeTop }}px</span>
           </div>
           <div class="cj-pos-row">
             <span class="cj-pos-lbl">left</span>
-            <input type="range" class="cj-slider" min="-300" max="300" step="1" v-model.number="iframeLeft" />
+            <input
+              type="range"
+              class="cj-slider"
+              min="-300"
+              max="300"
+              step="1"
+              v-model.number="iframeLeft"
+            />
             <span class="cj-pos-val">{{ iframeLeft }}px</span>
           </div>
         </div>
-        <pre class="cj-pos-code">iframe {
+        <pre class="cj-pos-code">
+iframe {
   position: absolute;
   opacity: 0.001;
   top:  {{ iframeTop }}px;
   left: {{ iframeLeft }}px;
-}</pre>
+}</pre
+        >
       </div>
     </div>
 
@@ -115,9 +143,11 @@ const statusLabel = computed(() => {
       <span class="cj-dot dot-attacker"></span>
       <span>Attacker's page (always visible to the user)</span>
       <span class="cj-dot dot-victim"></span>
-      <span>{{ victimLabel }} — transparent <code>iframe</code> layered on top</span>
+      <span
+        >{{ victimLabel }} — transparent <code>iframe</code> layered on
+        top</span
+      >
     </div>
-
   </div>
 </template>
 
@@ -193,7 +223,9 @@ const statusLabel = computed(() => {
   cursor: pointer;
   box-shadow: 0 4px 14px rgba(40, 167, 69, 0.45);
   pointer-events: none;
-  transition: transform 0.12s, box-shadow 0.12s;
+  transition:
+    transform 0.12s,
+    box-shadow 0.12s;
 }
 
 /* Victim iframe (z-index 2, opacity controlled) */
@@ -235,8 +267,14 @@ const statusLabel = computed(() => {
   gap: 8px;
 }
 
-.cj-lbl-attack { color: #dc2626; white-space: nowrap; }
-.cj-lbl-reveal { color: #16a34a; white-space: nowrap; }
+.cj-lbl-attack {
+  color: #dc2626;
+  white-space: nowrap;
+}
+.cj-lbl-reveal {
+  color: #16a34a;
+  white-space: nowrap;
+}
 
 .cj-slider {
   flex: 1;
@@ -325,7 +363,14 @@ const statusLabel = computed(() => {
   flex-shrink: 0;
 }
 
-.dot-attacker { background: #d97706; margin-left: 8px; }
-.dot-attacker:first-child { margin-left: 0; }
-.dot-victim   { background: #64b5f6; }
+.dot-attacker {
+  background: #d97706;
+  margin-left: 8px;
+}
+.dot-attacker:first-child {
+  margin-left: 0;
+}
+.dot-victim {
+  background: #64b5f6;
+}
 </style>
