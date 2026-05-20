@@ -1,0 +1,57 @@
+components/OffsetCard.vue
+  4439343c893193ef 2,8,47-50,55-56,64,71-77,79-85
+components/ClickjackDemo.vue
+  519987e5f50027fd 2,5-12,15-16,18-40,63,67,89-110,195-196,255-309
+slides.md
+  519987e5f50027fd 440,447-450,453-612,618,621-875
+  45952a5ffde9e6ee 52-67
+  4439343c893193ef 145,171,230,261,271-277,279-287,289-303,306-310,315-433,438,443-446,615-616,884,909,916,932,937,939,1035,1044,1050,1081,1096,1146,1152,1212,1227
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "8e7a3ca2407e294d0c825b774f53bfe112d74fe7",
+  "prompts": {
+    "4439343c893193ef": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "a3445cde-36c0-4a56-9d1d-c8ec57f05cb8",
+        "model": "default"
+      },
+      "human_author": "Marek Elmayan",
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 183,
+      "overriden_lines": 0
+    },
+    "45952a5ffde9e6ee": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "7c534489-dee4-44f3-b7eb-f6564ea1f907",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>",
+      "total_additions": 41,
+      "total_deletions": 5,
+      "accepted_lines": 18,
+      "overriden_lines": 0
+    },
+    "519987e5f50027fd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "99ac4304-0718-4a30-a397-9fc6837d33ab",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan",
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 538,
+      "overriden_lines": 0
+    }
+  },
+  "humans": {
+    "h_34454149dac528": {
+      "author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
