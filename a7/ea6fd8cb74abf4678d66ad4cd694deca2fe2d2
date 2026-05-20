@@ -1,0 +1,31 @@
+components/ClickjackDemo.vue
+  h_34454149dac528 2,6-7,10,12,16-18,20,22-24,30-34,37,43-44,46-47,49,53,55-57
+slides/02-the-attack.md
+  s_840a4003e085ea::t_822a3db8f51802 532,540-541
+  s_840a4003e085ea::t_5c992d3a050c5c 570,573
+  s_840a4003e085ea::t_8520478aeb03bc 611,613,620,640-642,644-646,651-652
+  s_840a4003e085ea::t_96917fcfe0d51c 555
+  s_840a4003e085ea::t_2f18c743f33e6c 670
+  h_34454149dac528 284,457-458,464,491,510,680,688,697,700,706
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "a7ea6fd8cb74abf4678d66ad4cd694deca2fe2d2",
+  "prompts": {},
+  "humans": {
+    "h_34454149dac528": {
+      "author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_840a4003e085ea": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "10879b4b-705a-46aa-a435-a4fbe8e24a04",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
