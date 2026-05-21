@@ -1,0 +1,81 @@
+slides.md
+  s_6215c7bc8d7494::t_bb7d61174011c9 38,40
+  h_34454149dac528 3
+slides/02-the-attack.md
+  s_78b3962257591b::t_526cfccdcfff17 955
+  s_78b3962257591b::t_c6a8275cf5ae97 919-920,931,942,945,956,958
+  s_78b3962257591b::t_488a0dcdaa6cec 933
+  s_78b3962257591b::t_97c200159cccf2 944
+  s_0c3451e6d01329::t_870621ac7e1bc9 771-772,775
+  s_0c3451e6d01329::t_709b5bb44f95ce 722-727,733-734,740-741,747-748,754-757,760-767,769-770,773-774,776-777,779-796,811-813,817,819-825,827-830,832-835,838-841,843-869,871-899,901-913,915-917,1036-1037
+  s_78b3962257591b::t_e92cbe944238d2 962
+  s_78b3962257591b::t_262388e986f66d 1039-1041,1045-1046,1049,1051
+  s_78b3962257591b::t_2bdff4b2165ff9 921-922,925-930,932,934-941,943,946-954,957,959-961,965-1019,1022-1035
+  s_78b3962257591b::t_ebf28f9ec788bf 1052
+  s_78b3962257591b::t_a3e0a624598f8a 1042
+  s_0c3451e6d01329::t_8759a8eaeef197 914
+  s_0c3451e6d01329::t_a370d95ec526c1 461,674,720,759,831,842,870
+  s_0c3451e6d01329::t_ab8385f08044b1 1050,1053
+  h_34454149dac528 72,729,750,758,768,778,797-810,814-816,818,826,836-837,900,1020-1021,1038
+  s_0c3451e6d01329::t_dc7ef107c1f039 728,730-732,735-739,742-746,749,751-753
+public/victims/github-star.html
+  s_0c3451e6d01329::t_ca29a6bb1f8414 1-190
+slides/01-cover.md
+  s_78b3962257591b::t_9bec13de4d6592 10-12
+  s_78b3962257591b::t_447a27f192f1c5 13
+slides/04-defenses.md
+  s_78b3962257591b::t_b5eb7d1040cffa 179
+  s_0c3451e6d01329::t_3757a7a6b4a78d 330-336,338-346,348-354,356-368,370-376,378-388,390-460
+  s_0c3451e6d01329::t_6348c8b213144f 168-178,180-182,184-294
+  s_0c3451e6d01329::t_4edca564ececa4 114-115,117-118
+  s_78b3962257591b::t_cfcfc43e14b212 369
+  s_78b3962257591b::t_041b1ae271b759 377
+  s_78b3962257591b::t_19220aeef26322 116
+  s_78b3962257591b::t_6526cb8aba9c5d 389
+  s_78b3962257591b::t_dd3a2c84268e64 183
+  s_78b3962257591b::t_7d5820ced72126 337
+  s_78b3962257591b::t_b4edcd631d77db 347
+  s_78b3962257591b::t_aa881f060e3543 355
+components/OffsetCard.vue
+  s_0c3451e6d01329::t_59a953341e3319 44-67
+  s_0c3451e6d01329::t_1b6f2d897a3c41 4
+public/victims/framebusting-victim.html
+  s_0c3451e6d01329::t_1476a77dc16a4f 1-88
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "378402834877d13e3a841af77c587289c1a7678e",
+  "prompts": {},
+  "humans": {
+    "h_34454149dac528": {
+      "author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_0c3451e6d01329": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3ab9fb6c-7843-42c9-b9b1-578b4faa1de1",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    },
+    "s_6215c7bc8d7494": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "83ccbbac-7432-4b1f-ab79-2561a409959c",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    },
+    "s_78b3962257591b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d8d4785a-d631-452a-9c6b-19ae2fb6bb20",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
