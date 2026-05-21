@@ -1,6 +1,6 @@
 ---
 theme: geist
-title: Clickjacking — The Art of the Invisible Click
+title: Clickjacking — Proof Hackers Write Better CSS Than You
 transition: fade
 colorSchema: light
 defaults:
@@ -35,9 +35,9 @@ class: text-center
 
   <div class="w-12 h-1 rounded bg-red-600"></div>
 
-  <p class="m-0 text-2xl font-light text-gray-900">The Art of the Invisible Click</p>
+  <p class="m-0 text-2xl font-light text-gray-900">Proof Hackers Write Better CSS Than You</p>
 
-  <p class="m-0 text-sm font-medium text-gray-800 tracking-wide">Understanding the attack · Mastering the defense</p>
+  <p class="m-0 text-sm font-medium text-gray-800 tracking-wide">When <code>z-index</code>, <code>opacity</code>, and <code>iframe</code> become weapons</p>
 
 </div>
 

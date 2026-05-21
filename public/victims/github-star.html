@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitHub — octocat/Hello-World</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #ffffff;
+      height: 280px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* GitHub-like nav */
+    .gh-nav {
+      background: #161b22;
+      padding: 9px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .gh-logo { color: #f0f6fc; font-weight: 900; font-size: 1.1em; }
+    .gh-breadcrumb { font-size: 0.8em; color: #6e7681; }
+    .gh-breadcrumb a { color: #58a6ff; text-decoration: none; font-weight: 600; }
+    .gh-user { margin-left: auto; font-size: 0.74em; color: #6e7681; white-space: nowrap; }
+
+    /* Repo actions bar */
+    .gh-bar {
+      background: #f6f8fa;
+      border-bottom: 1px solid #d0d7de;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .gh-visibility {
+      font-size: 0.72em;
+      color: #6e7681;
+      border: 1px solid #d0d7de;
+      border-radius: 999px;
+      padding: 2px 8px;
+      font-weight: 600;
+    }
+    .gh-bar-sep { flex: 1; }
+
+    /* Star button group */
+    .gh-star-group {
+      display: flex;
+      align-items: stretch;
+    }
+    .gh-star-btn {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 12px;
+      background: #f6f8fa;
+      border: 1px solid rgba(31, 35, 40, 0.15);
+      border-right: none;
+      border-radius: 6px 0 0 6px;
+      font-size: 0.82em;
+      font-weight: 600;
+      color: #24292f;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.12s;
+      line-height: 1;
+    }
+    .gh-star-btn:hover { background: #eef2f5; }
+    .gh-star-btn.starred { background: #fff8c5; }
+    .gh-star-count {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 10px;
+      background: #f6f8fa;
+      border: 1px solid rgba(31, 35, 40, 0.15);
+      border-radius: 0 6px 6px 0;
+      font-size: 0.82em;
+      font-weight: 700;
+      color: #24292f;
+      min-width: 40px;
+      cursor: pointer;
+      transition: background 0.12s;
+    }
+    .gh-star-count:hover { background: #eef2f5; }
+
+    /* Main content */
+    .gh-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 20px;
+    }
+
+    .gh-repo-name {
+      font-size: 1em;
+      font-weight: 700;
+      color: #0969da;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .gh-desc {
+      font-size: 0.78em;
+      color: #57606a;
+      text-align: center;
+    }
+
+    .gh-stats {
+      display: flex;
+      gap: 14px;
+      font-size: 0.74em;
+      color: #57606a;
+    }
+    .gh-stat { display: flex; align-items: center; gap: 4px; }
+
+    .gh-lang {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.72em;
+      color: #57606a;
+    }
+    .gh-lang-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #f1e05a;
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="gh-nav">
+    <span class="gh-logo">⬡ GitHub</span>
+    <span class="gh-breadcrumb">
+      <a href="#">octocat</a> / <a href="#"><strong>Hello-World</strong></a>
+    </span>
+    <span class="gh-user">🔒 Signed in as alice</span>
+  </nav>
+
+  <div class="gh-bar">
+    <span class="gh-visibility">Public</span>
+    <span class="gh-bar-sep"></span>
+    <div class="gh-star-group">
+      <button class="gh-star-btn" id="starBtn" onclick="toggleStar()">
+        <span id="starIcon">☆</span>
+        <span id="starLabel">Star</span>
+      </button>
+      <div class="gh-star-count" id="starCount">1.2k</div>
+    </div>
+  </div>
+
+  <div class="gh-content">
+    <div class="gh-repo-name">📦 octocat / Hello-World</div>
+    <div class="gh-desc">My first repository on GitHub!</div>
+    <div class="gh-stats">
+      <span class="gh-stat">👁️ 42 watching</span>
+      <span class="gh-stat">🔀 2.3k forks</span>
+      <span class="gh-stat">⚠️ 12 issues</span>
+    </div>
+    <div class="gh-lang">
+      <span class="gh-lang-dot"></span>
+      JavaScript · MIT License · Updated 3 days ago
+    </div>
+  </div>
+
+  <script>
+    let starred = false;
+    function toggleStar() {
+      starred = !starred;
+      document.getElementById('starBtn').classList.toggle('starred', starred);
+      document.getElementById('starIcon').textContent = starred ? '★' : '☆';
+      document.getElementById('starLabel').textContent = starred ? 'Starred' : 'Star';
+      document.getElementById('starCount').textContent = starred ? '1.2k' : '1.2k';
+    }
+  </script>
+</body>
+</html>

@@ -1,39 +1,3 @@
-# Targets & Real-World Impact
-
-<div class="grid grid-cols-2 gap-6 mt-4">
-
-<div>
-
-**High-value targets:**
-- Change email / password
-- Transfer funds or crypto
-- Force OAuth consent
-- Delete account or data
-- Admin panel actions
-- Camera / microphone access (Flash, 2008)
-- Subscribe to paid services
-
-</div>
-
-<div v-click>
-
-**Notable cases:**
-
-| Year | Target | Impact |
-|------|--------|--------|
-| 2008 | Adobe Flash Player | Mic/cam access via settings page |
-| 2008 | Twitter | Forced tweets at scale |
-| 2010 | Facebook | Mass Likejacking campaign |
-| 2012 | Instagram | Forced follows |
-| 2015 | LinkedIn | Invisible action buttons |
-| 2021+ | OAuth flows | Account takeover, still common |
-
-</div>
-
-</div>
-
----
-
 # Detection
 
 <div class="grid grid-cols-2 gap-6 mt-4">

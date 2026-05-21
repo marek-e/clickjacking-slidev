@@ -69,7 +69,7 @@
 
 The attacker hosts a page with **two layers**:
 
-```html {all|4-9|12-13|all}
+```html {all|3-9|12-13|all}
 <!-- attacker.html -->
 <style>
   iframe {
@@ -458,7 +458,7 @@ class: px-14 py-2
 zoom: 0.88
 ---
 
-# The Double Con — Keeping the Victim Fooled
+# The Double Con - Keeping the Victim Fooled
 
 <div class="dc-intro">
   After hijacking your click, a smart attacker doesn't go silent. They <strong>listen for the click</strong> and immediately swap their page content, keeping the illusion alive while the damage is already done.
@@ -671,7 +671,7 @@ zoom: 0.88
   font-style: italic;
 }
 
-/* Trick box — full-width row below the grid */
+/* Trick box - full-width row below the grid */
 .dc-trick-box {
   display: flex;
   align-items: center;
@@ -717,30 +717,340 @@ zoom: 0.88
 
 ---
 
-# Key Attack Variants
+# The Stakes - What Attackers Actually Get
 
-<div class="grid grid-cols-2 gap-5 mt-4">
-
-<div v-click class="bg-slate-50 rounded-xl p-4 border border-slate-200">
-  <div class="font-bold text-yellow-700 mb-2">🪟 UI Redressing</div>
-  <div class="text-sm text-gray-600">Any clickable element can be hijacked, not just buttons. Forms, dropdowns, links, even CAPTCHA-like flows.</div>
+<div class="ri-intro mt-3">
+  Impact scales with what the target allows in a single click. Here's the damage map:
 </div>
 
-<div v-click class="bg-slate-50 rounded-xl p-4 border border-slate-200">
-  <div class="font-bold text-blue-700 mb-2">👍 Likejacking</div>
-  <div class="text-sm text-gray-600">Hidden social buttons (Like, Follow, Share) positioned under innocent content. Facebook 2010: millions of unwanted Likes in days.</div>
+<div class="ri-grid mt-4">
+
+  <div class="ri-item" v-click>
+    <OffsetCard title="Financial" accent="purple">
+      <template #icon>💸</template>
+      Unauthorized transfers, forced purchases, crypto withdrawals, subscription signups
+    </OffsetCard>
+  </div>
+
+  <div class="ri-item" v-click>
+    <OffsetCard title="Account takeover" accent="orange">
+      <template #icon>🔐</template>
+      Forced OAuth consent, email/password change, 2FA device registration
+    </OffsetCard>
+  </div>
+
+  <div class="ri-item" v-click>
+    <OffsetCard title="Privacy breach" accent="blue">
+      <template #icon>🎤</template>
+      Mic & camera access grants, file uploads to attacker, location sharing
+    </OffsetCard>
+  </div>
+
+  <div class="ri-item" v-click>
+    <OffsetCard title="Social manipulation" accent="green">
+      <template #icon>📣</template>
+      Fake likes, follows, reviews, GitHub stars - weaponized reputation at scale
+    </OffsetCard>
+  </div>
+
 </div>
 
-<div v-click class="bg-slate-50 rounded-xl p-4 border border-slate-200">
-  <div class="font-bold text-purple-700 mb-2">🖱️ Cursorjacking</div>
-  <div class="text-sm text-gray-600">CSS custom cursor displayed with an offset. The victim thinks they click somewhere safe, but their real cursor is elsewhere.</div>
+<div class="ri-note" v-click>
+  <strong>The twist:</strong> browser, server logs, audit trail - all completely legitimate. No malware. No injection. Just a misplaced click.
 </div>
 
-<div v-click class="bg-slate-50 rounded-xl p-4 border border-slate-200">
-  <div class="font-bold text-green-700 mb-2">📁 File Upload Hijacking</div>
-  <div class="text-sm text-gray-600">Invisible overlay on file upload fields. Victim unknowingly opens a file picker and uploads sensitive files to the attacker.</div>
+<style>
+.ri-intro { font-size: 0.86em; color: #374151; }
+
+.ri-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.ri-item {
+  height: 100%;
+  animation: ri-rise 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.ri-item.slidev-vclick-hidden { animation-play-state: paused; }
+
+.ri-note {
+  margin-top: 32px;
+  padding: 10px 14px;
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  border-radius: 10px;
+  font-size: 0.82em;
+  color: #374151;
+  line-height: 1.5;
+  animation: ri-rise 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.ri-note.slidev-vclick-hidden { animation-play-state: paused; }
+
+@keyframes ri-rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+---
+
+# Notable Real-World Attacks
+
+| Year | Target | Impact |
+|------|--------|--------|
+| 2008 | Adobe Flash Player | Mic/cam access via settings page |
+| 2008 | Twitter | Forced tweets at scale |
+| 2010 | Facebook | Mass Likejacking campaign |
+| 2012 | Instagram | Forced follows |
+| 2015 | LinkedIn | Invisible action buttons |
+| 2021+ | OAuth flows | Account takeover, still common |
+
+
+---
+layout: center
+class: p-4
+---
+
+## Real-World PoC - Star a GitHub Repo
+
+<ClickjackDemo
+  victim-url="/victims/github-star.html"
+  attacker-title="⭐ You've been selected!"
+  attacker-body="You're one of 50 users chosen to beta-test our developer tool. Give it a star rating to unlock your free account."
+  attacker-button="★ Give it a star"
+  victim-label="GitHub: Star octocat/Hello-World"
+  :height="280"
+  :start-y="-30"
+/>
+
+<!--
+PRESENTER NOTE:
+This is a real historical attack vector. Before GitHub added X-Frame-Options: DENY,
+repos could be embedded on any attacker page. A single phishing prompt could
+star-bomb any repository - inflating credibility, gaming the trending list.
+Today GitHub is protected. But the same attack still lands on self-hosted GitLab,
+Gitea, internal CI dashboards, or any platform with a one-click social action
+that forgot the header.
+-->
+
+---
+
+# When Are You Vulnerable? The Prerequisites
+
+<div class="pq-intro mt-3">
+  Three boxes must be checked for an attack to land. Fix any one - the attack collapses.
 </div>
 
+<div class="pq-steps mt-5">
+
+  <div class="pq-step" v-click>
+    <div class="pq-num">01</div>
+    <div>
+      <div class="pq-title">The page is embeddable in an <code>iframe</code></div>
+      <div class="pq-desc">No <code>X-Frame-Options</code> header. No <code>Content-Security-Policy: frame-ancestors</code>. The browser happily loads the victim site inside any attacker-controlled frame.</div>
+      <div class="pq-fix">↳ Fix: one HTTP header on your server</div>
+    </div>
+  </div>
+
+  <div class="pq-step" v-click>
+    <div class="pq-num">02</div>
+    <div>
+      <div class="pq-title">A sensitive action fires on a single click</div>
+      <div class="pq-desc">No re-authentication, no CAPTCHA, no confirmation dialog. The victim is already logged in and the action executes immediately on click.</div>
+      <div class="pq-fix">↳ Fix: confirmation step for financial or destructive operations</div>
+    </div>
+  </div>
+
+  <div class="pq-step" v-click>
+    <div class="pq-num">03</div>
+    <div>
+      <div class="pq-title">The attacker can predict the button's position</div>
+      <div class="pq-desc">The target UI is public and stable. The attacker inspects the page, measures pixel offsets, then positions the iframe until their lure sits exactly over the target button.</div>
+      <div class="pq-fix">↳ Not reliably preventable - which is why 01 and 02 are the only real fixes</div>
+    </div>
+  </div>
+
+</div>
+
+<style>
+.pq-intro { font-size: 0.86em; color: #374151; }
+
+.pq-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pq-step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  animation: pq-in 360ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.pq-step.slidev-vclick-hidden { animation-play-state: paused; }
+
+.pq-num {
+  font-size: 2em;
+  font-weight: 900;
+  color: #111827;
+  line-height: 1;
+  min-width: 2.4rem;
+  text-align: center;
+}
+
+.pq-title { font-size: 0.84em; font-weight: 800; color: #111827; margin-bottom: 3px; }
+.pq-desc  { font-size: 0.76em; color: #6b7280; line-height: 1.45; }
+.pq-fix   { margin-top: 5px; font-size: 0.72em; font-weight: 700; color: #16a34a; }
+
+@keyframes pq-in {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+</style>
+
+---
+
+# How Does the Victim's Session Get In?
+
+<div class="sc-intro mt-3">
+  The attack requires the victim to be logged into the target site. Here's why their session automatically reaches the attacker's iframe.
+</div>
+
+<div class="sc-flow mt-6">
+
+  <div class="sc-step">
+    <div class="sc-step-header">
+      <span class="sc-step-num">01</span>
+      <span class="sc-step-icon">🔐</span>
+    </div>
+    <div class="sc-step-title">Login stores a cookie</div>
+    <div class="sc-step-desc">You authenticate with your bank. The browser stores a <strong>session cookie</strong>, a token that proves your identity on every future request.</div>
+  </div>
+
+  <div class="sc-arrow" aria-hidden="true">→</div>
+
+  <div class="sc-step sc-step--mid">
+    <div class="sc-step-header">
+      <span class="sc-step-num">02</span>
+      <span class="sc-step-icon">🎣</span>
+    </div>
+    <div class="sc-step-title">Attacker embeds your bank</div>
+    <div class="sc-step-desc">The attacker loads your bank invisibly in an <code>iframe</code>. Your browser <em>automatically</em> sends your cookie with that request; it never checks who's asking.</div>
+  </div>
+
+  <div class="sc-arrow" aria-hidden="true">→</div>
+
+  <div class="sc-step sc-step--end">
+    <div class="sc-step-header">
+      <span class="sc-step-num">03</span>
+      <span class="sc-step-icon">🏦</span>
+    </div>
+    <div class="sc-step-title">Bank sees a valid session</div>
+    <div class="sc-step-desc">The server receives the cookie, recognizes you, and renders your full account page. The attack is primed. One click away.</div>
+  </div>
+
+</div>
+
+<div class="sc-fix" v-click>
+  <span class="sc-fix-label">🍪 Partial fix</span>
+  <span class="sc-fix-text"><code>SameSite=Lax</code> (now the browser default) tells the browser not to send cookies inside cross-site iframes; the bank shows a login screen instead. Still, pair it with frame headers for a complete defense.</span>
+</div>
+
+<style>
+/* ── Session cookie slide ───────────────────────────── */
+.sc-intro {
+  font-size: 0.86em;
+  color: #374151;
+}
+
+.sc-flow {
+  display: grid;
+  grid-template-columns: 1fr 48px 1fr 48px 1fr;
+  align-items: stretch;
+}
+
+.sc-step {
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.sc-step--mid { background: #fff7ed; border-color: #fed7aa; }
+.sc-step--end { background: #fef2f2; border-color: #fecaca; }
+
+.sc-step-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sc-step-num {
+  font-size: 0.65em;
+  font-weight: 900;
+  color: #94a3b8;
+  letter-spacing: 2px;
+}
+.sc-step-icon { font-size: 1.7em; line-height: 1; }
+.sc-step-title { font-size: 0.86em; font-weight: 800; color: #111827; }
+.sc-step-desc  { font-size: 0.74em; color: #6b7280; line-height: 1.5; }
+
+.sc-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4em;
+  color: #cbd5e1;
+  font-weight: 700;
+}
+
+.sc-fix {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  margin-top: 18px;
+  padding: 10px 16px;
+  background: #f0fdf4;
+  border: 1px solid #dcfce7;
+  border-radius: 12px;
+  font-size: 0.78em;
+  line-height: 1.5;
+  animation: sc-rise 360ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.sc-fix.slidev-vclick-hidden { animation-play-state: paused; }
+.sc-fix-label { font-weight: 800; color: #92400e; white-space: nowrap; }
+.sc-fix-text  { color: #374151; }
+
+@keyframes sc-rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+---
+
+# The Prefilled Form Trick
+
+<div class="mt-3 text-sm text-gray-600">
+  Some sites accept form values via URL, handing the attacker a pre-armed payload.
+</div>
+
+<div class="mt-5 font-mono text-sm bg-slate-50 border border-slate-200 rounded-xl p-4 text-blue-700">
+  https://bank.com/transfer<strong>?amount=500&amp;to=attacker_account</strong>
+</div>
+
+<div class="mt-5 flex gap-3 items-start rounded-xl border border-indigo-200 bg-indigo-50 px-4 py-4">
+  <span class="text-xl leading-none mt-0.5">📝</span>
+  <div class="text-sm text-gray-700">
+    The attacker loads the victim page inside an iframe with the form <strong>already filled</strong>, then overlays just the submit button with their lure. One click from the victim and the transaction fires without them ever choosing to initiate it.
+  </div>
 </div>
 
 ---

@@ -111,6 +111,11 @@ If they conflict, CSP `frame-ancestors` takes precedence in modern browsers.
 
 # Defense #3 - JavaScript Framebusting
 
+<div class="mt-2 mb-3 p-3 bg-amber-50 rounded-xl border border-amber-200 text-sm flex gap-2 items-start">
+  <span>📖</span>
+  <div>Before HTTP headers existed for this, developers wrote client-side JS to detect iframe nesting and force the top window to navigate away. It was the best available option in 2008, broken almost immediately after.</div>
+</div>
+
 <div class="grid grid-cols-2 gap-6 mt-2">
 
 <div>
@@ -160,6 +165,134 @@ if (window !== top) {
 </div>
 
 ---
+class: px-14 py-4
+zoom: 0.9
+---
+
+# Frame Busting Bypass - Live
+
+<div class="fb-grid mt-4">
+
+  <div class="fb-panel">
+    <div class="fb-panel-label fb-panel-label--ok">✅ Without bypass - frame buster works</div>
+    <div class="fb-mock">
+      <div class="fb-mock-nav">🏦 SecureBank: Transfer $500</div>
+      <div class="fb-mock-body fb-mock-body--escaped">
+        <div class="fb-mock-icon">🚀</div>
+        <div class="fb-mock-title">Frame buster activated!</div>
+        <div class="fb-mock-sub">top.location redirected; victim's full tab navigates away from the attacker's page</div>
+      </div>
+    </div>
+    <div class="fb-verdict fb-verdict--ok">Attack aborted. The attacker loses the victim.</div>
+  </div>
+
+  <div class="fb-panel" v-click>
+    <div class="fb-panel-label fb-panel-label--fail">❌ Attacker adds <code>sandbox</code> - bypass succeeds</div>
+
+```html
+<iframe src="bank.com/transfer"
+  sandbox="allow-scripts allow-forms">
+  <!-- allow-top-navigation absent -->
+</iframe>
+```
+
+<div class="fb-live-badge">LIVE</div>
+<div class="fb-iframe-wrap">
+  <iframe
+    src="/victims/framebusting-victim.html"
+    sandbox="allow-scripts allow-same-origin"
+    style="width:100%;height:130px;border:none">
+  </iframe>
+</div>
+<div class="fb-verdict fb-verdict--fail">Frame buster throws <code>SecurityError</code>. Victim stays trapped. Attack proceeds.</div>
+
+  </div>
+
+</div>
+
+<style>
+.fb-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.fb-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: fb-in 340ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.fb-panel.slidev-vclick-hidden { animation-play-state: paused; }
+
+.fb-panel-label {
+  font-size: 0.72em;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+.fb-panel-label--ok   { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+.fb-panel-label--fail { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+
+.fb-mock {
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.fb-mock-nav {
+  background: #1a3a5c;
+  color: #fff;
+  font-size: 0.72em;
+  font-weight: 700;
+  padding: 6px 12px;
+}
+.fb-mock-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 12px;
+  height: 90px;
+}
+.fb-mock-body--escaped { background: #f0fdf4; }
+.fb-mock-icon { font-size: 1.6em; }
+.fb-mock-title { font-size: 0.8em; font-weight: 800; color: #15803d; }
+.fb-mock-sub   { font-size: 0.68em; color: #6b7280; text-align: center; line-height: 1.4; }
+
+.fb-live-badge {
+  display: inline-block;
+  font-size: 0.62em;
+  font-weight: 800;
+  letter-spacing: 1px;
+  background: #dc2626;
+  color: #fff;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.fb-iframe-wrap {
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.fb-verdict {
+  font-size: 0.72em;
+  padding: 6px 10px;
+  border-radius: 7px;
+}
+.fb-verdict--ok   { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+.fb-verdict--fail { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+
+@keyframes fb-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+---
 layout: two-cols
 layoutClass: gap-4
 ---
@@ -192,6 +325,138 @@ No <code>X-Frame-Options</code> or CSP set. It embeds in any page, from any orig
 <div class="mt-2 text-sm text-green-700">
 <code>frame-ancestors 'none'</code>: browser refuses to embed. Attack impossible.
 </div>
+
+---
+class: px-14 py-6
+zoom: 0.9
+---
+
+# Clickjacking vs CSRF - Not the Same Thing
+
+<div class="csrf-intro mt-3">
+  Both attacks exploit an authenticated session, but the mechanism is different, and so are the defenses. Knowing the difference matters because <strong>fixing one does not fix the other.</strong>
+</div>
+
+<div class="csrf-grid mt-4">
+
+  <div class="csrf-card" v-click>
+    <div class="csrf-card-label csrf-label--blue">CSRF - Cross-Site Request Forgery</div>
+    <div class="csrf-card-body">
+      <div class="csrf-row">
+        <span class="csrf-key">How</span>
+        <span>Hidden request fires automatically via an <code>&lt;img&gt;</code>, a <code>&lt;form&gt;</code>, or a <code>fetch()</code> on an attacker page the victim merely <em>visits</em></span>
+      </div>
+      <div class="csrf-row">
+        <span class="csrf-key">Interaction</span>
+        <span>None needed. The victim doesn't have to click anything.</span>
+      </div>
+      <div class="csrf-row">
+        <span class="csrf-key">Victim sees</span>
+        <span>Nothing; the attack is invisible</span>
+      </div>
+      <div class="csrf-row">
+        <span class="csrf-key">Stopped by</span>
+        <span>✅ CSRF tokens &nbsp;·&nbsp; ✅ SameSite cookies &nbsp;·&nbsp; ✅ Origin/Referer checks</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="csrf-card" v-click>
+    <div class="csrf-card-label csrf-label--red">Clickjacking - UI Redressing</div>
+    <div class="csrf-card-body">
+      <div class="csrf-row">
+        <span class="csrf-key">How</span>
+        <span>The victim <em>actually clicks</em> on a real button, in a real authenticated page, inside an invisible iframe overlay</span>
+      </div>
+      <div class="csrf-row">
+        <span class="csrf-key">Interaction</span>
+        <span>Required. The victim must physically click.</span>
+      </div>
+      <div class="csrf-row">
+        <span class="csrf-key">Victim sees</span>
+        <span>A decoy page; they think they're clicking something harmless</span>
+      </div>
+      <div class="csrf-row">
+        <span class="csrf-key">Stopped by</span>
+        <span>❌ CSRF tokens (useless) &nbsp;·&nbsp; ✅ Frame headers &nbsp;·&nbsp; ✅ SameSite cookies</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="csrf-warn" v-click>
+  <strong>⚠️ The dangerous misconception:</strong> "We have CSRF tokens, we're safe." With clickjacking the victim clicks a real button in a real session. The CSRF token is legitimately present and valid. The server cannot tell it was a tricked click. Frame headers are the only fix.
+</div>
+
+<style>
+.csrf-intro { font-size: 0.84em; color: #374151; line-height: 1.5; }
+
+.csrf-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.csrf-card {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1.5px solid #e5e7eb;
+  animation: csrf-rise 340ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.csrf-card.slidev-vclick-hidden { animation-play-state: paused; }
+
+.csrf-card-label {
+  font-size: 0.72em;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 6px 14px;
+}
+.csrf-label--blue { background: #eff6ff; color: #1d4ed8; border-bottom: 1px solid #bfdbfe; }
+.csrf-label--red  { background: #fef2f2; color: #b91c1c; border-bottom: 1px solid #fecaca; }
+
+.csrf-card-body {
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  background: #fff;
+}
+
+.csrf-row {
+  display: flex;
+  gap: 10px;
+  font-size: 0.74em;
+  color: #374151;
+  line-height: 1.4;
+}
+.csrf-key {
+  font-weight: 800;
+  color: #6b7280;
+  min-width: 72px;
+  flex-shrink: 0;
+  padding-top: 1px;
+}
+
+.csrf-warn {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  border-radius: 10px;
+  font-size: 0.78em;
+  color: #374151;
+  line-height: 1.5;
+  animation: csrf-rise 340ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.csrf-warn.slidev-vclick-hidden { animation-play-state: paused; }
+
+@keyframes csrf-rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
 
 ---
 

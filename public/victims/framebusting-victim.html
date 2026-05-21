@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      height: 130px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav {
+      background: #1a3a5c;
+      color: #fff;
+      padding: 6px 14px;
+      font-size: 0.78em;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px 16px;
+      transition: background 0.2s;
+    }
+
+    .icon { font-size: 1.8em; line-height: 1; flex-shrink: 0; }
+
+    .text { display: flex; flex-direction: column; gap: 2px; }
+    .label { font-size: 0.82em; font-weight: 800; color: #111827; }
+    .sublabel { font-size: 0.7em; color: #6b7280; line-height: 1.4; }
+    code { font-size: 0.88em; background: #f1f5f9; padding: 1px 4px; border-radius: 3px; color: #0369a1; }
+
+    body.trapped .content  { background: #fef2f2; }
+    body.trapped .label    { color: #dc2626; }
+  </style>
+</head>
+<body>
+  <div class="nav">🏦 SecureBank — Transfer $500</div>
+
+  <div class="content">
+    <div class="icon" id="icon">⏳</div>
+    <div class="text">
+      <div class="label" id="label">Running frame buster…</div>
+      <div class="sublabel" id="sublabel">
+        <code>if (window !== top) → top.location = self.location</code>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const icon = document.getElementById('icon');
+    const label = document.getElementById('label');
+    const sublabel = document.getElementById('sublabel');
+
+    if (window.self === window.top) {
+      icon.textContent = '✅';
+      label.textContent = 'Not framed — safe.';
+      sublabel.textContent = 'Frame buster not triggered.';
+    } else {
+      try {
+        window.top.location.href = window.self.location.href;
+        // Navigation initiated (no sandbox blocking it)
+        icon.textContent = '🚀';
+        label.textContent = 'Escaping! Redirecting top window…';
+        sublabel.textContent = 'Frame buster worked — attack aborted.';
+      } catch (e) {
+        // Sandboxed — top navigation denied
+        document.body.classList.add('trapped');
+        icon.textContent = '🚫';
+        label.textContent = 'Frame buster blocked by sandbox!';
+        sublabel.innerHTML = '<code>SecurityError</code>: cannot navigate top frame. Victim stays trapped.';
+      }
+    }
+  </script>
+</body>
+</html>

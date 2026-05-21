@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, useSlots } from 'vue'
 
-type Accent = 'blue' | 'red' | 'orange' | 'gray'
+type Accent = 'blue' | 'red' | 'orange' | 'gray' | 'green' | 'purple' | 'yellow' | 'pink'
 
 const props = withDefaults(
   defineProps<{
@@ -40,6 +40,30 @@ const ACCENT = {
     chipBg: 'bg-gray-50',
     chipText: 'text-gray-700',
     chipBorder: 'border-gray-200',
+  },
+  green: {
+    borderRgb: '187 247 208',
+    chipBg: 'bg-green-50',
+    chipText: 'text-green-700',
+    chipBorder: 'border-green-200',
+  },
+  purple: {
+    borderRgb: '233 213 255',
+    chipBg: 'bg-purple-50',
+    chipText: 'text-purple-700',
+    chipBorder: 'border-purple-200',
+  },
+  yellow: {
+    borderRgb: '253 230 138',
+    chipBg: 'bg-yellow-50',
+    chipText: 'text-yellow-700',
+    chipBorder: 'border-yellow-200',
+  },
+  pink: {
+    borderRgb: '251 207 232',
+    chipBg: 'bg-pink-50',
+    chipText: 'text-pink-700',
+    chipBorder: 'border-pink-200',
   },
 } satisfies Record<Accent, { borderRgb: string; chipBg: string; chipText: string; chipBorder: string }>
 
