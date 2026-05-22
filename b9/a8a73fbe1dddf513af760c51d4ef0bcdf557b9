@@ -1,0 +1,39 @@
+slides/02-the-attack.md
+  s_e2652338e80ff0::t_6171cdec37c283 950
+  s_e2652338e80ff0::t_b15de481a0d4d9 1002
+  s_e2652338e80ff0::t_9d4735f8bd00d6 1027
+  s_e2652338e80ff0::t_8af187fafe7c9f 170
+  s_e2652338e80ff0::t_93bd9d34744290 1055
+  s_e2652338e80ff0::t_70a9c72abc6508 983-984
+  s_e2652338e80ff0::t_7119dfd42909d7 672,681,690
+  s_e2652338e80ff0::t_0e3ab549837905 611-612
+  s_e2652338e80ff0::t_a8d7ed20ca8ff3 191-192,205,221,233-234,237,348,358-359,373,390-391,410,412,439-440,523,560-561,574,576,578
+  s_e2652338e80ff0::t_c10893fb26d494 636
+  s_e2652338e80ff0::t_4b70ac68ad8c63 1059
+  s_e2652338e80ff0::t_d84e525b098c94 604
+  s_e2652338e80ff0::t_742fb03e8fba13 1060
+  s_e2652338e80ff0::t_0a331cd46a03b5 654
+  s_e2652338e80ff0::t_6f1de7c5acb3cf 745
+  s_e2652338e80ff0::t_2167805ad82c8c 853
+  s_e2652338e80ff0::t_80442116de61f7 1009-1010
+  s_e2652338e80ff0::t_ed2c03532caefe 1054
+  s_e2652338e80ff0::t_d7eb884d64b0aa 1039
+  s_e2652338e80ff0::t_e5592143560139 876,882-883
+  s_e2652338e80ff0::t_7de6b3936422c9 624,626,628
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.0",
+  "base_commit_sha": "b9a8a73fbe1dddf513af760c51d4ef0bcdf557b9",
+  "prompts": {},
+  "sessions": {
+    "s_e2652338e80ff0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5ac8636c-2b9f-4bb5-a9f3-160781d1bc70",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
