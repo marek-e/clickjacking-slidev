@@ -70,7 +70,7 @@ onUnmounted(() => document.removeEventListener("pointerdown", onClickOutside));
 .ip-btn:hover,
 .ip-btn--active {
   background: #dbeafe;
-  border-color: #3b82f6;
+  border-color: #2563eb;
 }
 
 .ip-popover {
@@ -94,7 +94,7 @@ onUnmounted(() => document.removeEventListener("pointerdown", onClickOutside));
 
 .ip-body {
   font-size: 1em;
-  color: #374151;
+  color: #334155;
   line-height: 1.5;
 }
 
