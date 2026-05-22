@@ -1,0 +1,14 @@
+.gitignore
+  h_34454149dac528 8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.0",
+  "base_commit_sha": "0808ae5bdae24bebc372c73076e2a8ed8b64904b",
+  "prompts": {},
+  "humans": {
+    "h_34454149dac528": {
+      "author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
