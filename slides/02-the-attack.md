@@ -167,7 +167,7 @@ const { next } = useNav()
   padding: 10px 12px;
   border-radius: 14px;
   background: #0f172a;
-  color: #e5e7eb;
+  color: #e2e8f0;
   border: 1px solid rgba(148, 163, 184, 0.35);
   box-shadow: 0 14px 40px rgba(2, 6, 23, 0.28);
   width: min(360px, 100%);
@@ -188,8 +188,8 @@ const { next } = useNav()
   width: 10px;
   height: 10px;
   border-radius: 999px;
-  background: #22c55e;
-  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
+  background: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.25);
   flex-shrink: 0;
 }
 .cj-mail-meta { min-width: 0; }
@@ -202,7 +202,7 @@ const { next } = useNav()
   width: 100%;
   border-radius: 16px;
   background: #ffffff;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #e2e8f0;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   transform: translateY(10px);
@@ -218,7 +218,7 @@ const { next } = useNav()
   display: flex;
   gap: 10px;
   padding: 12px 12px 10px;
-  border-bottom: 1px solid #eef2f7;
+  border-bottom: 1px solid #f1f5f9;
 }
 .cj-mail-avatar {
   width: 34px;
@@ -230,11 +230,11 @@ const { next } = useNav()
   border: 1px solid #fed7aa;
   flex-shrink: 0;
 }
-.cj-mail-title { font-weight: 800; color: #111827; line-height: 1.1; }
-.cj-mail-snippet { font-size: 12px; color: #6b7280; margin-top: 1px; line-height: 1.2; }
+.cj-mail-title { font-weight: 800; color: #0f172a; line-height: 1.1; }
+.cj-mail-snippet { font-size: 12px; color: #64748b; margin-top: 1px; line-height: 1.2; }
 
 .cj-mail-body { padding: 12px; display: flex; flex-direction: column; gap: 10px; }
-.cj-mail-copy { font-size: 13px; color: #374151; line-height: 1.35; }
+.cj-mail-copy { font-size: 13px; color: #334155; line-height: 1.35; }
 .cj-mail-link {
   display: inline-flex;
   align-items: center;
@@ -345,7 +345,7 @@ onUnmounted(() => clearTimeout(timer))
   padding: 10px 12px;
   border-radius: 14px;
   background: #0f172a;
-  color: #e5e7eb;
+  color: #e2e8f0;
   border: 1px solid rgba(148, 163, 184, 0.35);
   box-shadow: 0 14px 40px rgba(2, 6, 23, 0.32);
   animation: cj-bank-toast-in 480ms cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -355,8 +355,8 @@ onUnmounted(() => clearTimeout(timer))
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #ef4444;
-  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.28);
+  background: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.28);
   flex-shrink: 0;
   animation: cj-bank-dot-pulse 0.7s ease 0.5s 2 alternate both;
 }
@@ -370,7 +370,7 @@ onUnmounted(() => clearTimeout(timer))
   margin-top: 8px;
   border-radius: 14px;
   background: #ffffff;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #e2e8f0;
   box-shadow: 0 16px 40px rgba(0,0,0,0.10);
   overflow: hidden;
   animation: cj-bank-card-in 480ms 100ms cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -387,8 +387,8 @@ onUnmounted(() => clearTimeout(timer))
   font-size: 1.5em;
   flex-shrink: 0;
 }
-.cj-bank-receipt-title { font-weight: 800; color: #111827; font-size: 0.88em; }
-.cj-bank-receipt-sub   { font-size: 0.7em; color: #6b7280; margin-top: 1px; }
+.cj-bank-receipt-title { font-weight: 800; color: #0f172a; font-size: 0.88em; }
+.cj-bank-receipt-sub   { font-size: 0.7em; color: #64748b; margin-top: 1px; }
 .cj-bank-receipt-status {
   margin-left: auto;
   font-size: 0.72em;
@@ -407,9 +407,9 @@ onUnmounted(() => clearTimeout(timer))
   display: flex;
   justify-content: space-between;
   font-size: 0.78em;
-  color: #374151;
+  color: #334155;
 }
-.cj-bank-receipt-row span { color: #9ca3af; }
+.cj-bank-receipt-row span { color: #94a3b8; }
 .cj-bank-amount { color: #dc2626 !important; }
 
 .cj-bank-receipt-footer {
@@ -436,8 +436,8 @@ onUnmounted(() => clearTimeout(timer))
   to   { opacity: 1; }
 }
 @keyframes cj-bank-dot-pulse {
-  from { box-shadow: 0 0 0 3px rgba(239,68,68,0.28); }
-  to   { box-shadow: 0 0 0 6px rgba(239,68,68,0); }
+  from { box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.28); }
+  to   { box-shadow: 0 0 0 6px rgba(220, 38, 38, 0); }
 }
 </style>
 
@@ -520,7 +520,7 @@ zoom: 0.88
 .dc-panel {
   border-radius: 14px;
   overflow: hidden;
-  border: 2px solid #e5e7eb;
+  border: 2px solid #e2e8f0;
   display: flex;
   flex-direction: column;
 }
@@ -557,8 +557,8 @@ zoom: 0.88
   flex: 1;
 }
 .dc-fake-checkmark { font-size: 1.4em; animation: dc-pop 0.4s cubic-bezier(0.34,1.56,0.64,1) both; }
-.dc-fake-title { font-weight: 800; font-size: 1em; color: #111827; }
-.dc-fake-sub   { font-size: 0.75em; color: #6b7280; }
+.dc-fake-title { font-weight: 800; font-size: 1em; color: #0f172a; }
+.dc-fake-sub   { font-size: 0.75em; color: #64748b; }
 
 .dc-fake-rows {
   width: 100%;
@@ -571,11 +571,11 @@ zoom: 0.88
   display: flex;
   justify-content: space-between;
   font-size: 0.75em;
-  color: #374151;
+  color: #334155;
   padding: 3px 0;
-  border-bottom: 1px solid #f3f4f6;
+  border-bottom: 1px solid #f1f5f9;
 }
-.dc-fake-row span { color: #9ca3af; }
+.dc-fake-row span { color: #94a3b8; }
 .dc-fake-free { color: #16a34a !important; }
 
 .dc-fake-btn {
@@ -601,15 +601,15 @@ zoom: 0.88
   align-items: center;
   gap: 6px;
   font-size: 0.68em;
-  color: #6b7280;
+  color: #64748b;
   margin-bottom: 8px;
   font-family: monospace;
 }
 .dc-bank-log-dot {
   width: 7px; height: 7px;
   border-radius: 50%;
-  background: #ef4444;
-  box-shadow: 0 0 0 2px rgba(239,68,68,0.3);
+  background: #dc2626;
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.3);
   flex-shrink: 0;
 }
 .dc-bank-log-rows {
@@ -621,11 +621,11 @@ zoom: 0.88
   display: flex;
   justify-content: space-between;
   font-size: 0.76em;
-  color: #111827;
+  color: #0f172a;
   padding: 3px 0;
-  border-bottom: 1px solid #f3f4f6;
+  border-bottom: 1px solid #f1f5f9;
 }
-.dc-bank-log-row span { color: #9ca3af; }
+.dc-bank-log-row span { color: #94a3b8; }
 .dc-bank-red   { color: #dc2626 !important; }
 .dc-bank-green { color: #16a34a !important; }
 
@@ -633,7 +633,7 @@ zoom: 0.88
   font-family: monospace;
   font-size: 0.9em;
   background: #f1f5f9;
-  color: #0369a1;
+  color: #1d4ed8;
   padding: 1px 5px;
   border-radius: 4px;
 }
@@ -651,7 +651,7 @@ zoom: 0.88
 .dc-bank-log-note {
   margin-top: 8px;
   font-size: 0.68em;
-  color: #6b7280;
+  color: #64748b;
   font-style: italic;
 }
 
@@ -669,7 +669,7 @@ zoom: 0.88
 .dc-trick-title {
   font-size: 0.68em;
   font-weight: 700;
-  color: #111827;
+  color: #0f172a;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   white-space: nowrap;
@@ -678,7 +678,7 @@ zoom: 0.88
 .dc-trick-code {
   flex: 1;
   font-size: 0.7em;
-  color: #111827;
+  color: #0f172a;
   line-height: 1.5;
   font-family: monospace;
   background: #f1f5f9;
@@ -687,7 +687,7 @@ zoom: 0.88
 }
 .dc-trick-caption {
   font-size: 0.68em;
-  color: #111827;
+  color: #0f172a;
   font-style: italic;
   white-space: nowrap;
   flex-shrink: 0;
@@ -742,7 +742,7 @@ zoom: 0.88
 <Callout v-click variant="error" class="mt-8" noIcon><strong>The twist:</strong> browser, server logs, audit trail — all completely legitimate. No malware. No injection. Just a misplaced click.</Callout>
 
 <style>
-.ri-intro { font-size: 0.86em; color: #374151; }
+.ri-intro { font-size: 0.86em; color: #334155; }
 
 .ri-grid {
   display: grid;
@@ -850,7 +850,7 @@ that forgot the header.
 </div>
 
 <style>
-.pq-intro { font-size: 0.86em; color: #374151; }
+.pq-intro { font-size: 0.86em; color: #334155; }
 
 .pq-steps {
   display: flex;
@@ -873,14 +873,14 @@ that forgot the header.
 .pq-num {
   font-size: 2em;
   font-weight: 900;
-  color: #111827;
+  color: #0f172a;
   line-height: 1;
   min-width: 2.4rem;
   text-align: center;
 }
 
-.pq-title { font-size: 0.84em; font-weight: 800; color: #111827; margin-bottom: 3px; }
-.pq-desc  { font-size: 0.76em; color: #6b7280; line-height: 1.45; }
+.pq-title { font-size: 0.84em; font-weight: 800; color: #0f172a; margin-bottom: 3px; }
+.pq-desc  { font-size: 0.76em; color: #64748b; line-height: 1.45; }
 .pq-fix   { margin-top: 5px; font-size: 0.72em; font-weight: 700; color: #16a34a; }
 
 @keyframes pq-in {
@@ -947,7 +947,7 @@ that forgot the header.
 /* ── Session cookie slide ───────────────────────────── */
 .sc-intro {
   font-size: 0.86em;
-  color: #374151;
+  color: #334155;
 }
 
 .sc-flow {
@@ -980,8 +980,8 @@ that forgot the header.
   letter-spacing: 2px;
 }
 .sc-step-icon { font-size: 1.7em; line-height: 1; }
-.sc-step-title { font-size: 0.86em; font-weight: 800; color: #111827; }
-.sc-step-desc  { font-size: 0.74em; color: #6b7280; line-height: 1.5; }
+.sc-step-title { font-size: 0.86em; font-weight: 800; color: #0f172a; }
+.sc-step-desc  { font-size: 0.74em; color: #64748b; line-height: 1.5; }
 
 .sc-arrow {
   display: flex;
@@ -999,15 +999,15 @@ that forgot the header.
   margin-top: 18px;
   padding: 10px 16px;
   background: #f0fdf4;
-  border: 1px solid #dcfce7;
+  border: 1px solid #bbf7d0;
   border-radius: 12px;
   font-size: 0.78em;
   line-height: 1.5;
   animation: sc-rise 360ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 .sc-fix.slidev-vclick-hidden { animation-play-state: paused; }
-.sc-fix-label { font-weight: 800; color: #92400e; white-space: nowrap; }
-.sc-fix-text  { color: #374151; }
+.sc-fix-label { font-weight: 800; color: #b45309; white-space: nowrap; }
+.sc-fix-text  { color: #334155; }
 
 .sc-caveat {
   display: flex;
@@ -1024,7 +1024,7 @@ that forgot the header.
 }
 .sc-caveat.slidev-vclick-hidden { animation-play-state: paused; }
 .sc-caveat-label { font-weight: 800; color: #b91c1c; white-space: nowrap; }
-.sc-caveat-text  { color: #374151; }
+.sc-caveat-text  { color: #334155; }
 
 @keyframes sc-rise {
   from { opacity: 0; transform: translateY(8px); }
@@ -1036,7 +1036,7 @@ that forgot the header.
 
 # Pre-armed Forms & Chained Clicks
 
-<div class="mt-3 text-sm text-gray-600">
+<div class="mt-3 text-sm text-slate-600">
   Some sites accept form values via URL, handing the attacker a pre-armed payload.
 </div>
 
@@ -1051,13 +1051,13 @@ that forgot the header.
   <div class="mt-2 flex gap-2 font-mono text-xs">
     <div class="flex-1 bg-white rounded-lg border border-orange-200 px-3 py-2 text-center">
       <div class="text-orange-600 font-bold">Click 1</div>
-      <div class="text-gray-500 mt-0.5">Fake: "Dismiss banner"</div>
-      <div class="text-gray-400 text-[10px] mt-1">↓ real: Accept ToS</div>
+      <div class="text-slate-500 mt-0.5">Fake: "Dismiss banner"</div>
+      <div class="text-slate-400 text-[10px] mt-1">↓ real: Accept ToS</div>
     </div>
     <div class="flex-1 bg-white rounded-lg border border-orange-200 px-3 py-2 text-center">
       <div class="text-orange-600 font-bold">Click 2</div>
-      <div class="text-gray-500 mt-0.5">Fake: "Confirm free trial"</div>
-      <div class="text-gray-400 text-[10px] mt-1">↓ real: Pay $500</div>
+      <div class="text-slate-500 mt-0.5">Fake: "Confirm free trial"</div>
+      <div class="text-slate-400 text-[10px] mt-1">↓ real: Pay $500</div>
     </div>
   </div>
   <div class="mt-2 text-gray-500">No single action looks suspicious. The victim never suspects a thing.</div>
