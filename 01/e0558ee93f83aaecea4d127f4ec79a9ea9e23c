@@ -1,0 +1,24 @@
+slides/01-cover.md
+  s_a9dba18814e6f8::t_7cb0dbf62e2f0a 18-22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "01e0558ee93f83aaecea4d127f4ec79a9ea9e23c",
+  "prompts": {},
+  "humans": {
+    "h_34454149dac528": {
+      "author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_a9dba18814e6f8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "24431fb3-8656-433d-bffd-08725754cfb3",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
