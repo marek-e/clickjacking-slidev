@@ -127,7 +127,7 @@ If they conflict, CSP `frame-ancestors` takes precedence in modern browsers.
   border-radius: 6px;
   padding: 6px 8px;
   margin-top: 6px;
-  color: #1e40af;
+  color: #1d4ed8;
   word-break: break-all;
 }
 .ip-body code {
@@ -267,7 +267,7 @@ zoom: 0.9
   overflow: hidden;
 }
 .fb-mock-nav {
-  background: #1a3a5c;
+  background: #1e293b;
   color: #fff;
   font-size: 0.72em;
   font-weight: 700;
@@ -285,7 +285,7 @@ zoom: 0.9
 .fb-mock-body--escaped { background: #f0fdf4; }
 .fb-mock-icon { font-size: 1.6em; }
 .fb-mock-title { font-size: 0.8em; font-weight: 800; color: #15803d; }
-.fb-mock-sub   { font-size: 0.68em; color: #6b7280; text-align: center; line-height: 1.4; }
+.fb-mock-sub   { font-size: 0.68em; color: #64748b; text-align: center; line-height: 1.4; }
 
 .fb-live-badge {
   display: inline-block;
@@ -341,10 +341,10 @@ No <code>X-Frame-Options</code> or CSP set. It embeds in any page, from any orig
 
 ### ✅ Protected
 
-<div style="border:2px solid #4ade80; border-radius:8px; height:190px; background:#f0fff4; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;">
+<div style="border:2px solid #4ade80; border-radius:8px; height:190px; background:#f0fdf4; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;">
   <div style="font-size:2.5em;">🚫</div>
   <div style="color:#dc2626; font-weight:700; font-size:1.05em;">Refused to Display</div>
-  <code style="font-size:0.72em; color:#374151; background:#e5e7eb; padding:4px 10px; border-radius:4px;">X-Frame-Options: DENY</code>
+  <code style="font-size:0.72em; color:#334155; background:#e2e8f0; padding:4px 10px; border-radius:4px;">X-Frame-Options: DENY</code>
   <div style="font-size:0.78em; color:#6b7280;">Browser blocked the iframe</div>
 </div>
 
@@ -415,7 +415,7 @@ zoom: 0.9
 <Callout v-click variant="warning" class="mt-3"><strong>The dangerous misconception:</strong> "We have CSRF tokens, we're safe." With clickjacking the victim clicks a real button in a real session. The CSRF token is legitimately present and valid. The server cannot tell it was a tricked click. Frame headers are the only fix.</Callout>
 
 <style>
-.csrf-intro { font-size: 0.84em; color: #374151; line-height: 1.5; }
+.csrf-intro { font-size: 0.84em; color: #334155; line-height: 1.5; }
 
 .csrf-grid {
   display: grid;
@@ -426,7 +426,7 @@ zoom: 0.9
 .csrf-card {
   border-radius: 14px;
   overflow: hidden;
-  border: 1.5px solid #e5e7eb;
+  border: 1.5px solid #e2e8f0;
   animation: csrf-rise 340ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 .csrf-card.slidev-vclick-hidden { animation-play-state: paused; }
@@ -453,12 +453,12 @@ zoom: 0.9
   display: flex;
   gap: 10px;
   font-size: 0.74em;
-  color: #374151;
+  color: #334155;
   line-height: 1.4;
 }
 .csrf-key {
   font-weight: 800;
-  color: #6b7280;
+  color: #64748b;
   min-width: 72px;
   flex-shrink: 0;
   padding-top: 1px;
@@ -513,24 +513,24 @@ class: text-center
 
 # That's it!
 
-<div class="mt-4 text-gray-600 text-lg">
+<div class="mt-4 text-slate-600 text-lg">
 One attack, one HTTP header, two lines of config.
 </div>
 
 <div class="mt-8 grid grid-cols-3 gap-5 text-sm max-w-2xl mx-auto">
-  <div class="bg-gray-100 rounded-xl p-4 border border-gray-200">
+  <div class="bg-slate-100 rounded-xl p-4 border border-slate-200">
     <div class="text-2xl mb-2">📖</div>
     <div class="font-bold">OWASP</div>
-    <div class="text-gray-600 text-xs mt-1">Clickjacking Defense Cheat Sheet</div>
+    <div class="text-slate-600 text-xs mt-1">Clickjacking Defense Cheat Sheet</div>
   </div>
-  <div class="bg-gray-100 rounded-xl p-4 border border-gray-200">
+  <div class="bg-slate-100 rounded-xl p-4 border border-slate-200">
     <div class="text-2xl mb-2">🛡️</div>
     <div class="font-bold">securityheaders.com</div>
-    <div class="text-gray-600 text-xs mt-1">Scan your site's response headers</div>
+    <div class="text-slate-600 text-xs mt-1">Scan your site's response headers</div>
   </div>
-  <div class="bg-gray-100 rounded-xl p-4 border border-gray-200">
+  <div class="bg-slate-100 rounded-xl p-4 border border-slate-200">
     <div class="text-2xl mb-2">🔬</div>
     <div class="font-bold">MDN Web Docs</div>
-    <div class="text-gray-600 text-xs mt-1">X-Frame-Options · CSP reference</div>
+    <div class="text-slate-600 text-xs mt-1">X-Frame-Options · CSP reference</div>
   </div>
 </div>
