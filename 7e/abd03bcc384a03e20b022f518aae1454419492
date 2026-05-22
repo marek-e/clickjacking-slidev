@@ -1,0 +1,44 @@
+slides/04-defenses.md
+  s_a9dba18814e6f8::t_0c91e804cba623 11
+  s_a9dba18814e6f8::t_9bf9ff1d4d25ab 132,143-146,148
+  h_34454149dac528 2,48,65,70,99-105,134
+  s_a9dba18814e6f8::t_5d4760e5d793ae 131,147,149-150
+  s_a9dba18814e6f8::t_d4c34ffa653553 78
+  s_a9dba18814e6f8::t_e9d2bdb183a9a7 133,135-142
+  s_a9dba18814e6f8::t_22db7c4fd12eda 55-56
+  s_a9dba18814e6f8::t_ce2b8cc0ee5412 71-77
+  s_a9dba18814e6f8::t_c695263dc29ce2 1,3-4
+  s_a9dba18814e6f8::t_12f7e925d08068 83
+unocss.config.ts
+  s_a9dba18814e6f8::t_7b193c6eab47fa 1-11
+package.json
+  s_a9dba18814e6f8::t_53f9075cc1f5f4 16-19
+components/InfoPopover.vue
+  h_34454149dac528 2,7-10,12-13,17,20-21,34,89-90,96
+  s_a9dba18814e6f8::t_be70dc42e02561 5
+  s_a9dba18814e6f8::t_5a6cd5cd36257c 1,3-4,6,11,22-24,26-31,36-88,91-95,97-112
+  s_a9dba18814e6f8::t_e82ddc6a798b82 25
+  s_a9dba18814e6f8::t_59e4bfefb44e59 32-33,35
+  s_a9dba18814e6f8::t_c677ac293af038 14-16,18-19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "7eabd03bcc384a03e20b022f518aae1454419492",
+  "prompts": {},
+  "humans": {
+    "h_34454149dac528": {
+      "author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_a9dba18814e6f8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "24431fb3-8656-433d-bffd-08725754cfb3",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
