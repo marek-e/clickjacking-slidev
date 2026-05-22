@@ -142,9 +142,5 @@ src: ./slides/02-the-attack.md
 ---
 
 ---
-src: ./slides/03-impact-detection.md
----
-
----
 src: ./slides/04-defenses.md
 ---
