@@ -199,7 +199,7 @@ iframe {
   width: 100%;
   border-radius: 10px;
   overflow: hidden;
-  border: 2px solid #d1d5db;
+  border: 2px solid #e2e8f0;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
@@ -223,7 +223,7 @@ iframe {
   position: absolute;
   top: 8px;
   left: 8px;
-  background: #ff4444;
+  background: #dc2626;
   color: #fff;
   font-size: 0.68em;
   font-weight: 700;
@@ -246,14 +246,14 @@ iframe {
 
 .cj-attacker-btn {
   padding: 11px 30px;
-  background: #28a745;
+  background: #16a34a;
   color: #fff;
   border: none;
   border-radius: 8px;
   font-size: 1em;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(40, 167, 69, 0.45);
+  box-shadow: 0 4px 14px rgba(22, 163, 74, 0.45);
   pointer-events: none;
   transition:
     transform 0.12s,
@@ -278,7 +278,7 @@ iframe {
   right: 8px;
   z-index: 3;
   background: rgba(0, 0, 0, 0.65);
-  color: #64b5f6;
+  color: #60a5fa;
   font-size: 0.7em;
   padding: 2px 8px;
   border-radius: 4px;
@@ -310,7 +310,7 @@ iframe {
 
 .cj-slider {
   flex: 1;
-  accent-color: #7c3aed;
+  accent-color: #dc2626;
   cursor: pointer;
   height: 4px;
 }
@@ -318,7 +318,7 @@ iframe {
 .cj-status {
   text-align: center;
   font-size: 0.78em;
-  color: #6b7280;
+  color: #64748b;
   font-style: italic;
 }
 
@@ -350,7 +350,7 @@ iframe {
 .cj-pos-lbl {
   font-family: monospace;
   font-size: 0.8em;
-  color: #38bdf8;
+  color: #60a5fa;
   width: 28px;
   flex-shrink: 0;
 }
@@ -383,7 +383,7 @@ iframe {
   align-items: center;
   gap: 6px;
   font-size: 0.7em;
-  color: #4b5563;
+  color: #64748b;
   flex-wrap: wrap;
 }
 
@@ -403,7 +403,7 @@ iframe {
   margin-left: 0;
 }
 .dot-victim {
-  background: #64b5f6;
+  background: #60a5fa;
 }
 
 /* ── Ad popup mode ───────────────────────────────────────── */
