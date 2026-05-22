@@ -1,0 +1,27 @@
+slides/01-cover.md
+  s_a9dba18814e6f8::t_3371c87163bc6b 13
+slides/02-the-attack.md
+  s_a9dba18814e6f8::t_f8addc1035e4c9 1084-1085,1087-1102
+  h_34454149dac528 1086
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "11415765a46e0b48e8f725c69c6abe44e63318a1",
+  "prompts": {},
+  "humans": {
+    "h_34454149dac528": {
+      "author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_a9dba18814e6f8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "24431fb3-8656-433d-bffd-08725754cfb3",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
