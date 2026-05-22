@@ -1,0 +1,24 @@
+style.css
+  s_e2652338e80ff0::t_9eab48eaa1b8bf 13
+  s_e2652338e80ff0::t_baaeac459ac842 37
+components/InfoPopover.vue
+  s_e2652338e80ff0::t_100b4d6cfc95d4 58
+slides/02-the-attack.md
+  s_e2652338e80ff0::t_514000e37547dc 991
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.0",
+  "base_commit_sha": "0317614b17bd7c2f91f4d27fff65fb494000bf2d",
+  "prompts": {},
+  "sessions": {
+    "s_e2652338e80ff0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5ac8636c-2b9f-4bb5-a9f3-160781d1bc70",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
