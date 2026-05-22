@@ -1,0 +1,42 @@
+/*
+ * Global design tokens for the Clickjacking presentation.
+ * All color hex values used in <style> blocks and Vue component styles
+ * reference these variables. Tailwind utility classes are excluded —
+ * they already carry semantic names.
+ */
+:root {
+  /* Neutrals — slate scale */
+  --cj-text-strong:  #0f172a;  /* slate-900 — headings, strong labels */
+  --cj-text:         #334155;  /* slate-700 — body text, descriptions */
+  --cj-text-muted:   #64748b;  /* slate-500 — muted text, captions */
+  --cj-text-meta:    #94a3b8;  /* slate-400 — step numbers, meta labels */
+  --cj-border:       #e2e8f0;  /* slate-200 — all borders / dividers */
+  --cj-divider:      #f1f5f9;  /* slate-100 — subtle interior dividers */
+  --cj-surface:      #f8fafc;  /* slate-50  — card / step surfaces */
+  --cj-nav:          #1e293b;  /* slate-800 — dark nav bar */
+
+  /* Danger — red (attacker, error, alert) */
+  --cj-danger:        #dc2626;  /* red-600 — accent */
+  --cj-danger-bg:     #fef2f2;  /* red-50  — surface */
+  --cj-danger-border: #fecaca;  /* red-200 — border / light text on dark */
+  --cj-danger-text:   #b91c1c;  /* red-700 — text on light bg */
+
+  /* Safe — green (fix, success, protected) */
+  --cj-safe:          #16a34a;  /* green-600 — accent */
+  --cj-safe-bg:       #f0fdf4;  /* green-50  — surface */
+  --cj-safe-border:   #bbf7d0;  /* green-200 — border */
+  --cj-safe-text:     #15803d;  /* green-700 — text on light bg */
+
+  /* Defense — blue (info, link, defense) */
+  --cj-defense:        #2563eb;  /* blue-600 — accent */
+  --cj-defense-text:   #1d4ed8;  /* blue-700 — text on light bg */
+  --cj-defense-light:  #60a5fa;  /* blue-400 — legend dot, opacity badge */
+  --cj-defense-bg:     #eff6ff;  /* blue-50  — surface */
+  --cj-defense-border: #bfdbfe;  /* blue-200 — border */
+
+  /* Warning — amber (escalation, partial fix) */
+  --cj-warning:        #d97706;  /* amber-600 — accent */
+  --cj-warning-text:   #b45309;  /* amber-700 — text on light bg */
+  --cj-warning-bg:     #fff7ed;  /* orange-50 — surface */
+  --cj-warning-border: #fed7aa;  /* orange-200 — border */
+}
