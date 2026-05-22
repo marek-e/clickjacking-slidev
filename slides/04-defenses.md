@@ -1,10 +1,14 @@
+---
+zoom: 0.9
+---
+
 # Defense #1 - X-Frame-Options
 
 <div class="grid grid-cols-2 gap-6 mt-2">
 
 <div>
 
-**The original header** (2009, legacy but still useful)
+**The original header** (2009, legacy but still useful) [MDN docs ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options)
 
 ```http
 # Block all framing - strongest
@@ -41,15 +45,15 @@ http.headers().frameOptions().deny();
 **Limitations:**
 - `ALLOW-FROM` not supported in Chrome, Safari
 - Cannot specify **multiple** allowed origins
-- Does **not** protect against same-origin attacks
+- `SAMEORIGIN` still allows framing from any same-origin page - an XSS or user-controlled page on your own domain is enough
 - Being superseded by CSP `frame-ancestors`
 
 **Still recommended** as defense-in-depth alongside CSP. Universally understood by browsers, zero-cost to add.
 
 <div class="mt-4 p-3 bg-amber-50 rounded-lg border border-amber-400 text-sm">
 
-⚠️ Missing on **~35%** of production apps  
-(source: securityheaders.com scan, 2023)
+⚠️ Missing on **~63%** of production sites  
+(source: [HTTP Archive Web Almanac 2024](https://almanac.httparchive.org/en/2024/security))
 
 </div>
 
@@ -58,14 +62,25 @@ http.headers().frameOptions().deny();
 </div>
 
 ---
+zoom: 0.9
+---
 
 # Defense #2 - CSP `frame-ancestors`
+
+<InfoPopover title="What is CSP?" width="620px" x="4.5rem" y="5.5rem">
+  <p><strong>Content Security Policy</strong> is an HTTP response header that lets a server declare which sources are trusted for loading resources — scripts, styles, images, and frames.</p>
+  <div class="ip-code">Content-Security-Policy: &lt;directive&gt; &lt;sources&gt;; &lt;directive&gt; &lt;sources&gt;;</div>
+  <p style="margin-top:8px">Most common use: <strong>blocking XSS</strong> by restricting where scripts can load from:</p>
+  <div class="ip-code">script-src 'self' https://cdn.example.com;</div>
+  <p style="margin-top:8px">This blocks inline scripts and untrusted origins — cutting off the most common XSS vectors.<br><br>
+  <code>frame-ancestors</code> is a separate directive controlling who can embed your page in an <code>&lt;iframe&gt;</code>.</p>
+</InfoPopover>
 
 <div class="grid grid-cols-2 gap-6 mt-2">
 
 <div>
 
-**The modern standard** (recommended over XFO)
+**The modern standard** (recommended over XFO) [MDN docs ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/frame-ancestors)
 
 ```http
 # Block all framing
@@ -81,6 +96,13 @@ Content-Security-Policy: frame-ancestors
   https://embed.example.com;
 ```
 
+<div class="mt-4 p-3 bg-amber-50 rounded-lg border border-amber-400 text-sm">
+
+⚠️ Missing on **~89%** of production sites  
+(source: [HTTP Archive Web Almanac 2024](https://almanac.httparchive.org/en/2024/security))
+
+</div>
+
 </div>
 
 <div v-click>
@@ -92,7 +114,6 @@ Content-Security-Policy: frame-ancestors
 | Multi-origin allowlist | ❌ | ✅ |
 | Wildcard subdomains | ❌ | ✅ |
 | Report-only mode | ❌ | ✅ |
-| Chrome / Safari | ✅ | ✅ |
 
 **Best practice: set both** for maximum compatibility:
 
@@ -106,6 +127,26 @@ If they conflict, CSP `frame-ancestors` takes precedence in modern browsers.
 </div>
 
 </div>
+
+<style>
+.ip-code {
+  font-family: monospace;
+  font-size: 1em;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 6px 8px;
+  margin-top: 6px;
+  color: #1e40af;
+  word-break: break-all;
+}
+.ip-body code {
+  background: #f1f5f9;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+.ip-body p { margin: 0; }
+</style>
 
 ---
 
