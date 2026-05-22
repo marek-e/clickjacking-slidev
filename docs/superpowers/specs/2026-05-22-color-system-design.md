@@ -95,13 +95,14 @@ Replaces all `gray-*` hex values and Tailwind `gray-*` classes.
 - Number text `#374151` → `#334155` (slate-700)
 - Demo badge: bg `#fee2e2` (red-100) → `#fef2f2` (red-50); border `#fca5a5` (red-300) → `#fecaca` (red-200) — aligns with pastel pattern
 
-### `components/ClickjackDemo.vue` — 8 changes
+### `components/ClickjackDemo.vue` — 9 changes
 
 **Slide UI (controls + legend):**
 - Stage border `#d1d5db` (gray-300) → `#e2e8f0` (slate-200)
 - Slider `accent-color` `#7c3aed` (violet-600) → `#dc2626` (red-600)
 - Status text `#6b7280` + legend `#4b5563` → `#64748b` (slate-500)
 - Victim legend dot `#64b5f6` → `#60a5fa` (blue-400)
+- Opacity badge text `#64b5f6` (same non-Tailwind value, `color:` prop) → `#60a5fa` (blue-400)
 - Position control label `#38bdf8` (sky-400) → `#60a5fa` (blue-400)
 
 **Demo coherence (attacker page):**
