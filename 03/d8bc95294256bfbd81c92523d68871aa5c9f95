@@ -1,0 +1,20 @@
+docs/superpowers/plans/2026-05-22-color-system-unification.md
+  s_e2652338e80ff0::t_ed5adaa022460d 86,88,90,96,98-103
+  s_e2652338e80ff0::t_384bdd381e5642 1-85,87,89,91-95,97,104-557
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.0",
+  "base_commit_sha": "03d8bc95294256bfbd81c92523d68871aa5c9f95",
+  "prompts": {},
+  "sessions": {
+    "s_e2652338e80ff0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5ac8636c-2b9f-4bb5-a9f3-160781d1bc70",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
