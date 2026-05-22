@@ -1,0 +1,21 @@
+components/AgendaItem.vue
+  s_e2652338e80ff0::t_8313fa066fed60 36-37
+  s_e2652338e80ff0::t_f866b4ab7bf770 23-24,26
+  s_e2652338e80ff0::t_876593a1d757a4 52-54
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.0",
+  "base_commit_sha": "3cea8f7e13fb0fc74fd5b020939b0aa7d6c43baf",
+  "prompts": {},
+  "sessions": {
+    "s_e2652338e80ff0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5ac8636c-2b9f-4bb5-a9f3-160781d1bc70",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
