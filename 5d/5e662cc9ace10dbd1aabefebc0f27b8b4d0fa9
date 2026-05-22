@@ -1,0 +1,50 @@
+slides/02-the-attack.md
+  h_34454149dac528 814,821-823,825,827-830
+  s_e63c9b2a6de604::t_e7973469dee211 971-975
+  s_e17a6c00fc305d::t_10a50545ae9c2b 818-820
+  s_e63c9b2a6de604::t_4253b9bdcc3876 1042-1058
+  s_e63c9b2a6de604::t_b04dc0fad312df 938-939
+  s_e17a6c00fc305d::t_8633c82d0e8975 826
+components/ClickjackDemo.vue
+  s_e17a6c00fc305d::t_e75f4db1055c2b 55-58
+  s_e17a6c00fc305d::t_3a3bd008775fc4 73-75,84-92,95,103
+  s_e17a6c00fc305d::t_718764879b5655 408,414,422,437-438,456,494
+  s_e17a6c00fc305d::t_a887f777ffc461 19-21
+  s_e17a6c00fc305d::t_5ed99f07df9e45 93-94,96-102
+  s_e17a6c00fc305d::t_3f1e9665617978 409-413,415-421,423-436,439,443,445,447,450,455,459-460,475,480-481,483-493
+  s_e17a6c00fc305d::t_0dcef3520a88ef 440-442,444,446,448-449,451-454,457-458,461-474,476-479,482
+  s_e17a6c00fc305d::t_0ec5f3f61f6024 18
+public/victims/github-star.html
+  s_e17a6c00fc305d::t_b64f9c67bd26e8 6,51,94,107-119,124-125,146,156,169,174-178,180-182,186,197
+slides/04-defenses.md
+  h_34454149dac528 331
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "5d5e662cc9ace10dbd1aabefebc0f27b8b4d0fa9",
+  "prompts": {},
+  "humans": {
+    "h_34454149dac528": {
+      "author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_e17a6c00fc305d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae96ad7d-5ae5-4b2d-aaae-2c66758a395b",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    },
+    "s_e63c9b2a6de604": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "1d80579b-5a58-488b-a2c8-19b12a84f4eb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
