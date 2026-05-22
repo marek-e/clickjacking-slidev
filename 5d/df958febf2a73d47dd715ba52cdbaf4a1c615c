@@ -1,0 +1,29 @@
+slides.md
+  s_e2652338e80ff0::t_9c978bcb8620f2 32
+  s_e2652338e80ff0::t_47fcc05312b8e6 38
+  s_e2652338e80ff0::t_1b10985ab4fe06 33
+components/OffsetCard.vue
+  s_e2652338e80ff0::t_93587af5ae0e48 40-42
+slides/04-defenses.md
+  s_e2652338e80ff0::t_c66e333765b315 302
+  s_e2652338e80ff0::t_a6ee17ab13db58 265
+slides/02-the-attack.md
+  s_e2652338e80ff0::t_6c1f62c7b63413 104
+  s_e2652338e80ff0::t_8697a4373cf8b4 366
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.0",
+  "base_commit_sha": "5ddf958febf2a73d47dd715ba52cdbaf4a1c615c",
+  "prompts": {},
+  "sessions": {
+    "s_e2652338e80ff0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5ac8636c-2b9f-4bb5-a9f3-160781d1bc70",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
