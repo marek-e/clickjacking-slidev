@@ -199,7 +199,7 @@ iframe {
   width: 100%;
   border-radius: 10px;
   overflow: hidden;
-  border: 2px solid #e2e8f0;
+  border: 2px solid var(--cj-border);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
@@ -223,7 +223,7 @@ iframe {
   position: absolute;
   top: 8px;
   left: 8px;
-  background: #dc2626;
+  background: var(--cj-danger);
   color: #fff;
   font-size: 0.68em;
   font-weight: 700;
@@ -246,7 +246,7 @@ iframe {
 
 .cj-attacker-btn {
   padding: 11px 30px;
-  background: #16a34a;
+  background: var(--cj-safe);
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -278,7 +278,7 @@ iframe {
   right: 8px;
   z-index: 3;
   background: rgba(0, 0, 0, 0.65);
-  color: #60a5fa;
+  color: var(--cj-defense-light);
   font-size: 0.7em;
   padding: 2px 8px;
   border-radius: 4px;
@@ -300,17 +300,17 @@ iframe {
 }
 
 .cj-lbl-attack {
-  color: #dc2626;
+  color: var(--cj-danger);
   white-space: nowrap;
 }
 .cj-lbl-reveal {
-  color: #16a34a;
+  color: var(--cj-safe);
   white-space: nowrap;
 }
 
 .cj-slider {
   flex: 1;
-  accent-color: #dc2626;
+  accent-color: var(--cj-danger);
   cursor: pointer;
   height: 4px;
 }
@@ -318,7 +318,7 @@ iframe {
 .cj-status {
   text-align: center;
   font-size: 0.78em;
-  color: #64748b;
+  color: var(--cj-text-muted);
   font-style: italic;
 }
 
@@ -329,9 +329,9 @@ iframe {
   align-items: flex-start;
   margin-top: 6px;
   padding: 8px 10px;
-  background: #0f172a;
+  background: var(--cj-text-strong);
   border-radius: 8px;
-  border: 1px solid #1e293b;
+  border: 1px solid var(--cj-nav);
 }
 
 .cj-pos-sliders {
@@ -350,7 +350,7 @@ iframe {
 .cj-pos-lbl {
   font-family: monospace;
   font-size: 0.8em;
-  color: #60a5fa;
+  color: var(--cj-defense-light);
   width: 28px;
   flex-shrink: 0;
 }
@@ -367,11 +367,11 @@ iframe {
 .cj-pos-code {
   margin: 0;
   padding: 6px 10px;
-  background: #1e293b;
+  background: var(--cj-nav);
   border-radius: 6px;
   font-family: monospace;
   font-size: 0.72em;
-  color: #e2e8f0;
+  color: var(--cj-border);
   line-height: 1.6;
   white-space: pre;
   flex-shrink: 0;
@@ -383,7 +383,7 @@ iframe {
   align-items: center;
   gap: 6px;
   font-size: 0.7em;
-  color: #64748b;
+  color: var(--cj-text-muted);
   flex-wrap: wrap;
 }
 
@@ -396,14 +396,14 @@ iframe {
 }
 
 .dot-attacker {
-  background: #d97706;
+  background: var(--cj-warning);
   margin-left: 8px;
 }
 .dot-attacker:first-child {
   margin-left: 0;
 }
 .dot-victim {
-  background: #60a5fa;
+  background: var(--cj-defense-light);
 }
 
 /* ── Ad popup mode ───────────────────────────────────────── */
@@ -483,7 +483,7 @@ iframe {
 }
 
 .cj-ad-scene .cj-attacker-title {
-  color: #1e293b;
+  color: var(--cj-nav);
   font-size: 1.1em;
 }
 .cj-ad-scene .cj-attacker-body {
