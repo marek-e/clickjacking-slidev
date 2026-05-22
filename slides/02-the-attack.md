@@ -1060,5 +1060,5 @@ that forgot the header.
       <div class="text-slate-400 text-[10px] mt-1">↓ real: Pay $500</div>
     </div>
   </div>
-  <div class="mt-2 text-gray-500">No single action looks suspicious. The victim never suspects a thing.</div>
+  <div class="mt-2 text-slate-500">No single action looks suspicious. The victim never suspects a thing.</div>
 </Callout>

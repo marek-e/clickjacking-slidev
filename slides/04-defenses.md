@@ -345,7 +345,7 @@ No <code>X-Frame-Options</code> or CSP set. It embeds in any page, from any orig
   <div style="font-size:2.5em;">🚫</div>
   <div style="color:#dc2626; font-weight:700; font-size:1.05em;">Refused to Display</div>
   <code style="font-size:0.72em; color:#334155; background:#e2e8f0; padding:4px 10px; border-radius:4px;">X-Frame-Options: DENY</code>
-  <div style="font-size:0.78em; color:#6b7280;">Browser blocked the iframe</div>
+  <div style="font-size:0.78em; color:#64748b;">Browser blocked the iframe</div>
 </div>
 
 <div class="mt-2 text-sm text-green-700">
