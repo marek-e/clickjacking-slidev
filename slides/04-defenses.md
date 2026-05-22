@@ -262,7 +262,7 @@ zoom: 0.9
 .fb-panel-label--fail { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
 
 .fb-mock {
-  border: 1.5px solid #e5e7eb;
+  border: 1.5px solid #e2e8f0;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -299,7 +299,7 @@ zoom: 0.9
 }
 
 .fb-iframe-wrap {
-  border: 1.5px solid #e5e7eb;
+  border: 1.5px solid #e2e8f0;
   border-radius: 10px;
   overflow: hidden;
 }

@@ -101,7 +101,7 @@ The attacker hosts a page with **two layers**:
 <div class="mt-4">
   <OffsetCard title="Invisible target" accent="red" :shadow-size="5">
     <template #icon>👻</template>
-    <span class="font-semibold text-gray-900">The victim never sees the iframe.</span><br />
+    <span class="font-semibold text-slate-900">The victim never sees the iframe.</span><br />
     They believe they're clicking the attacker's button. In reality, they're clicking a sensitive action on another site.
   </OffsetCard>
 </div>
@@ -363,7 +363,7 @@ onUnmounted(() => clearTimeout(timer))
 
 .cj-bank-toast-meta { min-width: 0; }
 .cj-bank-toast-label { font-size: 11px; color: #94a3b8; line-height: 1.1; }
-.cj-bank-toast-msg   { font-size: 13px; font-weight: 700; color: #fca5a5; line-height: 1.2; }
+.cj-bank-toast-msg   { font-size: 13px; font-weight: 700; color: #fecaca; line-height: 1.2; }
 .cj-bank-toast-time  { margin-left: auto; font-size: 11px; color: #94a3b8; flex-shrink: 0; }
 
 .cj-bank-receipt {

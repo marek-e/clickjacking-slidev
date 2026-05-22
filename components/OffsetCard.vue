@@ -37,9 +37,9 @@ const ACCENT = {
   },
   gray: {
     borderRgb: '229 231 235',
-    chipBg: 'bg-gray-50',
-    chipText: 'text-gray-700',
-    chipBorder: 'border-gray-200',
+    chipBg: 'bg-slate-50',
+    chipText: 'text-slate-700',
+    chipBorder: 'border-slate-200',
   },
   green: {
     borderRgb: '187 247 208',

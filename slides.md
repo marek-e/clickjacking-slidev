@@ -29,13 +29,13 @@ class: text-center
     🔒 Web Security
   </span>
 
-  <h1 class="m-0 leading-none font-black text-gray-900" style="font-size:5.5rem; letter-spacing:-2px">
-    <span :class="['cj-click-word', $clicks >= 1 ? 'cj-growing' : '']" style="position:relative; display:inline-block">Click<span v-click class="cj-cursor" aria-hidden="true"><svg viewBox="0 0 20 28" width="36" height="50" style="display:block;filter:drop-shadow(0 2px 5px rgba(0,0,0,0.22))"><path d="M2,2 L2,22 L7,17 L10,26 L14,24 L11,15 L18,15 Z" fill="white" stroke="#111827" stroke-width="1.5" stroke-linejoin="round"/></svg><span class="cj-ripple"></span></span></span><span class="text-red-600">jacking</span>
+  <h1 class="m-0 leading-none font-black text-slate-900" style="font-size:5.5rem; letter-spacing:-2px">
+    <span :class="['cj-click-word', $clicks >= 1 ? 'cj-growing' : '']" style="position:relative; display:inline-block">Click<span v-click class="cj-cursor" aria-hidden="true"><svg viewBox="0 0 20 28" width="36" height="50" style="display:block;filter:drop-shadow(0 2px 5px rgba(0,0,0,0.22))"><path d="M2,2 L2,22 L7,17 L10,26 L14,24 L11,15 L18,15 Z" fill="white" stroke="#0f172a" stroke-width="1.5" stroke-linejoin="round"/></svg><span class="cj-ripple"></span></span></span><span class="text-red-600">jacking</span>
   </h1>
 
   <div class="w-12 h-1 rounded bg-red-600"></div>
 
-  <p class="m-0 text-2xl font-light text-gray-900">Proof Hackers Write Better CSS Than You</p>
+  <p class="m-0 text-2xl font-light text-slate-900">Proof Hackers Write Better CSS Than You</p>
 
   <p class="m-0 text-sm font-medium text-slate-700 tracking-wide">When <code>z-index</code>, <code>opacity</code>, and <code>iframe</code> become weapons</p>
 
