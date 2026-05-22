@@ -56,8 +56,8 @@ onUnmounted(() => document.removeEventListener("pointerdown", onClickOutside));
   height: 26px;
   border-radius: 50%;
   border: 1.5px solid #93c5fd;
-  background: #eff6ff;
-  color: #2563eb;
+  background: var(--cj-defense-bg);
+  color: var(--cj-defense);
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;
@@ -69,8 +69,8 @@ onUnmounted(() => document.removeEventListener("pointerdown", onClickOutside));
 }
 .ip-btn:hover,
 .ip-btn--active {
-  background: #dbeafe;
-  border-color: #2563eb;
+  background: var(--cj-defense-bg);
+  border-color: var(--cj-defense);
 }
 
 .ip-popover {
@@ -78,7 +78,7 @@ onUnmounted(() => document.removeEventListener("pointerdown", onClickOutside));
   top: calc(100% + 8px);
   right: 0;
   background: #fff;
-  border: 1.5px solid #bfdbfe;
+  border: 1.5px solid var(--cj-defense-border);
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(37, 99, 235, 0.12);
   padding: 14px 16px;
@@ -88,13 +88,13 @@ onUnmounted(() => document.removeEventListener("pointerdown", onClickOutside));
 .ip-title {
   font-size: 1.2em;
   font-weight: 600;
-  color: #1d4ed8;
+  color: var(--cj-defense-text);
   margin-bottom: 8px;
 }
 
 .ip-body {
   font-size: 1em;
-  color: #334155;
+  color: var(--cj-text);
   line-height: 1.5;
 }
 
