@@ -122,16 +122,16 @@ If they conflict, CSP `frame-ancestors` takes precedence in modern browsers.
 .ip-code {
   font-family: monospace;
   font-size: 1em;
-  background: #f1f5f9;
-  border: 1px solid #e2e8f0;
+  background: var(--cj-divider);
+  border: 1px solid var(--cj-border);
   border-radius: 6px;
   padding: 6px 8px;
   margin-top: 6px;
-  color: #1d4ed8;
+  color: var(--cj-defense-text);
   word-break: break-all;
 }
 .ip-body code {
-  background: #f1f5f9;
+  background: var(--cj-divider);
   padding: 1px 5px;
   border-radius: 4px;
 }
@@ -258,16 +258,16 @@ zoom: 0.9
   padding: 4px 10px;
   border-radius: 6px;
 }
-.fb-panel-label--ok   { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
-.fb-panel-label--fail { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+.fb-panel-label--ok   { background: var(--cj-safe-bg); color: var(--cj-safe-text); border: 1px solid var(--cj-safe-border); }
+.fb-panel-label--fail { background: var(--cj-danger-bg); color: var(--cj-danger-text); border: 1px solid var(--cj-danger-border); }
 
 .fb-mock {
-  border: 1.5px solid #e2e8f0;
+  border: 1.5px solid var(--cj-border);
   border-radius: 10px;
   overflow: hidden;
 }
 .fb-mock-nav {
-  background: #1e293b;
+  background: var(--cj-nav);
   color: #fff;
   font-size: 0.72em;
   font-weight: 700;
@@ -282,24 +282,24 @@ zoom: 0.9
   padding: 12px;
   height: 90px;
 }
-.fb-mock-body--escaped { background: #f0fdf4; }
+.fb-mock-body--escaped { background: var(--cj-safe-bg); }
 .fb-mock-icon { font-size: 1.6em; }
-.fb-mock-title { font-size: 0.8em; font-weight: 800; color: #15803d; }
-.fb-mock-sub   { font-size: 0.68em; color: #64748b; text-align: center; line-height: 1.4; }
+.fb-mock-title { font-size: 0.8em; font-weight: 800; color: var(--cj-safe-text); }
+.fb-mock-sub   { font-size: 0.68em; color: var(--cj-text-muted); text-align: center; line-height: 1.4; }
 
 .fb-live-badge {
   display: inline-block;
   font-size: 0.62em;
   font-weight: 800;
   letter-spacing: 1px;
-  background: #dc2626;
+  background: var(--cj-danger);
   color: #fff;
   padding: 2px 7px;
   border-radius: 4px;
 }
 
 .fb-iframe-wrap {
-  border: 1.5px solid #e2e8f0;
+  border: 1.5px solid var(--cj-border);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -309,8 +309,8 @@ zoom: 0.9
   padding: 6px 10px;
   border-radius: 7px;
 }
-.fb-verdict--ok   { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
-.fb-verdict--fail { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+.fb-verdict--ok   { background: var(--cj-safe-bg); color: var(--cj-safe-text); border: 1px solid var(--cj-safe-border); }
+.fb-verdict--fail { background: var(--cj-danger-bg); color: var(--cj-danger-text); border: 1px solid var(--cj-danger-border); }
 
 @keyframes fb-in {
   from { opacity: 0; transform: translateY(8px); }
@@ -341,11 +341,11 @@ No <code>X-Frame-Options</code> or CSP set. It embeds in any page, from any orig
 
 ### ✅ Protected
 
-<div style="border:2px solid #4ade80; border-radius:8px; height:190px; background:#f0fdf4; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;">
+<div style="border:2px solid #4ade80; border-radius:8px; height:190px; background:var(--cj-safe-bg); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;">
   <div style="font-size:2.5em;">🚫</div>
-  <div style="color:#dc2626; font-weight:700; font-size:1.05em;">Refused to Display</div>
-  <code style="font-size:0.72em; color:#334155; background:#e2e8f0; padding:4px 10px; border-radius:4px;">X-Frame-Options: DENY</code>
-  <div style="font-size:0.78em; color:#64748b;">Browser blocked the iframe</div>
+  <div style="color:var(--cj-danger); font-weight:700; font-size:1.05em;">Refused to Display</div>
+  <code style="font-size:0.72em; color:var(--cj-text); background:var(--cj-border); padding:4px 10px; border-radius:4px;">X-Frame-Options: DENY</code>
+  <div style="font-size:0.78em; color:var(--cj-text-muted);">Browser blocked the iframe</div>
 </div>
 
 <div class="mt-2 text-sm text-green-700">
@@ -415,7 +415,7 @@ zoom: 0.9
 <Callout v-click variant="warning" class="mt-3"><strong>The dangerous misconception:</strong> "We have CSRF tokens, we're safe." With clickjacking the victim clicks a real button in a real session. The CSRF token is legitimately present and valid. The server cannot tell it was a tricked click. Frame headers are the only fix.</Callout>
 
 <style>
-.csrf-intro { font-size: 0.84em; color: #334155; line-height: 1.5; }
+.csrf-intro { font-size: 0.84em; color: var(--cj-text); line-height: 1.5; }
 
 .csrf-grid {
   display: grid;
@@ -426,7 +426,7 @@ zoom: 0.9
 .csrf-card {
   border-radius: 14px;
   overflow: hidden;
-  border: 1.5px solid #e2e8f0;
+  border: 1.5px solid var(--cj-border);
   animation: csrf-rise 340ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 .csrf-card.slidev-vclick-hidden { animation-play-state: paused; }
@@ -438,8 +438,8 @@ zoom: 0.9
   letter-spacing: 0.4px;
   padding: 6px 14px;
 }
-.csrf-label--blue { background: #eff6ff; color: #1d4ed8; border-bottom: 1px solid #bfdbfe; }
-.csrf-label--red  { background: #fef2f2; color: #b91c1c; border-bottom: 1px solid #fecaca; }
+.csrf-label--blue { background: var(--cj-defense-bg); color: var(--cj-defense-text); border-bottom: 1px solid var(--cj-defense-border); }
+.csrf-label--red  { background: var(--cj-danger-bg); color: var(--cj-danger-text); border-bottom: 1px solid var(--cj-danger-border); }
 
 .csrf-card-body {
   padding: 10px 14px;
@@ -453,12 +453,12 @@ zoom: 0.9
   display: flex;
   gap: 10px;
   font-size: 0.74em;
-  color: #334155;
+  color: var(--cj-text);
   line-height: 1.4;
 }
 .csrf-key {
   font-weight: 800;
-  color: #64748b;
+  color: var(--cj-text-muted);
   min-width: 72px;
   flex-shrink: 0;
   padding-top: 1px;
