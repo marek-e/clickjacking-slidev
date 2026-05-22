@@ -1,0 +1,20 @@
+slides/02-the-attack.md
+  s_7936fd4d40eee7::t_fc539d892c3d79 802-805,807
+  s_7936fd4d40eee7::t_840b392d4655e7 806
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "918ad9efefce39947740ab49cdf31c6f290de818",
+  "prompts": {},
+  "sessions": {
+    "s_7936fd4d40eee7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "52e84cf6-845c-4950-be78-bf814e8c47ac",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
