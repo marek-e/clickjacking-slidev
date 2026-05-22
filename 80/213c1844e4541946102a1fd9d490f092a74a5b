@@ -1,0 +1,32 @@
+components/ClickjackDemo.vue
+  s_e2652338e80ff0::t_1dec7fd5677c7e 353
+  s_e2652338e80ff0::t_1589f0df99cb0d 202
+  s_e2652338e80ff0::t_a310f98944d436 486
+  s_e2652338e80ff0::t_d73be45c2dbf3d 406
+  s_e2652338e80ff0::t_8e1fd9fbe14cac 386
+  s_e2652338e80ff0::t_12f04250c659db 303,307
+  s_e2652338e80ff0::t_bf24f7530b7a30 281
+  s_e2652338e80ff0::t_87d015994fc63a 321
+  s_e2652338e80ff0::t_213d0776b3fe1c 370,374
+  s_e2652338e80ff0::t_1a35c3e3e04014 226
+  s_e2652338e80ff0::t_35659dde6dc028 332,334
+  s_e2652338e80ff0::t_d89ff4cb3379e3 313
+  s_e2652338e80ff0::t_9c0c4425beed4a 399
+  s_e2652338e80ff0::t_70f5b860836816 249
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.0",
+  "base_commit_sha": "80213c1844e4541946102a1fd9d490f092a74a5b",
+  "prompts": {},
+  "sessions": {
+    "s_e2652338e80ff0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5ac8636c-2b9f-4bb5-a9f3-160781d1bc70",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
