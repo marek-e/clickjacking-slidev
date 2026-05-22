@@ -1,0 +1,28 @@
+slides/04-defenses.md
+  s_e2652338e80ff0::t_4fcc3b745cb0f9 288
+  s_e2652338e80ff0::t_0da0378441eb52 130
+  s_e2652338e80ff0::t_292e39b1fa95f3 429
+  s_e2652338e80ff0::t_29c6aab8056a57 516
+  s_e2652338e80ff0::t_eeeae3900b7ef6 456,461
+  s_e2652338e80ff0::t_ead81121a6aae8 418
+  s_e2652338e80ff0::t_df60c7c3f61a3e 521,526,531
+  s_e2652338e80ff0::t_5313e319515a41 344,347
+  s_e2652338e80ff0::t_8476109a40e2a1 524,529,534
+  s_e2652338e80ff0::t_6c87045cf6cbdd 270
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.0",
+  "base_commit_sha": "2e7a44adcdc06ed65547cd4bb3cbdfedb3cb7010",
+  "prompts": {},
+  "sessions": {
+    "s_e2652338e80ff0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5ac8636c-2b9f-4bb5-a9f3-160781d1bc70",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
