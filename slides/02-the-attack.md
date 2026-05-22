@@ -799,12 +799,12 @@ zoom: 0.88
 
 | Year | Target | Impact |
 |------|--------|--------|
-| 2008 | Adobe Flash Player | Mic/cam access via settings page |
-| 2008 | Twitter | Forced tweets at scale |
-| 2010 | Facebook | Mass Likejacking campaign |
-| 2012 | Instagram | Forced follows |
-| 2015 | LinkedIn | Invisible action buttons |
-| 2021+ | OAuth flows | Account takeover, still common |
+| 2008 | [Adobe Flash Player](https://blog.guya.net/2008/10/07/malicious-camera-spying-using-clickjacking/) | Mic/cam access via settings page |
+| 2009 | [Twitter](https://www.theregister.com/2009/02/13/twitter_clickjack_attack/) | "Don't Click" worm — forced tweets at scale |
+| 2010 | [Facebook](https://www.theregister.com/2010/06/01/facebook_clickjacking_worm/) | Mass Likejacking campaign |
+| 2015 | [LinkedIn](https://www.securityweek.com/linkedin-patches-clickjacking-flaw-exploitable-css/) | CSS-based invisible action buttons |
+| 2018 | [Yelp Reservations](https://hackerone.com/reports/355859) | Stored credit card charged via hijacked booking button |
+| 2024 | [DoubleClickjacking](https://www.bleepingcomputer.com/news/security/new-doubleclickjacking-attack-exploits-double-clicks-to-hijack-accounts/) | OAuth consent hijack — Slack, Salesforce, Shopify |
 
 
 ---
