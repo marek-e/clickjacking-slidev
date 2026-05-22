@@ -10,7 +10,7 @@
   <AgendaItem n="4">The Double Con</AgendaItem>
   <AgendaItem n="5">Impact &amp; real-world cases</AgendaItem>
   <AgendaItem n="6">Vulnerability prerequisites</AgendaItem>
-  <AgendaItem n="7">Prefilled form trick &amp; demos</AgendaItem>
+  <AgendaItem n="7">Pre-armed forms &amp; chained clicks</AgendaItem>
 </div>
 
 <div class="flex flex-col gap-2">

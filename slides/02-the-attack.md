@@ -1064,7 +1064,7 @@ that forgot the header.
 
 ---
 
-# The Prefilled Form Trick
+# Pre-armed Forms & Chained Clicks
 
 <div class="mt-3 text-sm text-gray-600">
   Some sites accept form values via URL, handing the attacker a pre-armed payload.
@@ -1078,6 +1078,26 @@ that forgot the header.
   <span class="text-xl leading-none mt-0.5">📝</span>
   <div class="text-sm text-gray-700">
     The attacker loads the victim page inside an iframe with the form <strong>already filled</strong>, then overlays just the submit button with their lure. One click from the victim and the transaction fires without them ever choosing to initiate it.
+  </div>
+</div>
+
+<div v-click class="mt-4 flex gap-3 items-start rounded-xl border border-orange-200 bg-orange-50 px-4 py-4">
+  <span class="text-xl leading-none mt-0.5">🔗</span>
+  <div class="text-sm text-gray-700">
+    <strong>Chain it.</strong> Nothing stops placing <em>two</em> fake buttons over two different successive targets inside an iframe:
+    <div class="mt-2 flex gap-2 font-mono text-xs">
+      <div class="flex-1 bg-white rounded-lg border border-orange-200 px-3 py-2 text-center">
+        <div class="text-orange-600 font-bold">Click 1</div>
+        <div class="text-gray-500 mt-0.5">Fake: "Dismiss banner"</div>
+        <div class="text-gray-400 text-[10px] mt-1">↓ real: Accept ToS</div>
+      </div>
+      <div class="flex-1 bg-white rounded-lg border border-orange-200 px-3 py-2 text-center">
+        <div class="text-orange-600 font-bold">Click 2</div>
+        <div class="text-gray-500 mt-0.5">Fake: "Confirm free trial"</div>
+        <div class="text-gray-400 text-[10px] mt-1">↓ real: Pay $500</div>
+      </div>
+    </div>
+    <div class="mt-2 text-gray-500">No single action looks suspicious. The victim never suspects a thing.</div>
   </div>
 </div>
 
