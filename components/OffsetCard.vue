@@ -96,7 +96,7 @@ const useInlineHeader = computed(() => !props.label && (hasIcon.value || !!props
       <div v-if="hasIcon" class="text-2xl leading-none">
         <slot name="icon" />
       </div>
-      <div v-if="title" class="font-bold text-gray-900 leading-tight">
+      <div v-if="title" class="font-bold text-slate-900 leading-tight">
         {{ title }}
       </div>
     </div>
@@ -104,12 +104,12 @@ const useInlineHeader = computed(() => !props.label && (hasIcon.value || !!props
       <div v-if="hasIcon" class="text-3xl mb-2">
         <slot name="icon" />
       </div>
-      <div v-if="title" class="font-bold text-gray-900">
+      <div v-if="title" class="font-bold text-slate-900">
         {{ title }}
       </div>
     </div>
 
-    <div class="text-sm text-gray-600 mt-1 flex-1">
+    <div class="text-sm text-slate-600 mt-1 flex-1">
       <slot />
     </div>
   </div>
