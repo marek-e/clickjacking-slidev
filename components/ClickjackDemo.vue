@@ -15,6 +15,10 @@ const props = defineProps({
   clickable: { type: Boolean, default: false },
   startX: { type: Number, default: 0 },
   startY: { type: Number, default: 0 },
+  adMode: { type: Boolean, default: false },
+  adHeader: { type: String, default: "" },
+  adHeaderBg: { type: String, default: "#6366f1" },
+  attackerBg: { type: String, default: "" },
 });
 
 const emit = defineEmits(["buttonClick"]);
@@ -48,6 +52,10 @@ watch(
 
 onUnmounted(() => window.removeEventListener("blur", onWindowBlur));
 
+const attackerBgStyle = computed(() =>
+  props.attackerBg ? { background: props.attackerBg } : {},
+);
+
 const statusLabel = computed(() => {
   if (revealOpacity.value === 0)
     return "⚠️ Attack in progress — victim iframe is invisible";
@@ -62,13 +70,37 @@ const statusLabel = computed(() => {
     <!-- ── Stage ─────────────────────────────────────────── -->
     <div class="cj-stage" :style="{ height: height + 'px' }">
       <!-- Bottom layer: attacker's page (always visible) -->
-      <div class="cj-attacker">
+
+      <!-- Default full-page layout -->
+      <div v-if="!adMode" class="cj-attacker" :style="attackerBgStyle">
         <span class="cj-badge">ATTACKER PAGE</span>
         <div class="cj-attacker-title">{{ attackerTitle }}</div>
         <p class="cj-attacker-body">{{ attackerBody }}</p>
         <button class="cj-attacker-btn" tabindex="-1">
           {{ attackerButton }}
         </button>
+      </div>
+
+      <!-- Ad popup layout: dimmed background + floating card -->
+      <div v-else class="cj-attacker cj-ad-scene" :style="attackerBgStyle">
+        <span class="cj-badge">ATTACKER PAGE</span>
+        <div class="cj-ad-overlay" aria-hidden="true"></div>
+        <div class="cj-ad-popup">
+          <!-- Popup header -->
+          <div class="cj-ad-header" :style="{ background: adHeaderBg }">
+            <span v-if="adHeader" class="cj-ad-brand">{{ adHeader }}</span>
+            <span v-else class="cj-ad-brand">Advertisement</span>
+            <button class="cj-ad-close" tabindex="-1">×</button>
+          </div>
+          <!-- Popup body -->
+          <div class="cj-ad-body">
+            <div class="cj-attacker-title">{{ attackerTitle }}</div>
+            <p class="cj-attacker-body">{{ attackerBody }}</p>
+            <button class="cj-attacker-btn" tabindex="-1">
+              {{ attackerButton }}
+            </button>
+          </div>
+        </div>
       </div>
 
       <!-- Top layer: victim iframe (opacity + position controlled) -->
@@ -372,5 +404,92 @@ iframe {
 }
 .dot-victim {
   background: #64b5f6;
+}
+
+/* ── Ad popup mode ───────────────────────────────────────── */
+
+/* Outer scene: the "website" behind the popup */
+.cj-ad-scene {
+  background: linear-gradient(150deg, #0d1117 0%, #161b22 100%);
+}
+
+/* Semi-transparent overlay that dims the background */
+.cj-ad-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 0;
+}
+
+/* Floating popup card */
+.cj-ad-popup {
+  position: relative;
+  z-index: 1;
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+  width: min(320px, 88%);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Popup header strip: brand name + × */
+.cj-ad-header {
+  display: flex;
+  align-items: center;
+  padding: 8px 10px 8px 14px;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.cj-ad-brand {
+  flex: 1;
+  font-size: 0.78em;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.3px;
+}
+
+.cj-ad-close {
+  width: 22px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+  font-size: 1em;
+  line-height: 1;
+  cursor: pointer;
+  pointer-events: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-family: inherit;
+  flex-shrink: 0;
+}
+
+/* Popup body */
+.cj-ad-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 20px 20px;
+  text-align: center;
+}
+
+.cj-ad-scene .cj-attacker-title {
+  color: #1e293b;
+  font-size: 1.1em;
+}
+.cj-ad-scene .cj-attacker-body {
+  color: #475569;
+}
+.cj-ad-scene .cj-badge {
+  z-index: 2;
 }
 </style>

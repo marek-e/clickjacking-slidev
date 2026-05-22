@@ -809,19 +809,25 @@ zoom: 0.88
 
 ---
 layout: center
-class: p-4
 ---
 
-## Real-World PoC - Star a GitHub Repo
+## Demo - Farm stars on GitHub
 
 <ClickjackDemo
   victim-url="/victims/github-star.html"
-  attacker-title="⭐ You've been selected!"
-  attacker-body="You're one of 50 users chosen to beta-test our developer tool. Give it a star rating to unlock your free account."
-  attacker-button="★ Give it a star"
+  attacker-title="🏆 You're in the top 1%!"
+  attacker-body="Our data shows you're one of the most active open-source contributors this month. Claim your free developer badge now."
+  attacker-button="Claim My Badge 🎖️"
+  ad-header="Don't miss your chance to claim your free developer badge now."
+  ad-header-bg="#6366f1"
+  attacker-bg="#24292f"
   victim-label="GitHub: Star octocat/Hello-World"
-  :height="280"
-  :start-y="-30"
+  :height="300"
+  :ad-mode="true"
+  :show-position-controls="true"
+  :clickable="true"
+  :start-y="-14"
+  :start-x="-20"
 />
 
 <!--
@@ -929,8 +935,8 @@ that forgot the header.
       <span class="sc-step-num">01</span>
       <span class="sc-step-icon">🔐</span>
     </div>
-    <div class="sc-step-title">Login stores a cookie</div>
-    <div class="sc-step-desc">You authenticate with your bank. The browser stores a <strong>session cookie</strong>, a token that proves your identity on every future request.</div>
+    <div class="sc-step-title">Login stores a credential</div>
+    <div class="sc-step-desc">You authenticate with your bank. The browser stores a credential — a <strong>session cookie</strong> or <strong>JWT</strong> — that proves your identity on every future request.</div>
   </div>
 
   <div class="sc-arrow" aria-hidden="true">→</div>
@@ -960,6 +966,11 @@ that forgot the header.
 <div class="sc-fix" v-click>
   <span class="sc-fix-label">🍪 Partial fix</span>
   <span class="sc-fix-text"><code>SameSite=Lax</code> (now the browser default) tells the browser not to send cookies inside cross-site iframes; the bank shows a login screen instead. Still, pair it with frame headers for a complete defense.</span>
+</div>
+
+<div class="sc-caveat" v-click>
+  <span class="sc-caveat-label">⚠️ JWT in <code>localStorage</code>?</span>
+  <span class="sc-caveat-text"><code>SameSite</code> doesn't help — there's no cookie. The framed page reads its own <code>localStorage</code> and attaches the token itself. Frame headers are the <em>only</em> fix.</span>
 </div>
 
 <style>
@@ -1027,6 +1038,23 @@ that forgot the header.
 .sc-fix.slidev-vclick-hidden { animation-play-state: paused; }
 .sc-fix-label { font-weight: 800; color: #92400e; white-space: nowrap; }
 .sc-fix-text  { color: #374151; }
+
+.sc-caveat {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  margin-top: 10px;
+  padding: 10px 16px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 12px;
+  font-size: 0.78em;
+  line-height: 1.5;
+  animation: sc-rise 360ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.sc-caveat.slidev-vclick-hidden { animation-play-state: paused; }
+.sc-caveat-label { font-weight: 800; color: #b91c1c; white-space: nowrap; }
+.sc-caveat-text  { color: #374151; }
 
 @keyframes sc-rise {
   from { opacity: 0; transform: translateY(8px); }

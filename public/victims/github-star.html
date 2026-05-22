@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GitHub — octocat/Hello-World</title>
+  <title>GitHub — marek-e/my-new-super-ai-tool</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -16,7 +16,6 @@
       flex-direction: column;
     }
 
-    /* GitHub-like nav */
     .gh-nav {
       background: #161b22;
       padding: 9px 16px;
@@ -30,7 +29,6 @@
     .gh-breadcrumb a { color: #58a6ff; text-decoration: none; font-weight: 600; }
     .gh-user { margin-left: auto; font-size: 0.74em; color: #6e7681; white-space: nowrap; }
 
-    /* Repo actions bar */
     .gh-bar {
       background: #f6f8fa;
       border-bottom: 1px solid #d0d7de;
@@ -50,11 +48,7 @@
     }
     .gh-bar-sep { flex: 1; }
 
-    /* Star button group */
-    .gh-star-group {
-      display: flex;
-      align-items: stretch;
-    }
+    .gh-star-group { display: flex; align-items: stretch; }
     .gh-star-btn {
       display: flex;
       align-items: center;
@@ -91,14 +85,13 @@
     }
     .gh-star-count:hover { background: #eef2f5; }
 
-    /* Main content */
     .gh-content {
       flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 8px;
       padding: 0 20px;
     }
 
@@ -111,10 +104,25 @@
       gap: 6px;
     }
 
+    .gh-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 0.65em;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #a855f7, #6366f1);
+      color: #fff;
+      letter-spacing: 0.3px;
+    }
+
     .gh-desc {
       font-size: 0.78em;
       color: #57606a;
       text-align: center;
+      max-width: 340px;
+      line-height: 1.4;
     }
 
     .gh-stats {
@@ -135,7 +143,7 @@
     .gh-lang-dot {
       width: 10px; height: 10px;
       border-radius: 50%;
-      background: #f1e05a;
+      background: #3572A5;
       border: 1px solid rgba(0,0,0,0.1);
     }
   </style>
@@ -145,7 +153,7 @@
   <nav class="gh-nav">
     <span class="gh-logo">⬡ GitHub</span>
     <span class="gh-breadcrumb">
-      <a href="#">octocat</a> / <a href="#"><strong>Hello-World</strong></a>
+      <a href="#">marek-e</a> / <a href="#"><strong>my-new-super-ai-tool</strong></a>
     </span>
     <span class="gh-user">🔒 Signed in as alice</span>
   </nav>
@@ -158,21 +166,24 @@
         <span id="starIcon">☆</span>
         <span id="starLabel">Star</span>
       </button>
-      <div class="gh-star-count" id="starCount">1.2k</div>
+      <div class="gh-star-count" id="starCount">3</div>
     </div>
   </div>
 
   <div class="gh-content">
-    <div class="gh-repo-name">📦 octocat / Hello-World</div>
-    <div class="gh-desc">My first repository on GitHub!</div>
+    <div class="gh-repo-name">
+      🤖 marek-e / my-new-super-ai-tool
+      <span class="gh-badge">✨ AI</span>
+    </div>
+    <div class="gh-desc">The AI tool that will replace your entire dev team. Yes, including you. Sorry.</div>
     <div class="gh-stats">
-      <span class="gh-stat">👁️ 42 watching</span>
-      <span class="gh-stat">🔀 2.3k forks</span>
-      <span class="gh-stat">⚠️ 12 issues</span>
+      <span class="gh-stat">👁️ 2 watching</span>
+      <span class="gh-stat">🔀 0 forks</span>
+      <span class="gh-stat">⚠️ 1 issue</span>
     </div>
     <div class="gh-lang">
       <span class="gh-lang-dot"></span>
-      JavaScript · MIT License · Updated 3 days ago
+      Python · MIT License · Updated just now
     </div>
   </div>
 
@@ -183,7 +194,7 @@
       document.getElementById('starBtn').classList.toggle('starred', starred);
       document.getElementById('starIcon').textContent = starred ? '★' : '☆';
       document.getElementById('starLabel').textContent = starred ? 'Starred' : 'Star';
-      document.getElementById('starCount').textContent = starred ? '1.2k' : '1.2k';
+      document.getElementById('starCount').textContent = starred ? '4' : '3';
     }
   </script>
 </body>

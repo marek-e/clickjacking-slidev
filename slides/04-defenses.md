@@ -328,6 +328,7 @@ No <code>X-Frame-Options</code> or CSP set. It embeds in any page, from any orig
 
 ---
 class: px-14 py-6
+hide: true
 zoom: 0.9
 ---
 
