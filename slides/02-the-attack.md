@@ -988,7 +988,7 @@ that forgot the header.
   align-items: center;
   justify-content: center;
   font-size: 1.4em;
-  color: #cbd5e1;
+  color: var(--cj-decorative);
   font-weight: 700;
 }
 

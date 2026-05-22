@@ -55,7 +55,7 @@ onUnmounted(() => document.removeEventListener("pointerdown", onClickOutside));
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  border: 1.5px solid #93c5fd;
+  border: 1.5px solid var(--cj-defense-ring);
   background: var(--cj-defense-bg);
   color: var(--cj-defense);
   font-size: 13px;
