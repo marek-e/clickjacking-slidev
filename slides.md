@@ -37,7 +37,7 @@ class: text-center
 
   <p class="m-0 text-2xl font-light text-gray-900">Proof Hackers Write Better CSS Than You</p>
 
-  <p class="m-0 text-sm font-medium text-gray-800 tracking-wide">When <code>z-index</code>, <code>opacity</code>, and <code>iframe</code> become weapons</p>
+  <p class="m-0 text-sm font-medium text-slate-700 tracking-wide">When <code>z-index</code>, <code>opacity</code>, and <code>iframe</code> become weapons</p>
 
 </div>
 
@@ -120,7 +120,7 @@ onUnmounted(() => clearTimeout(timer))
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: rgba(185, 28, 28, 0.45);
+  background: rgba(220, 38, 38, 0.45);
   animation: cj-ripple-out 0.5s ease-out 0.72s both;
   animation-play-state: running;
 }
