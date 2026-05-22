@@ -50,12 +50,7 @@ http.headers().frameOptions().deny();
 
 **Still recommended** as defense-in-depth alongside CSP. Universally understood by browsers, zero-cost to add.
 
-<div class="mt-4 p-3 bg-amber-50 rounded-lg border border-amber-400 text-sm">
-
-⚠️ Missing on **~63%** of production sites  
-(source: [HTTP Archive Web Almanac 2024](https://almanac.httparchive.org/en/2024/security))
-
-</div>
+<Callout variant="warning" class="mt-4">Missing on <strong>~63%</strong> of production sites — <a href="https://almanac.httparchive.org/en/2024/security" target="_blank">HTTP Archive Web Almanac 2024</a></Callout>
 
 </div>
 
@@ -96,12 +91,7 @@ Content-Security-Policy: frame-ancestors
   https://embed.example.com;
 ```
 
-<div class="mt-4 p-3 bg-amber-50 rounded-lg border border-amber-400 text-sm">
-
-⚠️ Missing on **~89%** of production sites  
-(source: [HTTP Archive Web Almanac 2024](https://almanac.httparchive.org/en/2024/security))
-
-</div>
+<Callout variant="warning" class="mt-4">Missing on <strong>~89%</strong> of production sites — <a href="https://almanac.httparchive.org/en/2024/security" target="_blank">HTTP Archive Web Almanac 2024</a></Callout>
 
 </div>
 
@@ -152,10 +142,7 @@ If they conflict, CSP `frame-ancestors` takes precedence in modern browsers.
 
 # Defense #3 - JavaScript Framebusting
 
-<div class="mt-2 mb-3 p-3 bg-amber-50 rounded-xl border border-amber-200 text-sm flex gap-2 items-start">
-  <span>📖</span>
-  <div>Before HTTP headers existed for this, developers wrote client-side JS to detect iframe nesting and force the top window to navigate away. It was the best available option in 2008, broken almost immediately after.</div>
-</div>
+<Callout variant="note" class="mt-2 mb-3">Before HTTP headers existed for this, developers wrote client-side JS to detect iframe nesting and force the top window to navigate away. It was the best available option in 2008, broken almost immediately after.</Callout>
 
 <div class="grid grid-cols-2 gap-6 mt-2">
 
@@ -197,9 +184,7 @@ if (window !== top) {
 - XSS on target page to replace framebusting script
 - Double-frame trick
 
-<div class="mt-3 p-3 bg-red-50 rounded-lg border border-red-300 text-sm">
-❌ JS framebusting is unreliable. Use HTTP headers only.
-</div>
+<Callout variant="error" class="mt-3">JS framebusting is unreliable. Use HTTP headers only.</Callout>
 
 </div>
 
@@ -427,9 +412,7 @@ zoom: 0.9
 
 </div>
 
-<div class="csrf-warn" v-click>
-  <strong>⚠️ The dangerous misconception:</strong> "We have CSRF tokens, we're safe." With clickjacking the victim clicks a real button in a real session. The CSRF token is legitimately present and valid. The server cannot tell it was a tricked click. Frame headers are the only fix.
-</div>
+<Callout v-click variant="warning" class="mt-3"><strong>The dangerous misconception:</strong> "We have CSRF tokens, we're safe." With clickjacking the victim clicks a real button in a real session. The CSRF token is legitimately present and valid. The server cannot tell it was a tricked click. Frame headers are the only fix.</Callout>
 
 <style>
 .csrf-intro { font-size: 0.84em; color: #374151; line-height: 1.5; }
@@ -481,23 +464,6 @@ zoom: 0.9
   padding-top: 1px;
 }
 
-.csrf-warn {
-  margin-top: 12px;
-  padding: 10px 14px;
-  background: #fef2f2;
-  border: 1px solid #fca5a5;
-  border-radius: 10px;
-  font-size: 0.78em;
-  color: #374151;
-  line-height: 1.5;
-  animation: csrf-rise 340ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-.csrf-warn.slidev-vclick-hidden { animation-play-state: paused; }
-
-@keyframes csrf-rise {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
 </style>
 
 ---

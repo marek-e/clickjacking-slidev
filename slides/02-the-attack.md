@@ -1,15 +1,11 @@
 # What is Clickjacking?
 
-<div class="mt-4 p-3 bg-amber-50 rounded-xl border border-amber-200 text-sm flex gap-1">
-    <span class="font-bold text-amber-800">📖 Origin: </span>
-    <span class="text-gray-700"> "Jacking" itself traces back to <strong>hi-jack</strong>, robbing someone mid-journey. The attacker intercepts your click mid-intent.</span>
-</div>
+<Callout variant="note" class="mt-4"><strong>Origin:</strong> "Jacking" itself traces back to <strong>hi-jack</strong>, robbing someone mid-journey. The attacker intercepts your click mid-intent.</Callout>
 
-<div v-click class="mt-4 p-4 bg-green-50 rounded-xl border border-green-600">
+<Callout v-click variant="success" icon="🎯" class="mt-4">
+ <strong>Clickjacking</strong> or <strong>UI Redressing</strong> is a UI attack that tricks victims into clicking something <strong>different</strong> from what they perceive they are clicking.
 
-> **Clickjacking** or **UI Redressing** is a UI attack that tricks victims into clicking something **different** from what they perceive they are clicking.
-
-</div>
+</Callout>
 
 <div v-click class="cj-stagger mt-6 grid grid-cols-3 gap-4 text-center items-stretch">
   <div class="cj-stagger-item h-full" style="animation-delay: 0ms">
@@ -460,9 +456,7 @@ zoom: 0.88
 
 # The Double Con - Keeping the Victim Fooled
 
-<div class="dc-intro">
-  After hijacking your click, a smart attacker doesn't go silent. They <strong>listen for the click</strong> and immediately swap their page content, keeping the illusion alive while the damage is already done.
-</div>
+<Callout variant="note" noIcon>After hijacking your click, a smart attacker doesn't go silent. They <strong>listen for the click</strong> and immediately swap their page content, keeping the illusion alive while the damage is already done.</Callout>
 
 <div class="dc-split mt-5">
 
@@ -515,16 +509,6 @@ zoom: 0.88
 
 <style>
 /* ── Double Con slide ─────────────────────────────────── */
-.dc-intro {
-  font-size: 0.88em;
-  color: #374151;
-  line-height: 1.5;
-  padding: 10px 14px;
-  background: #fefce8;
-  border: 1px solid #fde68a;
-  border-radius: 10px;
-}
-
 .dc-split {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -755,9 +739,7 @@ zoom: 0.88
 
 </div>
 
-<div class="ri-note" v-click>
-  <strong>The twist:</strong> browser, server logs, audit trail - all completely legitimate. No malware. No injection. Just a misplaced click.
-</div>
+<Callout v-click variant="error" class="mt-8" noIcon><strong>The twist:</strong> browser, server logs, audit trail — all completely legitimate. No malware. No injection. Just a misplaced click.</Callout>
 
 <style>
 .ri-intro { font-size: 0.86em; color: #374151; }
@@ -774,18 +756,6 @@ zoom: 0.88
 }
 .ri-item.slidev-vclick-hidden { animation-play-state: paused; }
 
-.ri-note {
-  margin-top: 32px;
-  padding: 10px 14px;
-  background: #fef2f2;
-  border: 1px solid #fca5a5;
-  border-radius: 10px;
-  font-size: 0.82em;
-  color: #374151;
-  line-height: 1.5;
-  animation: ri-rise 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-.ri-note.slidev-vclick-hidden { animation-play-state: paused; }
 
 @keyframes ri-rise {
   from { opacity: 0; transform: translateY(10px); }
@@ -1074,29 +1044,21 @@ that forgot the header.
   https://bank.com/transfer<strong>?amount=500&amp;to=attacker_account</strong>
 </div>
 
-<div class="mt-5 flex gap-3 items-start rounded-xl border border-indigo-200 bg-indigo-50 px-4 py-4">
-  <span class="text-xl leading-none mt-0.5">📝</span>
-  <div class="text-sm text-gray-700">
-    The attacker loads the victim page inside an iframe with the form <strong>already filled</strong>, then overlays just the submit button with their lure. One click from the victim and the transaction fires without them ever choosing to initiate it.
-  </div>
-</div>
+<Callout variant="info" class="mt-5">The attacker loads the victim page inside an iframe with the form <strong>already filled</strong>, then overlays just the submit button with their lure. One click from the victim and the transaction fires without them ever choosing to initiate it.</Callout>
 
-<div v-click class="mt-4 flex gap-3 items-start rounded-xl border border-orange-200 bg-orange-50 px-4 py-4">
-  <span class="text-xl leading-none mt-0.5">🔗</span>
-  <div class="text-sm text-gray-700">
-    <strong>Chain it.</strong> Nothing stops placing <em>two</em> fake buttons over two different successive targets inside an iframe:
-    <div class="mt-2 flex gap-2 font-mono text-xs">
-      <div class="flex-1 bg-white rounded-lg border border-orange-200 px-3 py-2 text-center">
-        <div class="text-orange-600 font-bold">Click 1</div>
-        <div class="text-gray-500 mt-0.5">Fake: "Dismiss banner"</div>
-        <div class="text-gray-400 text-[10px] mt-1">↓ real: Accept ToS</div>
-      </div>
-      <div class="flex-1 bg-white rounded-lg border border-orange-200 px-3 py-2 text-center">
-        <div class="text-orange-600 font-bold">Click 2</div>
-        <div class="text-gray-500 mt-0.5">Fake: "Confirm free trial"</div>
-        <div class="text-gray-400 text-[10px] mt-1">↓ real: Pay $500</div>
-      </div>
+<Callout v-click variant="escalation" class="mt-4">
+  <strong>Chain it.</strong> Nothing stops placing <em>two</em> fake buttons over two different successive targets inside an iframe:
+  <div class="mt-2 flex gap-2 font-mono text-xs">
+    <div class="flex-1 bg-white rounded-lg border border-orange-200 px-3 py-2 text-center">
+      <div class="text-orange-600 font-bold">Click 1</div>
+      <div class="text-gray-500 mt-0.5">Fake: "Dismiss banner"</div>
+      <div class="text-gray-400 text-[10px] mt-1">↓ real: Accept ToS</div>
     </div>
-    <div class="mt-2 text-gray-500">No single action looks suspicious. The victim never suspects a thing.</div>
+    <div class="flex-1 bg-white rounded-lg border border-orange-200 px-3 py-2 text-center">
+      <div class="text-orange-600 font-bold">Click 2</div>
+      <div class="text-gray-500 mt-0.5">Fake: "Confirm free trial"</div>
+      <div class="text-gray-400 text-[10px] mt-1">↓ real: Pay $500</div>
+    </div>
   </div>
-</div>
+  <div class="mt-2 text-gray-500">No single action looks suspicious. The victim never suspects a thing.</div>
+</Callout>
