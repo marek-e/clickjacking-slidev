@@ -1043,7 +1043,7 @@ that forgot the header.
   display: flex;
   gap: 12px;
   align-items: baseline;
-  margin-top: 10px;
+  margin-top: 18px;
   padding: 10px 16px;
   background: #fef2f2;
   border: 1px solid #fecaca;
@@ -1100,49 +1100,3 @@ that forgot the header.
     <div class="mt-2 text-gray-500">No single action looks suspicious. The victim never suspects a thing.</div>
   </div>
 </div>
-
----
-layout: center
-class: p-4
----
-
-## Demo 2 - OAuth Consent Hijacking
-
-<ClickjackDemo
-  victim-url="/victims/oauth.html"
-  attacker-title="🔒 Security Verification Required"
-  attacker-body="For your protection, we need to confirm your identity. This is a standard one-time check."
-  attacker-button="Verify My Identity ✓"
-  victim-label="FastAuth OAuth: Grant full account access to DataHarvest Pro"
-  :height="270"
-/>
-
-<!--
-PRESENTER NOTE:
-At 0% opacity: looks like a legit security check. The user clicks "Verify My Identity".
-Reveal the iframe: they're actually clicking "Allow Access" on an OAuth consent page
-granting a third-party app full read/write access to their account (email, contacts, passwords).
--->
-
----
-layout: center
-class: p-4
----
-
-## Demo 3 - Likejacking
-
-<ClickjackDemo
-  victim-url="/victims/social.html"
-  attacker-title="🎵 Listen to this amazing track"
-  attacker-body="10 million plays and counting. Click play to listen. No sign up needed!"
-  attacker-button="▶ Play Now"
-  victim-label="ConnectHub: Like this Page (14K followers)"
-  :height="270"
-/>
-
-<!--
-PRESENTER NOTE:
-Classic likejacking. The attacker places a "Play" button over the social Like button.
-The user clicks Play, but actually likes a page they've never heard of.
-At scale this can be used for spam, influencing algorithms, or social engineering.
--->
