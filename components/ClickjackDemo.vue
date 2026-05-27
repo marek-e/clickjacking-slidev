@@ -162,7 +162,6 @@ const statusLabel = computed(() => {
         <pre class="cj-pos-code">
 iframe {
   position: absolute;
-  opacity: 0.001;
   top:  {{ iframeTop }}px;
   left: {{ iframeLeft }}px;
 }</pre
