@@ -1,0 +1,21 @@
+docs/superpowers/specs/2026-05-27-advanced-variants-design.md
+  s_28c05e330bfea2::t_5c70b0115cc836 139,141,146,149
+  s_28c05e330bfea2::t_acccf9d4ec9735 41
+  s_28c05e330bfea2::t_5d3004d302385d 1-40,42-138,140,142-145,147-148,150-213
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "b9f69d230d0b5ddd2bec8ec443b71c9adfec05db",
+  "prompts": {},
+  "sessions": {
+    "s_28c05e330bfea2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "178bf281-a3e8-4985-b1ba-bb0bb207b656",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
