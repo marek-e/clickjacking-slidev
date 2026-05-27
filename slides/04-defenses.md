@@ -139,7 +139,8 @@ If they conflict, CSP `frame-ancestors` takes precedence in modern browsers.
 </style>
 
 ---
-
+zoom: 0.95
+---
 # Defense #3 - JavaScript Framebusting
 
 <Callout variant="note" class="mt-2 mb-3">Before HTTP headers existed for this, developers wrote client-side JS to detect iframe nesting and force the top window to navigate away. It was the best available option in 2008, broken almost immediately after.</Callout>
@@ -180,9 +181,7 @@ if (window !== top) {
 ```
 
 **Other bypass vectors:**
-- `onbeforeunload` handler to cancel navigation
-- XSS on target page to replace framebusting script
-- Double-frame trick
+- `onbeforeunload` event listener to cancel navigation
 
 <Callout variant="error" class="mt-3">JS framebusting is unreliable. Use HTTP headers only.</Callout>
 
@@ -191,166 +190,64 @@ if (window !== top) {
 </div>
 
 ---
-class: px-14 py-4
 zoom: 0.9
----
-
-# Frame Busting Bypass - Live
-
-<div class="fb-grid mt-4">
-
-  <div class="fb-panel">
-    <div class="fb-panel-label fb-panel-label--ok">✅ Without bypass - frame buster works</div>
-    <div class="fb-mock">
-      <div class="fb-mock-nav">🏦 SecureBank: Transfer $500</div>
-      <div class="fb-mock-body fb-mock-body--escaped">
-        <div class="fb-mock-icon">🚀</div>
-        <div class="fb-mock-title">Frame buster activated!</div>
-        <div class="fb-mock-sub">top.location redirected; victim's full tab navigates away from the attacker's page</div>
-      </div>
-    </div>
-    <div class="fb-verdict fb-verdict--ok">Attack aborted. The attacker loses the victim.</div>
-  </div>
-
-  <div class="fb-panel" v-click>
-    <div class="fb-panel-label fb-panel-label--fail">❌ Attacker adds <code>sandbox</code> - bypass succeeds</div>
-
-```html
-<iframe src="bank.com/transfer"
-  sandbox="allow-scripts allow-forms">
-  <!-- allow-top-navigation absent -->
-</iframe>
-```
-
-<div class="fb-live-badge">LIVE</div>
-<div class="fb-iframe-wrap">
-  <iframe
-    src="/victims/framebusting-victim.html"
-    sandbox="allow-scripts allow-same-origin"
-    style="width:100%;height:130px;border:none">
-  </iframe>
-</div>
-<div class="fb-verdict fb-verdict--fail">Frame buster throws <code>SecurityError</code>. Victim stays trapped. Attack proceeds.</div>
-
-  </div>
-
-</div>
-
-<style>
-.fb-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  align-items: start;
-}
-
-.fb-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  animation: fb-in 340ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-.fb-panel.slidev-vclick-hidden { animation-play-state: paused; }
-
-.fb-panel-label {
-  font-size: 0.72em;
-  font-weight: 800;
-  padding: 4px 10px;
-  border-radius: 6px;
-}
-.fb-panel-label--ok   { background: var(--cj-safe-bg); color: var(--cj-safe-text); border: 1px solid var(--cj-safe-border); }
-.fb-panel-label--fail { background: var(--cj-danger-bg); color: var(--cj-danger-text); border: 1px solid var(--cj-danger-border); }
-
-.fb-mock {
-  border: 1.5px solid var(--cj-border);
-  border-radius: 10px;
-  overflow: hidden;
-}
-.fb-mock-nav {
-  background: var(--cj-nav);
-  color: #fff;
-  font-size: 0.72em;
-  font-weight: 700;
-  padding: 6px 12px;
-}
-.fb-mock-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  padding: 12px;
-  height: 90px;
-}
-.fb-mock-body--escaped { background: var(--cj-safe-bg); }
-.fb-mock-icon { font-size: 1.6em; }
-.fb-mock-title { font-size: 0.8em; font-weight: 800; color: var(--cj-safe-text); }
-.fb-mock-sub   { font-size: 0.68em; color: var(--cj-text-muted); text-align: center; line-height: 1.4; }
-
-.fb-live-badge {
-  display: inline-block;
-  font-size: 0.62em;
-  font-weight: 800;
-  letter-spacing: 1px;
-  background: var(--cj-danger);
-  color: #fff;
-  padding: 2px 7px;
-  border-radius: 4px;
-}
-
-.fb-iframe-wrap {
-  border: 1.5px solid var(--cj-border);
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.fb-verdict {
-  font-size: 0.72em;
-  padding: 6px 10px;
-  border-radius: 7px;
-}
-.fb-verdict--ok   { background: var(--cj-safe-bg); color: var(--cj-safe-text); border: 1px solid var(--cj-safe-border); }
-.fb-verdict--fail { background: var(--cj-danger-bg); color: var(--cj-danger-text); border: 1px solid var(--cj-danger-border); }
-
-@keyframes fb-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-</style>
-
----
-layout: two-cols
-layoutClass: gap-4
 ---
 
 # Defenses in Action
 
-::left::
+<div class="dia-label">Trying to embed <code>github.com</code> in an iframe —> live, right now</div>
 
-### ❌ Not Protected
-
-<div style="border:2px solid #f87171; border-radius:8px; overflow:hidden; height:190px;">
-  <iframe src="/victims/bank.html" style="width:100%; height:100%; border:none;"></iframe>
+<div class="dia-frame">
+  <iframe src="https://github.com" style="width:100%;height:100%;border:none;display:block;"></iframe>
 </div>
 
-<div class="mt-2 text-sm text-red-600">
-No <code>X-Frame-Options</code> or CSP set. It embeds in any page, from any origin.
+<div class="dia-footer">
+  <code class="dia-badge">X-Frame-Options: DENY</code>
+  <span class="dia-msg">GitHub sends this on every response. The browser won't load the frame, so the attacker's overlay is useless before it even starts.</span>
 </div>
 
-::right::
-
-### ✅ Protected
-
-<div style="border:2px solid #4ade80; border-radius:8px; height:190px; background:var(--cj-safe-bg); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;">
-  <div style="font-size:2.5em;">🚫</div>
-  <div style="color:var(--cj-danger); font-weight:700; font-size:1.05em;">Refused to Display</div>
-  <code style="font-size:0.72em; color:var(--cj-text); background:var(--cj-border); padding:4px 10px; border-radius:4px;">X-Frame-Options: DENY</code>
-  <div style="font-size:0.78em; color:var(--cj-text-muted);">Browser blocked the iframe</div>
-</div>
-
-<div class="mt-2 text-sm text-green-700">
-<code>frame-ancestors 'none'</code>: browser refuses to embed. Attack impossible.
-</div>
+<style>
+.dia-label {
+  font-size: 0.84em;
+  color: var(--cj-text-muted);
+  margin-bottom: 12px;
+}
+.dia-label code {
+  background: var(--cj-divider);
+  padding: 1px 6px;
+  border-radius: 4px;
+  color: var(--cj-text);
+}
+.dia-frame {
+  border: 2px solid var(--cj-safe-border);
+  border-radius: 10px;
+  overflow: hidden;
+  height: 300px;
+  background: var(--cj-surface);
+}
+.dia-footer {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.dia-badge {
+  font-family: monospace;
+  font-size: 0.78em;
+  background: var(--cj-safe-bg);
+  color: var(--cj-safe-text);
+  border: 1.5px solid var(--cj-safe-border);
+  padding: 5px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.dia-msg {
+  font-size: 0.82em;
+  color: var(--cj-text);
+  line-height: 1.5;
+}
+</style>
 
 ---
 class: px-14 py-6
