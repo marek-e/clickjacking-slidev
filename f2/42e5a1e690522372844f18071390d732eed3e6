@@ -1,0 +1,19 @@
+slides/05-dcj.md
+  s_28c05e330bfea2::t_7e1a4239178148 1-184
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "f242e5a1e690522372844f18071390d732eed3e6",
+  "prompts": {},
+  "sessions": {
+    "s_28c05e330bfea2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "178bf281-a3e8-4985-b1ba-bb0bb207b656",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
