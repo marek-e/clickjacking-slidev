@@ -1,0 +1,24 @@
+docs/superpowers/specs/2026-05-27-demo-fullscreen-teaser-design.md
+  s_521e88f1605e20::t_bf0972684476cb 1-63
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "ac84b050e5502d88cc824cd831e7c93352566854",
+  "prompts": {},
+  "humans": {
+    "h_34454149dac528": {
+      "author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_521e88f1605e20": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "34b346ca-9942-4da5-a8da-a9f2cab3ab66",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
