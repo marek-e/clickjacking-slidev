@@ -267,7 +267,13 @@ layout: center
 
 ## Demo - Bank Transfer Hijacking
 
-<div style="position:relative">
+<div class="cj-teaser" :class="{ 'cj-teaser--out': $clicks >= 1 }" aria-hidden="true">
+  <div class="cj-teaser-title">📩 You won an iPhone 19!</div>
+  <p class="cj-teaser-body">Congratulations. Your iPhone 19 is reserved for you. Click below to claim it before it expires.</p>
+  <button class="cj-teaser-btn" tabindex="-1">Claim your iPhone 19  now 🎁</button>
+</div>
+
+<div v-click style="position:relative">
 <ClickjackDemo
   victim-url="/victims/bank.html"
   attacker-title="📩 You won an iPhone 19!"
@@ -328,6 +334,57 @@ onUnmounted(() => clearTimeout(timer))
 </script>
 
 <style>
+/* ── Full-screen teaser overlay ────────────────────────── */
+.cj-teaser {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+  text-align: center;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #fff;
+}
+
+.cj-teaser-title {
+  font-size: 1.8em;
+  font-weight: 700;
+  color: #ffd700;
+}
+
+.cj-teaser-body {
+  color: #bbb;
+  max-width: 400px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.cj-teaser-btn {
+  padding: 12px 32px;
+  background: var(--cj-safe);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: 700;
+  pointer-events: none;
+  box-shadow: 0 4px 14px rgba(22, 163, 74, 0.45);
+}
+
+.cj-teaser--out {
+  animation: cj-teaser-exit 480ms cubic-bezier(0.4, 0, 1, 1) forwards;
+  pointer-events: none;
+}
+
+@keyframes cj-teaser-exit {
+  from { transform: scale(1);    opacity: 1; }
+  to   { transform: scale(0.55); opacity: 0; }
+}
+
 /* ── Bank alert overlay (slide 5) ───────────────────────── */
 .cj-bank-overlay {
   position: absolute;
