@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BankPortal — Dashboard</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      min-height: 100vh;
+    }
+
+    /* ── Page chrome ─────────────────────────────────── */
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      background: #fff;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .nav-logo { font-size: 1.1em; font-weight: 800; color: #1e40af; }
+    .nav-sub  { font-size: 0.75em; color: #64748b; margin-left: auto; }
+
+    main { padding: 28px 32px; }
+
+    .welcome { font-size: 1.1em; font-weight: 700; color: #1e293b; margin-bottom: 4px; }
+    .sub     { font-size: 0.82em; color: #64748b; margin-bottom: 20px; }
+
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px 18px;
+    }
+    .card-label { font-size: 0.7em; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-value { font-size: 1.5em; font-weight: 800; color: #1e293b; margin-top: 4px; }
+    .card-sub   { font-size: 0.72em; color: #94a3b8; margin-top: 2px; }
+
+    /* ── Password manager popup (HIDDEN — the actual attack target) ── */
+    #pm-popup {
+      position: fixed;
+      bottom: 66px;
+      right: 16px;
+      width: 268px;
+      background: #fff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 14px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+      z-index: 5;
+      opacity: 0;        /* THE ATTACK: hidden by the malicious script */
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .pm-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      background: #f1f5f9;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 0.75em;
+      font-weight: 700;
+      color: #334155;
+    }
+    .pm-entry {
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .pm-field {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 0.78em;
+      color: #475569;
+    }
+    #pm-autofill-btn {
+      display: block;
+      width: calc(100% - 24px);
+      margin: 0 12px 12px;
+      padding: 8px;
+      background: #16a34a;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.8em;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* ── Cookie consent banner (VISIBLE — the bait) ─────── */
+    #cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      background: #1e293b;
+      color: #f1f5f9;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .cookie-text {
+      flex: 1;
+      font-size: 0.82em;
+      line-height: 1.5;
+      min-width: 200px;
+    }
+    .cookie-btns { display: flex; gap: 8px; flex-shrink: 0; }
+    #btn-accept {
+      padding: 7px 18px;
+      background: #16a34a;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.82em;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    #btn-decline {
+      padding: 7px 18px;
+      background: transparent;
+      color: #94a3b8;
+      border: 1px solid #475569;
+      border-radius: 8px;
+      font-size: 0.82em;
+      cursor: pointer;
+    }
+
+    /* ── Damage reveal ──────────────────────────────── */
+    #damage {
+      display: none;
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      width: 300px;
+      z-index: 50;
+      animation: dmg-in 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    .dmg-toast {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: #0f172a;
+      border: 1px solid rgba(148,163,184,0.2);
+      box-shadow: 0 14px 40px rgba(2,6,23,0.4);
+    }
+    .dmg-dot {
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: #dc2626;
+      box-shadow: 0 0 0 3px rgba(220,38,38,0.3);
+      flex-shrink: 0;
+    }
+    .dmg-toast-body  { min-width: 0; }
+    .dmg-toast-label { font-size: 11px; color: #64748b; line-height: 1.1; }
+    .dmg-toast-msg   { font-size: 13px; font-weight: 700; color: #f87171; line-height: 1.2; }
+    .dmg-toast-time  { margin-left: auto; font-size: 11px; color: #475569; flex-shrink: 0; }
+
+    .dmg-card {
+      margin-top: 8px;
+      border-radius: 14px;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.10);
+      overflow: hidden;
+    }
+    .dmg-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 14px 9px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .dmg-head-icon  { font-size: 1.5em; flex-shrink: 0; }
+    .dmg-head-title { font-weight: 800; color: #1e293b; font-size: 0.88em; line-height: 1.1; }
+    .dmg-head-sub   { font-size: 0.7em; color: #94a3b8; margin-top: 1px; }
+    .dmg-head-badge { margin-left: auto; font-size: 0.65em; font-weight: 800; color: #dc2626; flex-shrink: 0; }
+
+    .dmg-rows { padding: 8px 14px; display: flex; flex-direction: column; gap: 5px; }
+    .dmg-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78em;
+      color: #1e293b;
+      padding: 3px 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .dmg-row span { color: #94a3b8; }
+    .dmg-row code {
+      font-family: monospace;
+      background: #f1f5f9;
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      color: #334155;
+    }
+    .dmg-footer {
+      padding: 7px 14px;
+      background: #fef2f2;
+      border-top: 1px solid #fecaca;
+      font-size: 0.72em;
+      color: #dc2626;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    #reset-btn {
+      display: block;
+      width: 100%;
+      padding: 7px;
+      margin-top: 6px;
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 0.76em;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    @keyframes dmg-in {
+      from { opacity: 0; transform: translateY(14px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0)   scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">🏦 BankPortal</span>
+    <span class="nav-sub">alice@corp.com · Savings</span>
+  </nav>
+
+  <main>
+    <p class="welcome">Welcome back, Alice</p>
+    <p class="sub">Last login: today at 09:41 AM</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-label">Checking</div>
+        <div class="card-value">$4,821.50</div>
+        <div class="card-sub">Available balance</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Savings</div>
+        <div class="card-value">$12,340.00</div>
+        <div class="card-sub">3.2% APY</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Credit Card</div>
+        <div class="card-value">$230.14</div>
+        <div class="card-sub">Balance due Jun 15</div>
+      </div>
+    </div>
+  </main>
+
+  <!-- PASSWORD MANAGER POPUP — hidden (opacity:0), the actual attack target -->
+  <div id="pm-popup" aria-hidden="true">
+    <div class="pm-header">🔑 KeyPass — Saved login found</div>
+    <div class="pm-entry">
+      <div class="pm-field">👤 alice@corp.com</div>
+      <div class="pm-field">🔒 ••••••••••••</div>
+    </div>
+    <button id="pm-autofill-btn">Autofill credentials</button>
+  </div>
+
+  <!-- COOKIE BANNER — visible, positioned so "Accept All" overlaps pm-popup area -->
+  <div id="cookie-banner" role="complementary" aria-label="Cookie consent">
+    <span class="cookie-text">🍪 We use cookies to personalize content and analyze our traffic. By clicking "Accept All" you agree to our cookie policy.</span>
+    <div class="cookie-btns">
+      <button id="btn-decline">Decline</button>
+      <button id="btn-accept">Accept All</button>
+    </div>
+  </div>
+
+  <!-- DAMAGE REVEAL — shown after the "click" -->
+  <div id="damage" role="alert">
+    <div class="dmg-toast">
+      <div class="dmg-dot"></div>
+      <div class="dmg-toast-body">
+        <div class="dmg-toast-label">KeyPass</div>
+        <div class="dmg-toast-msg">Credentials autofilled</div>
+      </div>
+      <div class="dmg-toast-time">now</div>
+    </div>
+    <div class="dmg-card">
+      <div class="dmg-head">
+        <span class="dmg-head-icon">💀</span>
+        <div>
+          <div class="dmg-head-title">Credentials Captured</div>
+          <div class="dmg-head-sub">KeyPass · BankPortal</div>
+        </div>
+        <span class="dmg-head-badge">EXFILTRATED</span>
+      </div>
+      <div class="dmg-rows">
+        <div class="dmg-row"><span>Username</span><strong>alice@corp.com</strong></div>
+        <div class="dmg-row"><span>Password</span><strong>Tr0ub4dor&3</strong></div>
+        <div class="dmg-row"><span>Source</span><code>KeyPass autofill</code></div>
+        <div class="dmg-row"><span>Victim clicked</span><strong>"Accept All Cookies"</strong></div>
+      </div>
+      <div class="dmg-footer">You clicked "Accept All". The Autofill button was directly underneath. 🔑</div>
+    </div>
+    <button id="reset-btn">↺ Reset demo</button>
+  </div>
+
+  <script>
+    const banner  = document.getElementById('cookie-banner')
+    const pmPopup = document.getElementById('pm-popup')
+    const damage  = document.getElementById('damage')
+
+    document.getElementById('btn-accept').addEventListener('click', () => {
+      banner.style.display = 'none'
+      // Briefly reveal the hidden PM popup to show it was there all along
+      pmPopup.style.transition = 'opacity 0.15s'
+      pmPopup.style.opacity = '1'
+      setTimeout(() => {
+        pmPopup.style.opacity = '0'
+        setTimeout(() => { damage.style.display = 'block' }, 180)
+      }, 580)
+    })
+
+    document.getElementById('btn-decline').addEventListener('click', () => {
+      banner.style.display = 'none'
+    })
+
+    document.getElementById('reset-btn').addEventListener('click', () => {
+      pmPopup.style.transition = 'none'
+      pmPopup.style.opacity = '0'
+      damage.style.display = 'none'
+      banner.style.display = 'flex'
+    })
+  </script>
+
+</body>
+</html>
