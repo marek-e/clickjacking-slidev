@@ -1,0 +1,19 @@
+public/victims/ext-clickjack-demo.html
+  s_28c05e330bfea2::t_d368d981cae1cf 1-351
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "83c63be6d9d059647e00ebcc3c811d0244cce2f3",
+  "prompts": {},
+  "sessions": {
+    "s_28c05e330bfea2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "178bf281-a3e8-4985-b1ba-bb0bb207b656",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
