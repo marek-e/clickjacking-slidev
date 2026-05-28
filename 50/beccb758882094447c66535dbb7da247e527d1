@@ -1,0 +1,19 @@
+slides.md
+  s_28c05e330bfea2::t_3ab1d0a22d7457 147-154
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "50beccb758882094447c66535dbb7da247e527d1",
+  "prompts": {},
+  "sessions": {
+    "s_28c05e330bfea2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "178bf281-a3e8-4985-b1ba-bb0bb207b656",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
