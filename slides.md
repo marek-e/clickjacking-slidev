@@ -144,3 +144,11 @@ src: ./slides/02-the-attack.md
 ---
 src: ./slides/04-defenses.md
 ---
+
+---
+src: ./slides/05-dcj.md
+---
+
+---
+src: ./slides/06-ext-cj.md
+---
