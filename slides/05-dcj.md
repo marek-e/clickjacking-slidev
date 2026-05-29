@@ -1,8 +1,8 @@
 # DoubleClickjacking — No iframe Required
 
-<span class="dcj-badge">2024 · Paulos Yibelo</span>
+<span class="dcj-badge">2024 · Paulos Yibelo</span> <a href="https://www.evil.blog/2024/12/doubleclickjacking-what.html" target="_blank" class="dcj-link">evil.blog ↗</a>
 
-<Callout variant="error" class="mt-4" noIcon>"You set <code>X-Frame-Options: DENY</code> on every page." Doesn't matter. <strong>No iframe is involved.</strong></Callout>
+<Callout variant="warning" class="mt-4">You set <code>X-Frame-Options: DENY</code> on every page. Doesn't matter. <strong>No iframe is involved.</strong></Callout>
 
 <div class="dcj-three-col mt-6">
   <OffsetCard title="Classic Clickjacking" accent="blue">
@@ -36,41 +36,73 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
+.dcj-link {
+  font-size: 0.72em;
+  font-weight: 700;
+  color: var(--cj-danger-text);
+  text-decoration: none;
+  opacity: 0.75;
+  margin-left: 6px;
+}
+.dcj-link:hover { opacity: 1; }
 </style>
 
+---
+class: px-14 py-4
 ---
 
 # How It Works — The Timing Trick
 
-<div class="dcj-steps mt-5">
+<div class="grid grid-cols-2 gap-6 mt-4">
+
+<div class="dcj-steps">
   <div class="dcj-step">
     <div class="dcj-step-num">01</div>
     <div>
       <div class="dcj-step-title">Attacker serves a popup</div>
-      <div class="dcj-step-desc">A decoy popup opens asking the victim to <strong>"double-click to verify you're human."</strong> The popup's parent window is the attacker's page — it holds <code>window.opener</code> access to control the parent's URL.</div>
+      <div class="dcj-step-desc">A decoy popup opens asking the victim to <strong>"double-click to verify you're human."</strong> The popup holds <code>window.opener</code> — a reference back to the parent tab.</div>
     </div>
   </div>
 
   <div class="dcj-step">
     <div class="dcj-step-num">02</div>
     <div>
-      <div class="dcj-step-title"><code>mousedown</code> fires — parent page swaps silently</div>
-      <div class="dcj-step-desc">On the <em>first press</em> of the double-click, <code>mousedown</code> fires immediately. The popup runs <code>window.opener.location = 'https://slack.com/oauth/v2/authorize?…'</code>, redirecting the parent tab to a real OAuth consent screen.</div>
+      <div class="dcj-step-title"><code>mousedown</code> fires — parent tab swaps silently</div>
+      <div class="dcj-step-desc">On the <em>first press</em> of the double-click, <code>mousedown</code> fires immediately. The popup redirects the parent tab to a real OAuth consent screen via <code>window.opener.location</code>.</div>
     </div>
   </div>
 
   <div class="dcj-step dcj-step--red">
     <div class="dcj-step-num">03</div>
     <div>
-      <div class="dcj-step-title"><code>mouseup</code> completes — on the OAuth "Allow" button</div>
-      <div class="dcj-step-desc">By the time the second click completes, the parent tab has loaded the consent screen with the "Allow" button exactly under the cursor. The victim just authorized the attacker's app without realizing it.</div>
+      <div class="dcj-step-title"><code>mouseup</code> lands on the OAuth "Allow" button</div>
+      <div class="dcj-step-desc">By the time the click completes, the consent screen has loaded with "Allow" exactly under the cursor. The victim just authorized the attacker's app.</div>
     </div>
   </div>
 </div>
 
-<div class="dcj-timing-note" v-click>
-  <code>mousedown → opener.location swap → mouseup → click on Allow</code>
-  <span>The entire UI swap happens in the ~100 ms gap between press and release — imperceptible to humans, reliable for scripts.</span>
+<div v-click>
+
+```js
+// popup.html — the "double-click to verify" decoy
+document.querySelector('.verify-btn')
+  .addEventListener('mousedown', () => {
+
+    // Fires on first press — before mouseup completes
+    window.opener.location =
+      'https://slack.com/oauth/v2/authorize' +
+      '?client_id=HACKER_APP' +
+      '&scope=chat:write,users:read,channels:read'
+
+    // mouseup now fires on the OAuth "Allow" button
+    // in the parent tab — authorizing the attacker's app
+  })
+```
+
+<Callout variant="note" noIcon class="mt-3">The entire swap happens in the ~100 ms gap between press and release — imperceptible to humans, reliable for scripts.</Callout>
+
+</div>
+
 </div>
 
 <style>
@@ -97,37 +129,14 @@
 }
 .dcj-step-title { font-size: 0.84em; font-weight: 800; color: var(--cj-text-strong); margin-bottom: 3px; }
 .dcj-step-desc  { font-size: 0.76em; color: var(--cj-text-muted); line-height: 1.45; }
-
-.dcj-timing-note {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-top: 12px;
-  padding: 10px 16px;
-  background: #fff;
-  border: 1.5px solid var(--cj-text);
-  border-radius: 12px;
-  font-size: 0.76em;
-  animation: dcj-rise 380ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-.dcj-timing-note.slidev-vclick-hidden { animation-play-state: paused; }
-.dcj-timing-note code {
-  font-family: monospace;
-  font-size: 0.85em;
-  background: var(--cj-divider);
-  padding: 4px 8px;
-  border-radius: 6px;
-  white-space: nowrap;
-  flex-shrink: 0;
-  color: var(--cj-text-strong);
-}
-.dcj-timing-note span { color: var(--cj-text-muted); }
-
-@keyframes dcj-rise {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
 </style>
+
+---
+layout: center
+class: p-2 py-4
+---
+
+<img src="/image.png" alt="DoubleClickjacking attack flow diagram" style="max-height: 490px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.10); border: 1px solid var(--cj-border);" />
 
 ---
 layout: center
@@ -149,36 +158,21 @@ Show the damage card: one double-click, full Slack OAuth access granted.
 zoom: 0.92
 ---
 
-# DoubleClickjacking — Targets & Defense
+# DoubleClickjacking — Defense
 
-<div class="grid grid-cols-2 gap-6 mt-4">
+<Callout variant="note" class="mt-3" noIcon>Same attack surface as classic clickjacking. The difference is frame headers won't save you — there's no iframe to block.</Callout>
 
-<div>
-
-**Vulnerable targets:**
-
-- OAuth consent flows — Slack, Salesforce, Shopify, GitHub Apps
-- Crypto wallet transaction approvals
-- Payment confirmations & subscription signups
-- Account changes: email, password, 2FA device registration
-
-<Callout variant="error" class="mt-4" noIcon>PoCs publicly demonstrated on Salesforce and Slack with full account takeover in a single double-click.</Callout>
-
-</div>
-
-<div v-click>
+<div class="mt-5">
 
 **Defense approaches:**
 
 | Approach | What it does |
 |----------|-------------|
-| `pointer-events: none` on load | Disable sensitive buttons; re-enable only after cursor moves over them naturally |
-| Activation delay (100–500 ms) | Require hover before click registers on OAuth buttons |
-| `rel="noopener noreferrer"` | Prevent child windows from reading or writing `window.opener.location` |
-| Browser heuristics | Chrome/Firefox adding event-timing checks (in progress as of 2025) |
-
-<Callout variant="error" class="mt-3" noIcon><code>X-Frame-Options</code> and <code>CSP frame-ancestors</code> don't help here. There is no iframe.</Callout>
+| `pointer-events: none` on load | Disable sensitive buttons by default; re-enable only after the cursor naturally moves over them |
+| Activation delay (100–500 ms) | Require hover before a click registers on OAuth consent buttons |
+| `rel="noopener noreferrer"` | Prevent child popup windows from accessing `window.opener` to swap the parent URL |
+| Browser-level heuristics | Chrome/Firefox adding event-timing checks (in progress as of 2025) |
 
 </div>
 
-</div>
+<Callout v-click variant="error" class="mt-5" noIcon><code>X-Frame-Options</code> and <code>CSP frame-ancestors</code> don't help. There is no iframe. PoCs publicly demonstrated on Salesforce and Slack with full account takeover in a single double-click.</Callout>
