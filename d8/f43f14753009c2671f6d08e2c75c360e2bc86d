@@ -1,0 +1,19 @@
+.gitignore
+  s_3ed2fa401f254c::t_f9fd4e8d0bb522 9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "d8f43f14753009c2671f6d08e2c75c360e2bc86d",
+  "prompts": {},
+  "sessions": {
+    "s_3ed2fa401f254c": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "64071f53-723e-41ed-91ce-27d57ff6d71a",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
