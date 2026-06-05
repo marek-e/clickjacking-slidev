@@ -10,7 +10,13 @@ const props = defineProps({
 });
 
 const open = ref(false);
+const everOpened = ref(false);
 const root = ref(null);
+
+function toggle() {
+  open.value = !open.value;
+  if (open.value) everOpened.value = true;
+}
 
 function onClickOutside(e) {
   if (open.value && root.value && !root.value.contains(e.target))
@@ -25,10 +31,10 @@ onUnmounted(() => document.removeEventListener("pointerdown", onClickOutside));
   <div class="ip-root" ref="root" :style="{ top: y, right: x }">
     <button
       class="ip-btn"
-      :class="{ 'ip-btn--active': open }"
+      :class="{ 'ip-btn--active': open, 'ip-btn--pulse': !everOpened }"
       :aria-label="title"
       :aria-expanded="open"
-      @click="open = !open"
+      @click="toggle"
     >
       <span v-if="trigger">{{ trigger }}</span
       ><span v-else class="i-lucide-lightbulb" />
@@ -71,6 +77,43 @@ onUnmounted(() => document.removeEventListener("pointerdown", onClickOutside));
 .ip-btn--active {
   background: var(--cj-defense-bg);
   border-color: var(--cj-defense);
+}
+
+.ip-btn--pulse {
+  animation: ip-attn 1.6s ease-in-out infinite;
+}
+.ip-btn--pulse::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--cj-defense);
+  opacity: 0;
+  animation: ip-ring 1.6s ease-out infinite;
+  pointer-events: none;
+}
+.ip-btn { position: relative; }
+
+@keyframes ip-attn {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(37, 99, 235, 0);
+    transform: scale(1.08);
+  }
+}
+
+@keyframes ip-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
 }
 
 .ip-popover {
