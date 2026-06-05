@@ -1,0 +1,21 @@
+components/InfoPopover.vue
+  s_3ed2fa401f254c::t_0ee9f6bd366335 82-118
+  s_3ed2fa401f254c::t_abf980b1f35620 34,37
+  s_3ed2fa401f254c::t_a87b65a5ec6f11 13,16-19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "f92c105bd1796147885b63c4aa56910b01272c1c",
+  "prompts": {},
+  "sessions": {
+    "s_3ed2fa401f254c": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "64071f53-723e-41ed-91ce-27d57ff6d71a",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
