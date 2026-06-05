@@ -42,11 +42,10 @@ class: text-center
 </div>
 
 <script setup>
-import { watch, onUnmounted } from 'vue'
+import { watch } from 'vue'
 import { useNav } from '@slidev/client'
 
-const { clicks, currentPage, next } = useNav()
-let timer
+const { clicks, currentPage } = useNav()
 
 watch(clicks, (val) => {
   if (currentPage.value === 1 && val >= 1) {
@@ -63,11 +62,8 @@ watch(clicks, (val) => {
       document.documentElement.style.setProperty('--cj-x', x + '%')
       document.documentElement.style.setProperty('--cj-y', y + '%')
     }
-    timer = setTimeout(next, 1200)
   }
 })
-
-onUnmounted(() => clearTimeout(timer))
 </script>
 
 <style>

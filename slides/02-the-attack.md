@@ -270,10 +270,10 @@ layout: center
 <div class="cj-teaser" :class="{ 'cj-teaser--out': $clicks >= 1 }" aria-hidden="true">
   <div class="cj-teaser-title">📩 You won an iPhone 19!</div>
   <p class="cj-teaser-body">Congratulations. Your iPhone 19 is reserved for you. Click below to claim it before it expires.</p>
-  <button class="cj-teaser-btn" tabindex="-1">Claim your iPhone 19  now 🎁</button>
+  <button class="cj-teaser-btn" tabindex="-1" @click="onBtnClick">Claim your iPhone 19  now 🎁</button>
 </div>
 
-<div v-click style="position:relative">
+<div v-click="1" style="position:relative">
 <ClickjackDemo
   victim-url="/victims/bank.html"
   attacker-title="📩 You won an iPhone 19!"
@@ -288,7 +288,7 @@ layout: center
 />
 
 <!-- Bank alert overlay -->
-<div v-if="bankAlert" class="cj-bank-overlay" aria-live="assertive">
+<div v-click="2" class="cj-bank-overlay" aria-live="assertive">
   <div class="cj-bank-toast">
     <div class="cj-bank-toast-dot" aria-hidden="true"></div>
     <div class="cj-bank-toast-meta">
@@ -318,19 +318,13 @@ layout: center
 </div>
 
 <script setup>
-import { ref, onUnmounted } from 'vue'
 import { useNav } from '@slidev/client'
 
 const { next } = useNav()
-const bankAlert = ref(false)
-let timer
 
 function onBtnClick() {
-  bankAlert.value = true
-  timer = setTimeout(next, 2600)
+  next()
 }
-
-onUnmounted(() => clearTimeout(timer))
 </script>
 
 <style>
@@ -371,7 +365,7 @@ onUnmounted(() => clearTimeout(timer))
   border-radius: 8px;
   font-size: 1em;
   font-weight: 700;
-  pointer-events: none;
+  pointer-events: auto;
   box-shadow: 0 4px 14px rgba(22, 163, 74, 0.45);
 }
 
@@ -406,7 +400,10 @@ onUnmounted(() => clearTimeout(timer))
   border: 1px solid rgba(148, 163, 184, 0.35);
   box-shadow: 0 14px 40px rgba(2, 6, 23, 0.32);
   animation: cj-bank-toast-in 480ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-play-state: paused;
 }
+.cj-bank-overlay.slidev-vclick-hidden .cj-bank-toast { animation-play-state: paused; }
+.cj-bank-overlay:not(.slidev-vclick-hidden) .cj-bank-toast { animation-play-state: running; }
 
 .cj-bank-toast-dot {
   width: 10px;
@@ -431,7 +428,10 @@ onUnmounted(() => clearTimeout(timer))
   box-shadow: 0 16px 40px rgba(0,0,0,0.10);
   overflow: hidden;
   animation: cj-bank-card-in 480ms 100ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-play-state: paused;
 }
+.cj-bank-overlay.slidev-vclick-hidden .cj-bank-receipt { animation-play-state: paused; }
+.cj-bank-overlay:not(.slidev-vclick-hidden) .cj-bank-receipt { animation-play-state: running; }
 
 .cj-bank-receipt-head {
   display: flex;
@@ -478,7 +478,10 @@ onUnmounted(() => clearTimeout(timer))
   font-weight: 700;
   text-align: center;
   animation: cj-bank-footer-in 350ms 400ms both;
+  animation-play-state: paused;
 }
+.cj-bank-overlay.slidev-vclick-hidden .cj-bank-receipt-footer { animation-play-state: paused; }
+.cj-bank-overlay:not(.slidev-vclick-hidden) .cj-bank-receipt-footer { animation-play-state: running; }
 
 @keyframes cj-bank-toast-in {
   from { opacity: 0; transform: translateX(24px) scale(0.97); }

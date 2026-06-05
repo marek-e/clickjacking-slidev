@@ -1,10 +1,7 @@
 <script setup>
-import { ref, onUnmounted } from 'vue'
-import { useNav } from '@slidev/client'
+import { ref } from 'vue'
 
-const { next } = useNav()
 const phase = ref('idle')
-let autoTimer
 
 function onVerifyDown() {
   phase.value = 'auth'
@@ -13,11 +10,8 @@ function onVerifyDown() {
 function onAllowUp() {
   if (phase.value === 'auth') {
     phase.value = 'done'
-    autoTimer = setTimeout(next, 3200)
   }
 }
-
-onUnmounted(() => clearTimeout(autoTimer))
 </script>
 
 <template>

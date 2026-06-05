@@ -132,11 +132,18 @@ document.querySelector('.verify-btn')
 </style>
 
 ---
-layout: center
+layout: two-cols
 class: p-2 py-4
 ---
 
-<img src="/image.png" alt="DoubleClickjacking attack flow diagram" style="max-height: 490px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.10); border: 1px solid var(--cj-border);" />
+<div style="display:flex; align-items:center; justify-content:center; height:100%;">
+<img src="/dcj-attack-flow.png" alt="DoubleClickjacking attack flow diagram" style="border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.10); border: 1px solid var(--cj-border);" />
+</div>
+::right::
+
+<div style="display:flex; align-items:center; justify-content:center; height:100%;">
+  <video src="/dcj-demo.mp4" controls autoplay loop muted style="width:100%; border-radius:12px; box-shadow: 0 8px 32px rgba(0,0,0,0.10);" />
+</div>
 
 ---
 layout: center
@@ -155,12 +162,12 @@ Show the damage card: one double-click, full Slack OAuth access granted.
 -->
 
 ---
-zoom: 0.92
+zoom: 0.83
 ---
 
-# DoubleClickjacking — Defense
+# Mitigation Strategies
 
-<Callout variant="note" class="mt-3" noIcon>Same attack surface as classic clickjacking. The difference is frame headers won't save you — there's no iframe to block.</Callout>
+<Callout variant="note" class="mt-3" noIcon>Same attack surface as classic clickjacking. The difference is frame headers won't save you since there's no iframe to block.</Callout>
 
 <div class="mt-5">
 
@@ -175,4 +182,25 @@ zoom: 0.92
 
 </div>
 
-<Callout v-click variant="error" class="mt-5" noIcon><code>X-Frame-Options</code> and <code>CSP frame-ancestors</code> don't help. There is no iframe. PoCs publicly demonstrated on Salesforce and Slack with full account takeover in a single double-click.</Callout>
+<Callout v-click variant="purple" class="mt-5" icon="💡">
+
+<strong>Where else does this pattern live?</strong> Anywhere the <em>terminating</em> event of a gesture fires the action on whatever page is underneath:
+
+<ul class="dcj-similar-list">
+  <li><strong>Mobile double-tap</strong> — <code>touchstart</code> → swap → <code>touchend</code> synthesizes the click on whatever's under the finger when released.</li>
+  <li><strong>Cross-origin drag-and-drop</strong> — <code>dragstart</code> → swap → <code>drop</code> lands a file or text payload on a swapped drop zone.</li>
+  <li><strong>Spacebar on a focused button</strong> — Space fires <code>click</code> only on <code>keyup</code>, so <code>keydown</code> → swap → <code>keyup</code> activates whatever button is focused on the new page.</li>
+</ul>
+
+</Callout>
+
+<style>
+.dcj-similar-list {
+  margin: 8px 0 6px;
+  padding-left: 1.1em;
+  list-style: disc;
+}
+.dcj-similar-list li { margin: 4px 0; line-height: 1.5; }
+.dcj-similar-list li + li { margin-top: 6px; }
+.callout p { margin: 0; }
+</style>

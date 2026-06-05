@@ -141,7 +141,7 @@ If they conflict, CSP `frame-ancestors` takes precedence in modern browsers.
 ---
 zoom: 0.95
 ---
-# Defense #3 - JavaScript Framebusting
+# JavaScript Framebusting
 
 <Callout variant="note" class="mt-2 mb-3">Before HTTP headers existed for this, developers wrote client-side JS to detect iframe nesting and force the top window to navigate away. It was the best available option in 2008, broken almost immediately after.</Callout>
 
