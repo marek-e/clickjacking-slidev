@@ -1,0 +1,26 @@
+slides/04-defenses.md
+  s_3ed2fa401f254c::t_ae3aa4232ee1e1 254-260
+  s_3ed2fa401f254c::t_f582fa16ca3834 199-201
+  h_34454149dac528 198
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "653f7774d1b55e5b966fe82bb66f58968e9bbd18",
+  "prompts": {},
+  "humans": {
+    "h_34454149dac528": {
+      "author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_3ed2fa401f254c": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "64071f53-723e-41ed-91ce-27d57ff6d71a",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
