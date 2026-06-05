@@ -1,0 +1,57 @@
+components/DblClickDemo.vue
+  s_97548cf4264291::t_f02aa25c0d4c0c 2
+slides/05-dcj.md
+  s_7229e0f8754a03::t_0cd284b2d1d9d8 135,142-144,146
+  s_7229e0f8754a03::t_d76239e6727d05 145
+  s_e192ecbf72b5cb::t_6e70e12906b8aa 186-204,206
+  h_34454149dac528 139-141,168,170,185
+  s_e192ecbf72b5cb::t_2f0ca2da22f4b4 205
+slides.md
+  s_97548cf4264291::t_5e7a5aa45febbe 45,48
+slides/04-defenses.md
+  h_34454149dac528 144
+slides/02-the-attack.md
+  s_97548cf4264291::t_757391a6b8e9a3 326
+  s_97548cf4264291::t_e17630596ce277 481,483-484
+  s_97548cf4264291::t_b9fa5348de9b19 276,291
+  s_97548cf4264291::t_09decd06189f19 403,405-406
+  h_34454149dac528 273,368
+  s_97548cf4264291::t_838eb0e5a70dfa 431,433-434
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "b5de15fe758f6a6531f16d9ae00f970f06960fe4",
+  "prompts": {},
+  "humans": {
+    "h_34454149dac528": {
+      "author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_7229e0f8754a03": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "95e0a261-b1b4-43c4-83cd-aa6d67debec3",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    },
+    "s_97548cf4264291": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "75b886cb-ba73-4897-9e1e-cf7a1a21c90b",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    },
+    "s_e192ecbf72b5cb": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d737c4e1-55fc-4628-9ece-f3419d4a729e",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
