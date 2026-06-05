@@ -280,10 +280,10 @@ layout: center
   attacker-body="Congratulations. Your iPhone 19 is reserved for you. Click below to claim it before it expires."
   attacker-button="Claim your iPhone 19  now 🎁"
   victim-label="SecureBank: Confirm Transfer $500"
-  :height="320"
+  :height="300"
   :show-position-controls="true"
   :clickable="true"
-  :start-y="-57"
+  :start-y="-72"
   @button-click="onBtnClick"
 />
 
@@ -844,7 +844,7 @@ layout: center
   victim-url="/victims/github-star.html"
   attacker-title="🏆 You're in the top 1%!"
   attacker-body="Our data shows you're one of the most active open-source contributors this month. Claim your free developer badge now."
-  attacker-button="Claim My Badge 🎖️"
+  attacker-button=" >> Claim My Badge 🎖️ << "
   ad-header="Don't miss your chance to claim your free developer badge now."
   ad-header-bg="#6366f1"
   attacker-bg="#24292f"
@@ -853,8 +853,8 @@ layout: center
   :ad-mode="true"
   :show-position-controls="true"
   :clickable="true"
-  :start-y="-14"
-  :start-x="-20"
+  :start-y="-15"
+  :start-x="-49"
 />
 
 <!--

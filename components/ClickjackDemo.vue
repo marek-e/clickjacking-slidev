@@ -168,17 +168,6 @@ iframe {
         >
       </div>
     </div>
-
-    <!-- ── Legend ─────────────────────────────────────────── -->
-    <div class="cj-legend">
-      <span class="cj-dot dot-attacker"></span>
-      <span>Attacker's page (always visible to the user)</span>
-      <span class="cj-dot dot-victim"></span>
-      <span
-        >{{ victimLabel }} — transparent <code>iframe</code> layered on
-        top</span
-      >
-    </div>
   </div>
 </template>
 
@@ -188,7 +177,7 @@ iframe {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 100%;
+  width: 40vw;
   font-size: 0.82em;
 }
 
@@ -325,7 +314,7 @@ iframe {
 .cj-pos-controls {
   display: flex;
   gap: 10px;
-  align-items: flex-start;
+  align-items: center;
   margin-top: 6px;
   padding: 8px 10px;
   background: var(--cj-text-strong);
