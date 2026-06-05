@@ -195,6 +195,10 @@ zoom: 0.9
 
 # Defenses in Action
 
+<InfoPopover title="GitHub's actual response headers" width="700px" x="4.5rem" y="5.5rem">
+  <img src="/github-csp.png" alt="GitHub response headers showing X-Frame-Options: deny and Content-Security-Policy frame-ancestors 'none'" class="ip-img" />
+</InfoPopover>
+
 <div class="dia-label">Trying to embed <code>github.com</code> in an iframe —> live, right now</div>
 
 <div class="dia-frame">
@@ -246,6 +250,13 @@ zoom: 0.9
   font-size: 0.82em;
   color: var(--cj-text);
   line-height: 1.5;
+}
+.ip-img {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  border-radius: 6px;
+  border: 1px solid var(--cj-border);
 }
 </style>
 
