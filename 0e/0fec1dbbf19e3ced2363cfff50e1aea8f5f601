@@ -1,0 +1,25 @@
+slides/05-dcj.md
+  h_34454149dac528 165,170,172,174,176-178,184-185,191,199-201,205-215,238-240
+  s_71df29584fbf10::t_47bcaef0df318e 179-183,186-190,192-198
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "0e0fec1dbbf19e3ced2363cfff50e1aea8f5f601",
+  "prompts": {},
+  "humans": {
+    "h_34454149dac528": {
+      "author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_71df29584fbf10": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "99ca2272-5443-4dab-aa1e-921f5222ce1b",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
