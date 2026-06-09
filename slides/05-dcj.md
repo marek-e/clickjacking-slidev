@@ -162,25 +162,56 @@ Show the damage card: one double-click, full Slack OAuth access granted.
 -->
 
 ---
-zoom: 0.83
+zoom: 0.78
 ---
 
 # Mitigation Strategies
 
-<Callout variant="note" class="mt-3" noIcon>Same attack surface as classic clickjacking. The difference is frame headers won't save you since there's no iframe to block.</Callout>
+<div class="grid grid-cols-2 gap-6 mt-4">
 
-<div class="mt-5">
+<div>
 
-**Defense approaches:**
+**Client-Side Protection**
 
-| Approach | What it does |
-|----------|-------------|
-| `pointer-events: none` on load | Disable sensitive buttons by default; re-enable only after the cursor naturally moves over them |
-| Activation delay (100–500 ms) | Require hover before a click registers on OAuth consent buttons |
-| `rel="noopener noreferrer"` | Prevent child popup windows from accessing `window.opener` to swap the parent URL |
-| Browser-level heuristics | Chrome/Firefox adding event-timing checks (in progress as of 2025) |
+Disable critical buttons until a real user gesture is detected:
+
+```js
+// Only applies to pointer devices — touch can't do DCJ
+if (window.matchMedia("(hover: hover)").matches) {
+  const buttons = document.querySelectorAll(
+    'form button, form input[type="submit"]'
+  );
+
+  // Disabled on load — blocks the phantom double-click 🛑
+  buttons.forEach(btn => (btn.disabled = true));
+
+  function enableButtons() {
+    buttons.forEach(btn => (btn.disabled = false));
+    document.removeEventListener("mousemove", enableButtons);
+  }
+
+  // Re-enable only after real user interaction
+  document.addEventListener("mousemove", enableButtons);
+  document.addEventListener("keydown", e => {
+    if (e.key === "Tab") enableButtons();
+  });
+}
+```
+
+Zero UX impact ➡️ activation happens well before the user reaches the button
 
 </div>
+
+<div>
+
+**Long-Term: Browser Standards**
+
+The pattern mirrors the 2008 clickjacking story. JS patches first, then browser-level headers. Example of future proposals:
+
+| Idea | What it does |
+|------|-------------|
+| `Double-Click-Protection: strict` | Block rapid context-switching between windows mid-double-click |
+| CSP extension | Expand `frame-ancestors`-style policy to cover opener/popup scenarios |
 
 <Callout v-click variant="purple" class="mt-5" icon="💡">
 
@@ -204,3 +235,6 @@ zoom: 0.83
 .dcj-similar-list li + li { margin-top: 6px; }
 .callout p { margin: 0; }
 </style>
+</div>
+
+</div>
