@@ -1,0 +1,32 @@
+slides/01-cover.md
+  s_9f85884dedaf63::t_c61a690e648e5d 22-24
+slides/05-variants-intro.md
+  h_34454149dac528 3-4
+  s_9f85884dedaf63::t_ad0e79bb905e6d 1-2,5-155
+slides/07-finish.md
+  s_9f85884dedaf63::t_9126ec817e6589 1-28
+slides.md
+  s_9f85884dedaf63::t_bb4b0c6c90efdd 130-133
+  s_9f85884dedaf63::t_3d65978a3fae86 120-122
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "45c11417f42c750f20f4a47d9ceed201140402f3",
+  "prompts": {},
+  "humans": {
+    "h_34454149dac528": {
+      "author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_9f85884dedaf63": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "030d87c6-e2fb-4533-b948-d8e21c6a389e",
+        "model": "composer-2.5"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
