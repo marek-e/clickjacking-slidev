@@ -1,0 +1,39 @@
+.env.example
+  s_320216d6f4ca81::t_001de16904d298 1-10
+.gitignore
+  s_320216d6f4ca81::t_884cf4c1f28382 4-5
+vite.config.ts
+  s_320216d6f4ca81::t_3535b1aabde586 1-2,4-6,38-52,54-59,61
+  s_320216d6f4ca81::t_5469621c89dac2 53
+  s_1265c462c01f1a::t_71ba40135a6619 3,7-37
+  s_1265c462c01f1a::t_01623e1c0e4cab 60
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "32e67b96b8a2aad63881d70b2b8f4a16f507b72a",
+  "prompts": {},
+  "humans": {
+    "h_34454149dac528": {
+      "author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_1265c462c01f1a": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "315e4a33-fbeb-4529-8df2-a66b5eaccd58",
+        "model": "composer-2.5"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    },
+    "s_320216d6f4ca81": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "4da449d9-7787-4e3a-bd08-d1963f2c1914",
+        "model": "composer-2.5"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
