@@ -1,0 +1,26 @@
+vite.config.ts
+  s_9f85884dedaf63::t_17da32cc0f21c6 47,50-58
+.env.example
+  s_9f85884dedaf63::t_e40f213851c7e4 3-5,8-12,16-17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "0a7e0132d9f9813ba92ed1c47143222be43974f3",
+  "prompts": {},
+  "humans": {
+    "h_34454149dac528": {
+      "author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_9f85884dedaf63": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "030d87c6-e2fb-4533-b948-d8e21c6a389e",
+        "model": "composer-2.5"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
