@@ -1,0 +1,40 @@
+slides/05-dcj.md
+  s_320216d6f4ca81::t_0aff987039e81a 249-252
+  s_320216d6f4ca81::t_b8b9a64b2083d7 165-176
+  h_34454149dac528 187-191,194,197,201
+  s_320216d6f4ca81::t_eb23fc5e013f72 245-248
+  s_320216d6f4ca81::t_d3155e6ec5d3e8 216-239
+  s_320216d6f4ca81::t_d5c925215f621b 154-161,164,178-185,192,195,203-206,208-215
+  s_320216d6f4ca81::t_3d64630c7cdae5 163
+  s_9af57320e143a5::t_2253f6199358eb 198-199
+  s_9af57320e143a5::t_f624b8ccb0c554 177,186,193,196,200,202,207,240
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "38c5386762af8077b0eea0e5c1e8e44423baec22",
+  "prompts": {},
+  "humans": {
+    "h_34454149dac528": {
+      "author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_320216d6f4ca81": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "4da449d9-7787-4e3a-bd08-d1963f2c1914",
+        "model": "composer-2.5"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    },
+    "s_9af57320e143a5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "550d3bed-1aa7-4ebf-879b-f8c562eb1c4f",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
