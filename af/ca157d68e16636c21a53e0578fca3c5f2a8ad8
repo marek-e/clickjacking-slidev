@@ -1,0 +1,117 @@
+public/victims/dcj-real.js
+  s_320216d6f4ca81::t_58f33ab9baf11d 4,15,42
+  s_320216d6f4ca81::t_144bcc1bfd07ad 6,12-13
+  s_320216d6f4ca81::t_9ab8f5c127e5e6 52
+  s_320216d6f4ca81::t_ad3fd68eaba480 5,8-11,14,17-22,41
+  s_320216d6f4ca81::t_4305d3d6bc15b7 2,16
+  s_320216d6f4ca81::t_284d7b39d279f7 1,51,59
+  s_1265c462c01f1a::t_44097af82d67c4 3,23-40,43-50
+  h_34454149dac528 7
+  s_17b8dff22e99c7::t_3f7241c831646e 53-58
+public/victims/dcj-victim.js
+  s_320216d6f4ca81::t_915a2d3dddcc12 1,3-4,10-11,27-34
+  s_320216d6f4ca81::t_572dd9acacb247 2,5-9
+  s_17b8dff22e99c7::t_d732b194c49b9a 12-26
+public/victims/dcj.html
+  s_9af57320e143a5::t_4db4ed06acced6 6,10,13-20,24-26,31,43,57,64,69-74,76-78,80-82
+  s_9af57320e143a5::t_8e813c27e226ba 7,21-23,75
+  s_320216d6f4ca81::t_31f9df31e2d432 11-12
+  s_320216d6f4ca81::t_f96d663b2514d6 88,90
+  s_320216d6f4ca81::t_59b9cc6cc3124c 44
+  s_320216d6f4ca81::t_88c4004d692894 67-68
+  s_320216d6f4ca81::t_751765ba2fd116 89
+  s_320216d6f4ca81::t_c46146a2484e61 27,29-30,32-42,45-49,51-56,59-63
+  s_320216d6f4ca81::t_8ab0208e95b874 84
+  s_320216d6f4ca81::t_887b12d51cf9f3 28
+  s_320216d6f4ca81::t_edb4788e471591 58
+  s_320216d6f4ca81::t_0c531753f28a09 85-87
+  s_df892100487661::t_95e85e03b13006 66
+  s_1265c462c01f1a::t_6d8a94cc02cfe1 50
+  s_9af57320e143a5::t_5f0eceeed76442 65,79,83
+public/victims/dcj-victim.html
+  s_320216d6f4ca81::t_feb47586a28faf 333
+  s_9af57320e143a5::t_3136109c67994a 1-5,7-8,10,13-14,57,62-63,69,72-73,79,81-83,87-88,147-151,155-156,158-160,162,182-190,192-193,195-197,207,257,264-265,288,291,294-295,329,331-332,334-335,348,352-353
+  s_320216d6f4ca81::t_fe6f94c9b444c0 210-212,215-216,258,261-263,274
+  s_9af57320e143a5::t_b3cb79b511b1db 9,11-12,15-56,58-61,64-68,70-71,74-78,80,84-86,89-146,152-154,157,161,163-164,191,194,198-206,208-209,266,275,277-287,289-290,292-293,296-328,330,336-337,342-347
+  s_17b8dff22e99c7::t_b0ff5b0c760659 6
+  h_34454149dac528 276
+  s_320216d6f4ca81::t_61a5b1d74a064f 339
+  s_17b8dff22e99c7::t_5133d8f6a2f8a2 267-273
+  s_320216d6f4ca81::t_02256eaa88be73 165-181
+  s_320216d6f4ca81::t_af2a2533fc8034 338,340-341
+  s_17b8dff22e99c7::t_dfd99abae3fe34 213-214,217-256,259-260
+  s_320216d6f4ca81::t_dabb61b9e31b50 349-351
+public/victims/dcj.css
+  s_320216d6f4ca81::t_802cb99d1e1263 168
+  s_320216d6f4ca81::t_1490d16659f1c9 233
+  s_320216d6f4ca81::t_ec0e01a19be241 140-155
+  s_9af57320e143a5::t_73ac3e57dd65ea 1-4,7-11,162-167,169-202,205-232,234-235,238-266,268-323
+  s_1265c462c01f1a::t_eb83b49df5e922 267
+  s_1265c462c01f1a::t_850d3a75c2fcef 6,12,14
+  s_320216d6f4ca81::t_43e22955f1b5c4 332
+  s_1265c462c01f1a::t_c5127fbd4ec78a 325-326,338,342,346,350,353-356
+  s_320216d6f4ca81::t_23c508be1c2684 327-331
+  s_320216d6f4ca81::t_65dae2364fbdb0 333-335
+  s_320216d6f4ca81::t_95966171ae581f 324,340
+  s_320216d6f4ca81::t_8d66dc5b1ab568 5,13,15-68,70-139,156-161
+  s_1265c462c01f1a::t_941cc10953cdc7 236-237
+  s_320216d6f4ca81::t_be29f8146c9d00 341,343-345,347-349,351-352,357
+  h_34454149dac528 69,203-204
+  s_320216d6f4ca81::t_8f986d4e42bc33 336-337,339
+public/victims/dcj-oauth.js
+  s_320216d6f4ca81::t_6ffe07170f4155 1-9,11-19
+  h_34454149dac528 10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "afca157d68e16636c21a53e0578fca3c5f2a8ad8",
+  "prompts": {},
+  "humans": {
+    "h_34454149dac528": {
+      "author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_1265c462c01f1a": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "315e4a33-fbeb-4529-8df2-a66b5eaccd58",
+        "model": "composer-2.5"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    },
+    "s_17b8dff22e99c7": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "58037465-71f0-4a7e-90cd-db8245ea53a7",
+        "model": "composer-2.5"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    },
+    "s_320216d6f4ca81": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "4da449d9-7787-4e3a-bd08-d1963f2c1914",
+        "model": "composer-2.5"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    },
+    "s_9af57320e143a5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "550d3bed-1aa7-4ebf-879b-f8c562eb1c4f",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    },
+    "s_df892100487661": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "314835d8-1652-41d7-8c6f-719066e43374",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
