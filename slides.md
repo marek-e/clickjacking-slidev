@@ -41,31 +41,6 @@ class: text-center
 
 </div>
 
-<script setup>
-import { watch } from 'vue'
-import { useNav } from '@slidev/client'
-
-const { clicks, currentPage } = useNav()
-
-watch(clicks, (val) => {
-  if (currentPage.value === 1 && val >= 1) {
-    // Anchor the next slide's radial transition on the cursor click point.
-    // .cj-click-word is non-animated at flush:'pre', so its rect is stable.
-    // (118,52) = .cj-cursor offset; (+4,+4) ≈ SVG arrow tip in viewBox 20×28.
-    const word = document.querySelector('.cj-click-word')
-    const slide = word?.closest('.slidev-page') ?? document.body
-    if (word) {
-      const r = word.getBoundingClientRect()
-      const sr = slide.getBoundingClientRect()
-      const x = ((r.left + 122 - sr.left) / sr.width) * 100
-      const y = ((r.top + 56 - sr.top) / sr.height) * 100
-      document.documentElement.style.setProperty('--cj-x', x + '%')
-      document.documentElement.style.setProperty('--cj-y', y + '%')
-    }
-  }
-})
-</script>
-
 <style>
 /* ── "Click" word grows on press ──────────────────────────
    $clicks >= 1 adds .cj-growing, which starts the animation
@@ -142,9 +117,17 @@ src: ./slides/04-defenses.md
 ---
 
 ---
+src: ./slides/05-variants-intro.md
+---
+
+---
 src: ./slides/05-dcj.md
 ---
 
 ---
 src: ./slides/06-ext-cj.md
+---
+
+---
+src: ./slides/07-finish.md
 ---

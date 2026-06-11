@@ -19,7 +19,9 @@
   <AgendaItem n="9">CSP <code>frame-ancestors</code></AgendaItem>
   <AgendaItem n="10">JavaScript framebusting</AgendaItem>
   <AgendaItem n="11" demo>Defenses in action</AgendaItem>
-  <AgendaItem n="12">Security checklist</AgendaItem>
+  <AgendaItem n="12">Beyond the iframe</AgendaItem>
+  <AgendaItem n="13">DoubleClickjacking</AgendaItem>
+  <AgendaItem n="14" demo>Extension clickjacking</AgendaItem>
 </div>
 
 </div>
