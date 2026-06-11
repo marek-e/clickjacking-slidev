@@ -1,0 +1,26 @@
+public/victims/dcj-real.js
+  s_9f85884dedaf63::t_c7e82f5e1d85f8 54-59
+public/victims/dcj-oauth.js
+  s_9f85884dedaf63::t_a3a5052cf32a09 8-14,18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "c85c842aafeace211bba09c3fe8edf18c46bdc7f",
+  "prompts": {},
+  "humans": {
+    "h_34454149dac528": {
+      "author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_9f85884dedaf63": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "030d87c6-e2fb-4533-b948-d8e21c6a389e",
+        "model": "composer-2.5"
+      },
+      "human_author": "Marek Elmayan <melmayan.dev@gmail.com>"
+    }
+  }
+}
