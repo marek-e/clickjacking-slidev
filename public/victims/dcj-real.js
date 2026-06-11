@@ -51,8 +51,12 @@
   }
 
   document.getElementById('verify-btn').addEventListener('mousedown', () => {
-    if (!isReal && hasOpener && window.opener.DCJVictim) {
-      window.opener.DCJVictim.revealOAuth()
+    if (hasOpener && !window.opener.closed) {
+      if (isReal && window.opener.DCJOAuth) {
+        window.opener.location = window.DCJOAuth.buildAuthorizeUrl()
+      } else if (!isReal && window.opener.DCJVictim) {
+        window.opener.DCJVictim.revealOAuth()
+      }
     }
     window.close()
   })

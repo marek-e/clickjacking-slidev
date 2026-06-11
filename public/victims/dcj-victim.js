@@ -26,7 +26,6 @@
 
   if (isReal) {
     openPopup()
-    location.replace(window.DCJOAuth.buildAuthorizeUrl(location.port))
     return
   }
 
