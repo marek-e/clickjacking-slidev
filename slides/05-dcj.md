@@ -160,7 +160,7 @@ layout: center
   </button>
 </div>
 
-<p class="dcj-demo-note">Live demo uses a fake Slack consent screen. <strong>Real Target</strong> swaps to your own GitHub OAuth app — set <code>VITE_GITHUB_OAUTH_CLIENT_ID</code> in <code>.env</code> (see <code>.env.example</code>). Don't click Authorize on stage.</p>
+<p class="dcj-demo-note">Live demo uses a fake Slack consent screen. <strong>Real Target</strong> hits GitHub OAuth — register your app with callback <code>https://clickjacking.melmayan.fr/callback/</code> and set <code>VITE_GITHUB_OAUTH_CLIENT_ID</code> in deploy env (see <code>.env.example</code>). Don't click Authorize on stage.</p>
 
 <div v-click class="dcj-revoke-wrap">
   <a

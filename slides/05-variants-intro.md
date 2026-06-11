@@ -46,11 +46,6 @@ zoom: 0.9
 
 </div>
 
-<p v-click class="av-punch mt-8">
-  Same psychology. Same misplaced click.<br/>
-  <strong>Completely different attack surface.</strong>
-</p>
-
 </div>
 
 <style>
