@@ -151,14 +151,105 @@ layout: center
 
 ## Demo — OAuth Hijack via Double-Click
 
-<DblClickDemo />
+<div class="dcj-demo-btns">
+  <button class="dcj-demo-btn" onclick="window.open('/victims/dcj-victim.html','_blank','popup=yes,width=900,height=580,left=150,top=80')">
+    <span class="i-lucide-play" style="width: 20px; height: 20px;"></span>Launch Demo
+  </button>
+  <button class="dcj-demo-btn dcj-demo-btn--real" onclick="window.open('/victims/dcj-victim.html?real=1','_blank','popup=yes,width=900,height=580,left=150,top=80')">
+    <span class="i-lucide-external-link" style="width: 20px; height: 20px;"></span>Real Target
+  </button>
+</div>
+
+<p class="dcj-demo-note">Live demo uses a fake Slack consent screen. <strong>Real Target</strong> swaps to your own GitHub OAuth app — set <code>VITE_GITHUB_OAUTH_CLIENT_ID</code> in <code>.env</code> (see <code>.env.example</code>). Don't click Authorize on stage.</p>
+
+<div v-click class="dcj-revoke-wrap">
+  <a
+    href="https://github.com/settings/applications"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="dcj-revoke-btn"
+  >
+    <span class="i-lucide-shield-off" style="width: 18px; height: 18px;"></span>
+    Revoke authorized OAuth apps
+  </a>
+</div>
+
+<style>
+.dcj-demo-btns {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+.dcj-demo-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: fit-content;
+  padding: 14px 32px;
+  background: var(--cj-danger);
+  color: #ffffff;
+  font-size: 1.05em;
+  font-weight: 800;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  box-shadow: 0 6px 24px rgba(220,38,38,0.30);
+}
+.dcj-demo-btn--real {
+  background: #1a1a1a;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+}
+.dcj-demo-btn:hover { opacity: 0.88; }
+.dcj-demo-note {
+  margin: 16px auto 0;
+  max-width: 520px;
+  font-size: 0.78em;
+  color: var(--cj-text-muted);
+  text-align: center;
+  line-height: 1.5;
+}
+.dcj-revoke-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.dcj-revoke-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 22px;
+  background: #fff;
+  color: var(--cj-text-strong);
+  border: 1px solid var(--cj-border);
+  border-radius: 10px;
+  font-size: 0.82em;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.dcj-revoke-btn:hover {
+  border-color: var(--cj-danger-border);
+  box-shadow: 0 4px 16px rgba(220,38,38,0.12);
+}
+</style>
 
 <!--
 PRESENTER NOTE:
 Ask the audience: "What do you think you're double-clicking?"
-Then perform the double-click on "Double-click to verify".
-The panel swaps mid-press; mouseup fires on the now-visible "Allow" button.
-Show the damage card: one double-click, full Slack OAuth access granted.
+
+Launch Demo — reliable stage demo. Double-click the fake Turnstile button;
+popup closes on mousedown, mouseup hits the fake Slack Allow button.
+
+Real Target — live Cloudflare Turnstile + window.opener.location swap to your
+GitHub OAuth app (.env). Needs network. Double-click "Double-click to verify"
+below the widget. Parent shows real GitHub login or consent — do NOT click
+Authorize. Use the video for a full hit.
 -->
 
 ---
