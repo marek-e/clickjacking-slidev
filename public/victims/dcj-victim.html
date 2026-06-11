@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acme Corp — Workspace</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f8f8f8;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 24px;
+    }
+
+    /* ── Slack wordmark ── */
+    .slack-wordmark {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .slack-wordmark img { display: block; }
+    .slack-wordmark span {
+      font-size: 1.25em;
+      font-weight: 900;
+      color: #4a154b;
+      letter-spacing: -0.5px;
+    }
+
+    /* ── logged-in user strip ── */
+    .user-strip {
+      width: 440px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75em;
+      color: #696969;
+      margin-bottom: 8px;
+    }
+    .user-avatar {
+      width: 20px; height: 20px;
+      border-radius: 3px;
+      background: linear-gradient(135deg, #e8b97e, #c97b3a);
+      color: #fff;
+      font-size: 0.68em;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .user-strip a { color: #1264a3; text-decoration: none; }
+    .user-strip a:hover { text-decoration: underline; }
+
+    /* ── OAuth card ── */
+    .card {
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+      width: 440px;
+      padding: 24px 36px 20px;
+    }
+
+    .app-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+    .app-icon {
+      width: 52px; height: 52px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #36393f, #202225);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5em;
+      font-weight: 900;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .app-name { font-size: 1em; font-weight: 700; color: #1d1c1d; }
+    .app-warning {
+      font-size: 0.72em;
+      color: #bf5219;
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .permission-text {
+      font-size: 0.88em;
+      color: #1d1c1d;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    hr { border: none; border-top: 1px solid #eee; margin-bottom: 12px; }
+
+    .scope-heading {
+      font-size: 0.72em;
+      font-weight: 700;
+      color: #696969;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 8px;
+    }
+
+    .scope-list { list-style: none; margin-bottom: 0; }
+    .scope-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      padding: 7px 0;
+      font-size: 0.83em;
+      color: #454245;
+      border-bottom: 1px solid #f2f2f2;
+    }
+    .scope-item:last-child { border-bottom: none; }
+    .scope-icon { flex-shrink: 0; margin-top: 1px; }
+
+    /* btn-slot: visual placeholder so card layout looks complete */
+    .btn-slot { height: 44px; margin: 14px 0 10px; }
+
+    .legal {
+      font-size: 0.7em;
+      color: #696969;
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+    .legal a { color: #1264a3; text-decoration: none; }
+    .legal a:hover { text-decoration: underline; }
+
+    .cancel-row { text-align: center; }
+    .cancel-link { font-size: 0.83em; color: #696969; text-decoration: none; }
+    .cancel-link:hover { color: #1d1c1d; text-decoration: underline; }
+
+    /* ── Allow button — fixed at 50/50, aligns with dcj.html verify button ── */
+    #allow-btn {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 368px;
+      padding: 11px;
+      background: #007a5a;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.95em;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.1px;
+    }
+    #allow-btn:hover { background: #148567; }
+
+    .real-banner {
+      position: fixed;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      padding: 8px 16px;
+      background: #fff8e1;
+      border: 1px solid #f0c040;
+      border-radius: 8px;
+      font-size: 0.75em;
+      color: #7a5c00;
+      white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .real-banner[hidden] { display: none !important; }
+
+    #granted {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fef2f2;
+      border: 2px solid #fca5a5;
+      border-radius: 10px;
+      padding: 20px 36px;
+      text-align: center;
+      font-weight: 800;
+      font-size: 1em;
+      color: #dc2626;
+      white-space: nowrap;
+      box-shadow: 0 8px 32px rgba(220,38,38,0.15);
+    }
+
+    /* ── page footer ── */
+    .page-footer {
+      margin-top: 16px;
+      display: flex;
+      gap: 16px;
+      font-size: 0.7em;
+      color: #696969;
+    }
+    .page-footer a { color: #696969; text-decoration: none; }
+    .page-footer a:hover { text-decoration: underline; }
+
+    html.real-mode #slack-victim,
+    html.real-mode #allow-btn,
+    html.real-mode .page-footer,
+    html.real-mode #decoy-parent {
+      display: none !important;
+    }
+
+    /* Demo: innocent parent until popup mousedown swaps in OAuth */
+    html:not(.real-mode):not(.oauth-ready) #slack-victim,
+    html:not(.real-mode):not(.oauth-ready) #allow-btn,
+    html:not(.real-mode):not(.oauth-ready) .page-footer {
+      display: none !important;
+    }
+    html:not(.real-mode):not(.oauth-ready) #decoy-parent {
+      display: flex;
+    }
+    html.oauth-ready #decoy-parent {
+      display: none !important;
+    }
+
+    #decoy-parent {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      gap: 18px;
+      color: #696969;
+    }
+    .decoy-logo {
+      font-size: 1.4em;
+      font-weight: 900;
+      color: #4a154b;
+      letter-spacing: -0.5px;
+    }
+    .decoy-spinner {
+      width: 28px;
+      height: 28px;
+      border: 3px solid #e8e8e8;
+      border-top-color: #4a154b;
+      border-radius: 50%;
+      animation: decoy-spin 0.9s linear infinite;
+    }
+    @keyframes decoy-spin { to { transform: rotate(360deg); } }
+    .decoy-text { font-size: 0.9em; }
+    .decoy-sub { font-size: 0.78em; color: #999; }
+  </style>
+  <script>
+    const _dcjParams = new URLSearchParams(location.search)
+    if (_dcjParams.has('real')) {
+      document.documentElement.classList.add('real-mode')
+    }
+  </script>
+</head>
+<body>
+
+  <div id="decoy-parent" aria-hidden="true">
+    <div class="decoy-logo">Acme Corp</div>
+    <div class="decoy-spinner"></div>
+    <div class="decoy-text">Loading your workspace…</div>
+    <div class="decoy-sub">This may take a few seconds</div>
+  </div>
+
+  <div id="slack-victim">
+  <div class="slack-wordmark">
+    <img src="https://a.slack-edge.com/38f0e7c/marketing/img/nav/logo.svg" width="26" height="26" alt="">
+    <span>Slack</span>
+  </div>
+
+  <!-- Logged-in user indicator -->
+  <div class="user-strip">
+    <div class="user-avatar">JD</div>
+    john.doe@acmecorp.com ·
+    <a href="#">Switch workspace</a>
+  </div>
+
+  <!-- OAuth consent card -->
+  <div class="card">
+    <div class="app-row">
+      <div class="app-icon">H</div>
+      <div>
+        <div class="app-name">HackerApp</div>
+        <div class="app-warning">⚠️ Not verified by Slack</div>
+      </div>
+    </div>
+
+    <p class="permission-text">
+      <strong>HackerApp</strong> would like permission to access the
+      <strong>Acme Corp</strong> Slack workspace.
+    </p>
+
+    <hr>
+
+    <p class="scope-heading">HackerApp will be able to:</p>
+    <ul class="scope-list">
+      <li class="scope-item">
+        <span class="scope-icon">💬</span>
+        Post messages in channels and send direct messages
+      </li>
+      <li class="scope-item">
+        <span class="scope-icon">👁</span>
+        View messages and other content in public channels
+      </li>
+      <li class="scope-item">
+        <span class="scope-icon">👥</span>
+        View people in Acme Corp and their email addresses
+      </li>
+    </ul>
+
+    <!-- visual slot occupied by the fixed-position Allow button -->
+    <div class="btn-slot"></div>
+
+    <p class="legal">
+      By clicking Allow, you allow HackerApp to use your information in accordance
+      with their <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a>.
+      You can remove this app at any time from your Slack settings.
+    </p>
+
+    <div class="cancel-row">
+      <a href="#" class="cancel-link">Cancel</a>
+    </div>
+  </div>
+  </div>
+
+  <button id="allow-btn">Allow</button>
+  <div id="granted">🔓 OAuth access granted — HackerApp connected to Acme Corp!</div>
+
+  <div id="real-banner" class="real-banner" hidden>
+    Real target — GitHub OAuth loads under the popup
+  </div>
+
+  <div class="page-footer">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Service</a>
+    <a href="#">Cookie Policy</a>
+    <span>© 2024 Slack Technologies, LLC</span>
+  </div>
+
+  <script src="dcj-config.js"></script>
+  <script src="dcj-oauth.js"></script>
+  <script src="dcj-victim.js"></script>
+</body>
+</html>

